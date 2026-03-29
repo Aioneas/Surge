@@ -54,6 +54,16 @@ This configuration is tuned around the following daily-use ecosystem:
 
 Import the raw URL into Sugar as a remote configuration source.
 
+## 如何替换订阅地址
+
+下载或打开 `Conf/Sugar.conf`，找到以下内容：
+
+```text
+policy-path=这里替换成你的订阅地址
+```
+
+将 `这里替换成你的订阅地址` 替换为你的机场订阅 URL（Surge 格式），保存后重新导入即可。
+
 ## Maintainer
 
 **Aioneas**
