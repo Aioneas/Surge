@@ -51,16 +51,12 @@ DOMAIN,bridgeads.massx.com,REJECT
 DOMAIN,adx.halomobi.com,REJECT
 DOMAIN,api.anythinktech.com,REJECT
 DOMAIN,ad.jooancloud.com,REJECT
-DOMAIN,images.pinduoduo.com,REJECT
-DOMAIN,lp.pinduoduo.com,REJECT
 DOMAIN,t-dsp.pinduoduo.com,REJECT
 DOMAIN,p66-ad.adkwai.com,REJECT
 DOMAIN,open.e.kuaishou.cn,REJECT
 DOMAIN,api-access.pangolin-sdk-toutiao-b.com,REJECT
 DOMAIN,cpc-service-square.yunxish.com,REJECT
 DOMAIN,tracelog-debug.yunxish.com,REJECT
-DOMAIN,commimg.pddpic.com,REJECT
-DOMAIN-SUFFIX,pddpic.com,REJECT
 
 [URL Rewrite]
 ^https?:\/\/m\d{1}\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\/ - reject
