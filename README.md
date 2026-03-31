@@ -1,27 +1,32 @@
 # Surge
 
-Personal Sugar / Surge configuration for iOS.
+我的 Surge 配置与模块仓库。
 
-## Remote Config
-
-### Raw URL
+## Raw URL
 
 ```text
 https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/Sugar.conf
 ```
 
-### GitHub Path
+## GitHub Path
 
 ```text
 https://github.com/Aioneas/Surge/tree/main/Conf
 ```
 
+## Modules
+
+- 去广告：`Module/adblock.sgmodule`
+- 去广告 Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule`
+
 ## Structure
 
 ```text
 Surge/
-└── Conf/
-    └── Sugar.conf
+├── Conf/
+│   └── Sugar.conf
+└── Module/
+    └── adblock.sgmodule
 ```
 
 ## Features
@@ -31,6 +36,7 @@ Surge/
 - GitHub-hosted remote config
 - Focused on daily-use apps and services
 - Cleaner structure for long-term maintenance
+- Supports independent remote modules
 
 ## Current Focus
 
@@ -52,7 +58,7 @@ This configuration is tuned around the following daily-use ecosystem:
 
 ## Usage
 
-Import the raw URL into Sugar as a remote configuration source.
+Import the raw URL into Sugar as a remote configuration source, or import individual modules separately.
 
 ## 如何替换订阅地址
 
