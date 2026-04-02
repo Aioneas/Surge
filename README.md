@@ -5,7 +5,7 @@
 ## Raw URL
 
 ```text
-https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/Sugar.conf
+https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 ```
 
 ## GitHub Path
@@ -24,19 +24,21 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 ```text
 Surge/
 ├── Conf/
-│   └── Sugar.conf
+│   └── surge.conf
 └── Module/
     └── adblock.sgmodule
 ```
 
 ## Features
 
-- Optimized for iOS Sugar 5
+- Optimized for iOS Surge
 - Lightweight Rewrite and MITM
 - GitHub-hosted remote config
 - Focused on daily-use apps and services
 - Cleaner structure for long-term maintenance
 - Supports independent remote modules
+- Added Speedtest traffic redirection group and rule set
+- Updated adblock module with Jooan compatibility fixes
 
 ## Current Focus
 
@@ -54,21 +56,22 @@ This configuration is tuned around the following daily-use ecosystem:
 - Rule sets are kept intentionally stable.
 - Rewrite rules are trimmed to reduce side effects.
 - MITM scope is minimized for better reliability.
+- Speedtest traffic can be switched between DIRECT and proxy groups.
 - This repository is meant to be a personal long-term remote config source.
 
 ## Usage
 
-Import the raw URL into Sugar as a remote configuration source, or import individual modules separately.
+Import the raw URL into Surge as a remote configuration source, or import individual modules separately.
 
 ## 如何替换订阅地址
 
-下载或打开 `Conf/Sugar.conf`，找到以下内容：
+下载或打开 `Conf/surge.conf`，找到以下内容：
 
 ```text
-policy-path=这里替换成你的订阅地址
+policy-path=请替换为你自己的Surge订阅地址
 ```
 
-将 `这里替换成你的订阅地址` 替换为你的机场订阅 URL（Surge 格式），保存后重新导入即可。
+将 `请替换为你自己的Surge订阅地址` 替换为你的机场订阅 URL（Surge 格式），保存后重新导入即可。
 
 ## Maintainer
 

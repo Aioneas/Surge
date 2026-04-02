@@ -1,10 +1,18 @@
-#!name=去广告
-#!desc=从你的 Surge 主配置中提取的专用去广告模块（规则 + URL Rewrite）
-#!author=Aioneas / Minis
+#!name=去广告（牛精灵兼容修正版 v2）
+#!desc=基于 Aioneas/Surge 的 adblock.sgmodule 调整，移除会影响牛精灵（Jooan/乔安）监控预览/连接的拦截项，并显式放行已验证的业务域名。
+#!author=OpenAI
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
 
 [Rule]
+# 牛精灵核心接口显式放行（按抓包验证补充）
+DOMAIN,qacloudapi.jooancloud.com,DIRECT
+DOMAIN,living-accs.ap-southeast-1.aliyuncs.com,DIRECT
+DOMAIN,mpush-api.aliyun.com,DIRECT
+DOMAIN,commserver4.qalink.cn,DIRECT
+DOMAIN-SUFFIX,iotcplatform.com,DIRECT
+
+# 通用去广告拦截
 DOMAIN,sdk.e.qq.com,REJECT
 DOMAIN,mi.gdt.qq.com,REJECT
 DOMAIN,win.gdt.qq.com,REJECT
@@ -50,7 +58,6 @@ DOMAIN,da.hookspf.com,REJECT
 DOMAIN,bridgeads.massx.com,REJECT
 DOMAIN,adx.halomobi.com,REJECT
 DOMAIN,api.anythinktech.com,REJECT
-DOMAIN,ad.jooancloud.com,REJECT
 DOMAIN,t-dsp.pinduoduo.com,REJECT
 DOMAIN,p66-ad.adkwai.com,REJECT
 DOMAIN,open.e.kuaishou.cn,REJECT
@@ -84,15 +91,6 @@ DOMAIN,tracelog-debug.yunxish.com,REJECT
 ^https?:\/\/qt\.qq\.com\/lua\/mengyou\/get_splash_screen_info - reject
 ^https?:\/\/ssl\.kohsocialapp\.qq\.com:10001\/game\/buttons - reject
 ^https:\/\/app\.variflight\.com\/v4\/advert\/ - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/v3\/am\/ad\/strategy\/display\/hot-start - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/api\/pms\/banner\/v3\/getList - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/v3\/am\/statisticalUserBehavior - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/v4\/alg\/model\/queryUserBanner - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/v3\/am\/get_one_unused_pkg - reject
-^https?:\/\/qadubboapi\.jooancloud\.com\/v3\/banner\/queryCsPromptMessage - reject
-^https?:\/\/pay\.jooancloud\.com\/modelAnalysis\/index\.html - reject
-^https?:\/\/pay\.jooancloud\.com\/cs_public\/index\.html - reject
-^https?:\/\/ad\.jooancloud\.com\/ - reject
 ^https?:\/\/service\.yunxish\.com\/qmcd\/get - reject
 ^https?:\/\/tracelog-debug\.yunxish\.com\/ - reject
 ^https?:\/\/cpc-service-square\.yunxish\.com\/v1\/getConfig - reject
