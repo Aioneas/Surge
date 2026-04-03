@@ -16,8 +16,13 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 
 ## Modules
 
-- 去广告：`Module/adblock.sgmodule`
-- 去广告 Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule`
+| 模块 | 功能 | Raw URL |
+|------|------|---------|
+| 去广告 | 广告过滤 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule` |
+| 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
+| 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
+
+> 所有模块脚本均自托管在 `Script/` 目录下，不依赖外部脚本源。
 
 ## Structure
 
@@ -49,10 +54,18 @@ Surge/
 │   ├── United_States.png
 │   ├── YouTube.png
 │   ├── bilibili_3.png
-│   └── claude.png
-└── Module/
-    └── adblock.sgmodule
-```
+│   ├── claude.png
+│   ├── kanlixiang.png
+│   └── sanlianzhongdu.png
+├── Module/
+│   ├── adblock.sgmodule
+│   ├── kanlixiang.sgmodule
+│   └── sanlianzhongdu.sgmodule
+├── Script/
+│   ├── kanlixiang_vip.js
+│   ├── klx_profile_clean.js
+│   └── sanlianzhongdu.vip.js
+└── README.md
 
 ## Features
 
@@ -67,6 +80,9 @@ Surge/
 - Added self-hosted Claude icon for stable remote loading
 - All policy group icons are now self-hosted under `Icon/` for long-term stability
 - Updated adblock module with Jooan compatibility fixes
+- Added 看理想 (Vistopia) VIP unlock + profile ad cleanup module with self-hosted scripts
+- Added 三联中读 (Lifeweek) VIP unlock + ad removal module with self-hosted scripts
+- All module scripts are self-hosted under `Script/` — no external script dependencies
 
 ## Current Focus
 
@@ -116,3 +132,4 @@ policy-path=请替换为你自己的Surge订阅地址
 ## Maintainer
 
 **Aioneas**
+
