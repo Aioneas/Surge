@@ -1,0 +1,12 @@
+#!name=看理想VIP解锁 + 资料页去推广昵称
+#!desc=保留原VIP模块逻辑，并将 user/profile 改为仅清理推广昵称，避免重复命中
+#!author=baby + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
+
+[Script]
+看理想VIP原逻辑 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
+看理想资料页去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(?:\?.*)?$, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
+
+[MITM]
+hostname = %APPEND% api.vistopia.com.cn
