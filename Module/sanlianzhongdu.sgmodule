@@ -1,0 +1,19 @@
+#!name=三联中读VIP解锁 + 去推广
+#!desc=匿名登录自动7天会员 + 去除推荐推广词，脚本自托管
+#!author=ddgksf2013 + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/sanlianzhongdu.png
+
+[URL Rewrite]
+# 去除推荐/推广词弹窗
+^https?:\/\/apis\.lifeweek\.com\.cn\/api\/cueWord\/recommend - reject
+
+[Script]
+# 会员体验VIP领取 - 自动续期7天会员
+三联中读VIP领取 = type=http-response, pattern=^https?:\/\/apis\.lifeweek\.com\.cn\/index\/receiveExperienceVip, requires-body=true, max-size=-1, timeout=60, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/sanlianzhongdu.vip.js
+
+# 游客注册 - 匿名登录注入UUID
+三联中读匿名登录 = type=http-request, pattern=^https?:\/\/apis\.lifeweek\.com\.cn\/reg\/vistorRegister\.do, requires-body=true, max-size=-1, timeout=60, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/sanlianzhongdu.vip.js
+
+[MITM]
+hostname = %APPEND% apis.lifeweek.com.cn
