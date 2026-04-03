@@ -26,6 +26,29 @@ Surge/
 ├── Conf/
 │   └── surge.conf
 ├── Icon/
+│   ├── Apple.png
+│   ├── Bahamut.png
+│   ├── ChatGPT.png
+│   ├── Disney.png
+│   ├── Final.png
+│   ├── GitHub.png
+│   ├── Global.png
+│   ├── Google.png
+│   ├── HBO.png
+│   ├── Hong_Kong.png
+│   ├── Japan.png
+│   ├── Microsoft.png
+│   ├── Netflix.png
+│   ├── PayPal.png
+│   ├── Singapore.png
+│   ├── Speedtest.png
+│   ├── Spotify.png
+│   ├── Steam.png
+│   ├── Taiwan.png
+│   ├── Telegram.png
+│   ├── United_States.png
+│   ├── YouTube.png
+│   ├── bilibili_3.png
 │   └── claude.png
 └── Module/
     └── adblock.sgmodule
@@ -42,6 +65,7 @@ Surge/
 - Added Speedtest traffic redirection group and rule set
 - Added dedicated Claude policy group and rule set
 - Added self-hosted Claude icon for stable remote loading
+- All policy group icons are now self-hosted under `Icon/` for long-term stability
 - Updated adblock module with Jooan compatibility fixes
 
 ## Current Focus
@@ -63,6 +87,7 @@ This configuration is tuned around the following daily-use ecosystem:
 - Speedtest traffic can be switched between DIRECT and proxy groups.
 - Claude traffic is split into an independent policy group via blackmatrix7 rule set.
 - The Claude icon is now self-hosted in this repository to avoid external icon library misses.
+- All icons referenced in the config are self-hosted under `Icon/` — no external icon dependencies.
 - This repository is meant to be a personal long-term remote config source.
 
 ## Usage
@@ -75,6 +100,7 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 - 规则集使用 `blackmatrix7/ios_rule_script` 的 `rule/Surge/Claude/Claude.list`。
 - 当前匹配范围主要覆盖：`claude.ai`、`anthropic.com` 与 `cdn.usefathom.com`。
 - 由于 Qure 图标库当前没有 Claude 专用图标，本仓库已自托管 `Icon/claude.png`，避免远程图标失效。
+- 所有策略组图标均已从 Qure 外链迁移到本仓库 `Icon/` 目录下自托管，彻底消除外部图标库依赖。
 - README 已同步说明这次变更，后续你直接拉公开配置就能拿到该分流组。
 
 ## 如何替换订阅地址
