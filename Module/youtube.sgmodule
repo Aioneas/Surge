@@ -1,0 +1,39 @@
+#!name=YouTube 去广告增强版
+#!desc=去视频/瀑布流/搜索/Shorts广告 + 去底栏Shorts/上传按钮 + PIP/后台播放 + 字幕/歌词翻译
+#!author=Maasea + DivineEngine + app2smile + ddgksf2013 + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/YouTube.png
+#!arguments=屏蔽上传按钮:true,屏蔽选段按钮:true,屏蔽Shorts按钮:true,字幕翻译语言:zh-Hans,歌词翻译语言:zh-Hans,启用调试模式:false
+#!arguments-desc=- 屏蔽参数：[true, false] \n- 翻译参数：[语言代码, off] \n\n1. 字幕翻译语言/歌词翻译语言遵循 Google Translate 语言代码，填入 off 即关闭\n2. 默认已开启屏蔽 Shorts 按钮、上传按钮、YouTube Music 选段按钮\n3. 需要在 Surge 中启用 MitM over HTTP/2 与 QUIC 回退保护/禁 UDP 直通
+
+# > Note
+# Youtube 画中画和后台播放可在客户端内关闭
+#   - 设置 -> 播放 -> 画中画
+#   - 设置 -> 后台播放和下载 -> 后台播放
+
+[Rule]
+# QUIC/UDP 回退保护，避免广告绕过
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+
+[URL Rewrite]
+# ======= 视频广告请求 ======= #
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+# ======= 通用广告请求 ======= #
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject
+
+[Script]
+# 核心增强：去广告 / PIP / 后台播放 / 去UI入口 / 字幕翻译 / 歌词翻译
+youtube.response = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$, requires-body=1, max-size=-1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/youtube.response.js, argument="{\"lyricLang\":\"{{{歌词翻译语言}}}\",\"captionLang\":\"{{{字幕翻译语言}}}\",\"blockUpload\":{{{屏蔽上传按钮}}},\"blockImmersive\":{{{屏蔽选段按钮}}},\"blockShorts\":{{{屏蔽Shorts按钮}}},\"debug\":{{{启用调试模式}}}}"
+
+[Map Local]
+# 兼容 initplayback 广告相关请求
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
+# 兼容部分 oad 广告参数
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad data-type=text data="" status-code=200
+
+[MITM]
+hostname = %APPEND% -redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com
