@@ -9,8 +9,8 @@
 # 财新：如 /2026-04-03/102431052.html
 ^https?:\/\/(?!(?:deepview|datanews)\.)[^\/]*caixin\.com\/.*?\/(\d{9})\.html(?:\?.*)?$ https://best.viatl.de/cx/$1 302
 
-# FT 中文网：如 /story/001109374
-^https?:\/\/(?:www\.)?ftchinese\.com\/story\/(\d+)(?:\?.*)?$ https://best.viatl.de/ft/$1 302
+# FT 中文网：兼容 www / 裸域 / m 子域文章页与 interactive 页面
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/(?:story|interactive)\/(\d+)(?:\?.*)?$ https://best.viatl.de/ft/$1 302
 
 # FT 英文版：如 /content/<uuid>
 ^https?:\/\/www\.ft\.com\/content\/([0-9a-fA-F-]+)(?:\?.*)?$ https://best.viatl.de/fte/$1 302
@@ -31,4 +31,4 @@
 ^(https?:\/\/(?:theinitium\.com|[^\/]+\.theinitium\.com)\/\d{8}-[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/duan/$1 302
 
 [MITM]
-hostname = %APPEND% *.caixin.com, *.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, *.theinitium.com
+hostname = %APPEND% *.caixin.com, ftchinese.com, *.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, *.theinitium.com

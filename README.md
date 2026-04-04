@@ -141,6 +141,7 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 - 模块文件：`Module/news.redirect.aioneas.sgmodule`
 - Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule`
 - 支持站点：财新、FT中文、FT英文、WSJ、Bloomberg、Economist、NYT、端传媒
+- FT中文当前已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面
 - 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转，替代原本运行在油猴/Tampermonkey 中的 3 份新闻跳转脚本
 - 当前镜像目标统一使用 `https://best.viatl.de`
 - 与油猴增强版的差异：当前模块版仅保留“自动跳转”能力，不包含菜单配置、手动跳转按钮、按站点切换模式等前端交互功能
