@@ -19,6 +19,7 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 | 模块 | 功能 | Raw URL |
 |------|------|---------|
 | 去广告 | 广告过滤 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule` |
+| YouTube | 去广告增强 + PIP/后台播放 + 去Shorts/上传按钮 + 字幕/歌词翻译 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.sgmodule` |
 | 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
 | 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
 
@@ -60,11 +61,13 @@ Surge/
 ├── Module/
 │   ├── adblock.sgmodule
 │   ├── kanlixiang.sgmodule
-│   └── sanlianzhongdu.sgmodule
+│   ├── sanlianzhongdu.sgmodule
+│   └── youtube.sgmodule
 ├── Script/
 │   ├── kanlixiang_vip.js
 │   ├── klx_profile_clean.js
-│   └── sanlianzhongdu.vip.js
+│   ├── sanlianzhongdu.vip.js
+│   └── youtube.response.js
 └── README.md
 
 ## Features
@@ -83,6 +86,7 @@ Surge/
 - Added 看理想 (Vistopia) VIP unlock + profile ad cleanup module with self-hosted scripts
 - Added 三联中读 (Lifeweek) VIP unlock + ad removal module with self-hosted scripts
 - All module scripts are self-hosted under `Script/` — no external script dependencies
+- Added YouTube enhance module with self-hosted Maasea script, ad removal, PIP/background playback, Shorts/upload button removal, and subtitle/lyrics translation
 
 ## Current Focus
 
@@ -132,4 +136,5 @@ policy-path=请替换为你自己的Surge订阅地址
 ## Maintainer
 
 **Aioneas**
+
 
