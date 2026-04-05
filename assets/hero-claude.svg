@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Surge by Aioneas</title>
+  <desc id="desc">Claude-inspired minimal banner for a Surge repository.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="0.56" stop-color="#F1E6D8"/>
+      <stop offset="1" stop-color="#E7D6C4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1248 172) rotate(90) scale(220 300)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="1080" y1="110" x2="1444" y2="364" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9DDD0"/>
+      <stop offset="1" stop-color="#D4B79D"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#8D6C50" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="520" rx="40" fill="url(#bg)"/>
+  <circle cx="1248" cy="172" r="220" fill="url(#glow)"/>
+
+  <path d="M1028 434C1144 353 1254 355 1388 272C1462 226 1513 170 1548 110" stroke="#B08D73" stroke-opacity="0.22" stroke-width="2"/>
+  <path d="M986 458C1095 378 1222 392 1367 314C1450 270 1507 217 1558 146" stroke="#B08D73" stroke-opacity="0.14" stroke-width="2"/>
+  <path d="M1112 86C1212 122 1330 124 1450 98" stroke="#B08D73" stroke-opacity="0.16" stroke-width="2"/>
+
+  <rect x="64" y="60" width="1472" height="400" rx="32" fill="#FFFDF9" fill-opacity="0.34" stroke="#E8D9CA"/>
+
+  <g filter="url(#shadow)">
+    <rect x="1088" y="102" width="356" height="262" rx="28" fill="#FFFDF9" stroke="#E8D9CA"/>
+    <rect x="1118" y="138" width="126" height="12" rx="6" fill="#CCB39A"/>
+    <rect x="1118" y="172" width="224" height="14" rx="7" fill="#2F241D"/>
+    <rect x="1118" y="204" width="286" height="10" rx="5" fill="#8D755F" fill-opacity="0.72"/>
+    <rect x="1118" y="244" width="296" height="56" rx="18" fill="#F5EEE6" stroke="#E8D9CA"/>
+    <circle cx="1152" cy="272" r="11" fill="#B78E6C"/>
+    <rect x="1176" y="262" width="156" height="10" rx="5" fill="#2F241D"/>
+    <rect x="1176" y="281" width="198" height="8" rx="4" fill="#9C8570"/>
+    <rect x="1118" y="322" width="136" height="18" rx="9" fill="#2F241D"/>
+    <rect x="1268" y="322" width="98" height="18" rx="9" fill="#D8C2AE"/>
+  </g>
+
+  <g opacity="0.88">
+    <rect x="1130" y="112" width="92" height="28" rx="14" fill="url(#line)"/>
+    <rect x="1232" y="112" width="106" height="28" rx="14" fill="#EFE4D8"/>
+    <rect x="1348" y="112" width="72" height="28" rx="14" fill="#F4ECE3"/>
+  </g>
+
+  <text x="120" y="186" fill="#2F241D" font-size="92" font-weight="700" font-family="SF Pro Display, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Surge</text>
+  <text x="120" y="240" fill="#6F5B4A" font-size="32" font-weight="500" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Claude-inspired · calm · minimal · self-hosted</text>
+  <text x="120" y="300" fill="#4D3E33" font-size="22" font-weight="400" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">A curated Surge / Sugar setup for iPhone, focused on stability, readable structure,</text>
+  <text x="120" y="334" fill="#4D3E33" font-size="22" font-weight="400" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">modular rewrites, and long-term maintenance without external fragility.</text>
+
+  <g transform="translate(120 382)">
+    <rect width="178" height="40" rx="20" fill="#2F241D"/>
+    <text x="89" y="26" text-anchor="middle" fill="#FFF9F3" font-size="18" font-weight="600" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Stability-first</text>
+  </g>
+  <g transform="translate(316 382)">
+    <rect width="210" height="40" rx="20" fill="#E8D8C8"/>
+    <text x="105" y="26" text-anchor="middle" fill="#3A2D24" font-size="18" font-weight="600" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Self-hosted scripts</text>
+  </g>
+  <g transform="translate(544 382)">
+    <rect width="166" height="40" rx="20" fill="#F4ECE3" stroke="#E0CEBC"/>
+    <text x="83" y="26" text-anchor="middle" fill="#4B3A2F" font-size="18" font-weight="600" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">AI-ready routes</text>
+  </g>
+
+  <text x="120" y="104" fill="#9A816B" font-size="16" font-weight="600" letter-spacing="0.14em" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">AIONEAS / REMOTE CONFIG</text>
+</svg>

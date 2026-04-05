@@ -1,184 +1,153 @@
-# Surge
+<div align="center">
+  <img src="./assets/hero-claude.svg" alt="Surge by Aioneas" width="100%" />
+  <h1>Surge</h1>
+  <p><strong>一份偏 Claude 风格的 Surge / Sugar 远程配置仓库。</strong><br/>克制、温和、清晰，优先保证稳定性、自托管与长期可维护性。</p>
+  <p>
+    <a href="#quick-start"><strong>Quick Start</strong></a>
+    ·
+    <a href="#modules"><strong>Modules</strong></a>
+    ·
+    <a href="#principles"><strong>Principles</strong></a>
+    ·
+    <a href="https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf"><strong>Remote Config</strong></a>
+  </p>
+</div>
 
-我的 Surge 配置与模块仓库。
+> [!TIP]
+> 这不是一份“堆功能”的配置，而是一份适合长期使用的个人配置：尽量减少外部依赖，降低脆弱链路，把常用能力整理得更稳定、更易维护。
 
-## Raw URL
+## Overview
+
+| 项目 | 说明 |
+| --- | --- |
+| 主配置 | [`Conf/surge.conf`](./Conf/surge.conf) |
+| 远程导入地址 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf` |
+| 模块目录 | [`Module/`](./Module) |
+| 脚本目录 | [`Script/`](./Script) |
+| 图标目录 | [`Icon/`](./Icon) |
+| 视觉资源 | [`assets/`](./assets) |
+| 风格关键词 | Claude-inspired / Minimal / Self-hosted / Stability-first |
+
+> [!NOTE]
+> 所有关键脚本均自托管在 [`Script/`](./Script)，所有策略组与模块图标均自托管在 [`Icon/`](./Icon)，避免第三方资源失效带来的维护成本。
+
+<a id="quick-start"></a>
+## Quick Start
+
+### 1) 导入主配置
 
 ```text
 https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 ```
 
-## GitHub Path
+### 2) 替换你的订阅地址
 
-```text
-https://github.com/Aioneas/Surge/tree/main/Conf
-```
+打开 [`Conf/surge.conf`](./Conf/surge.conf)，找到这一行：
 
-## Modules
-
-| 模块 | 功能 | Raw URL |
-|------|------|---------|
-| 去广告 | 广告过滤 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule` |
-| YouTube 隐藏Shorts版@Aioneas | 在稳定版基础上额外隐藏 Shorts 入口与底部上传/创建（+）按钮 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule` |
-| 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
-| 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
-| 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页 ⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
-| 财新&周边自动跳转@Aioneas | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动 302 跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule` |
-
-> ⚠️ 新闻重定向模块（news.redirect.aioneas / news.redirect.caixin）跳转目标为**私域付费镜像站**（best.viatl.de / best.998888.best 系列），站内内容非免费。作者仅做 Surge 适配，镜像站运营方非本人。一般情况不建议使用；如确有需求请自行安装，镜像站页面底部有 TG 联系方式。
-
-> YouTube 当前仅提供隐藏 Shorts 版（含底部"+ "创建/上传按钮隐藏）。
-
-> 所有模块脚本均自托管在 `Script/` 目录下，不依赖外部脚本源。
-
-## Structure
-
-```text
-Surge/
-├── Conf/
-│   └── surge.conf
-├── Icon/
-│   ├── Apple.png
-│   ├── Bahamut.png
-│   ├── ChatGPT.png
-│   ├── Disney.png
-│   ├── Final.png
-│   ├── GitHub.png
-│   ├── Global.png
-│   ├── Google.png
-│   ├── HBO.png
-│   ├── Hong_Kong.png
-│   ├── Japan.png
-│   ├── Microsoft.png
-│   ├── Netflix.png
-│   ├── PayPal.png
-│   ├── Singapore.png
-│   ├── Speedtest.png
-│   ├── Spotify.png
-│   ├── Steam.png
-│   ├── Taiwan.png
-│   ├── Telegram.png
-│   ├── United_States.png
-│   ├── YouTube.png
-│   ├── bilibili_3.png
-│   ├── claude.png
-│   ├── kanlixiang.png
-│   └── sanlianzhongdu.png
-├── Module/
-│   ├── adblock.sgmodule
-│   ├── kanlixiang.sgmodule
-│   ├── news.redirect.aioneas.sgmodule
-│   ├── news.redirect.caixin.sgmodule
-│   ├── sanlianzhongdu.sgmodule
-│   └── youtube.aioneas.hide-shorts.sgmodule
-├── Script/
-│   ├── kanlixiang_vip.js
-│   ├── klx_profile_clean.js
-│   ├── sanlianzhongdu.vip.js
-│   └── youtube.response.js
-└── README.md
-
-## Features
-
-- Optimized for iOS Surge
-- Lightweight Rewrite and MITM
-- GitHub-hosted remote config
-- Focused on daily-use apps and services
-- Cleaner structure for long-term maintenance
-- Supports independent remote modules
-- Added Speedtest traffic redirection group and rule set
-- Added dedicated Claude policy group and rule set
-- Added self-hosted Claude icon for stable remote loading
-- All policy group icons are now self-hosted under `Icon/` for long-term stability
-- Updated adblock module with Jooan compatibility fixes
-- Added 看理想 (Vistopia) VIP unlock + profile ad cleanup module with self-hosted scripts
-- Added 三联中读 (Lifeweek) VIP unlock + ad removal module with self-hosted scripts
-- Added 新闻网站智能重定向模块：news.redirect.aioneas（FT/WSJ/Bloomberg 等英文媒体 + 财新主站）
-- All module scripts are self-hosted under `Script/` — no external script dependencies
-- Added YouTube module: Aioneas hide-Shorts module (去广告 + PIP/后台播放 + 隐藏 Shorts 入口 + 隐藏底部"+"按钮)
-- Only the hide-Shorts module is kept; original-compatible and stable modules have been removed.
-
-## Current Focus
-
-This configuration is tuned around the following daily-use ecosystem:
-
-- Apple official apps and services
-- WeChat / QQ / Telegram
-- YouTube / Netflix / PayPal
-- OpenAI / ChatGPT / Claude / GitHub
-- AMap / 12306 / Tesla / Mi Home
-- Baidu Netdisk / Infuse / WeRead / iReader
-
-## Notes
-
-- Rule sets are kept intentionally stable.
-- Rewrite rules are trimmed to reduce side effects.
-- MITM scope is minimized for better reliability.
-- Speedtest traffic can be switched between DIRECT and proxy groups.
-- Claude traffic is split into an independent policy group via blackmatrix7 rule set.
-- The Claude icon is now self-hosted in this repository to avoid external icon library misses.
-- All icons referenced in the config are self-hosted under `Icon/` — no external icon dependencies.
-- 新闻网站智能重定向模块当前走 `URL Rewrite 302` 方案，适合作为 Surge 模块替代原油猴自动跳转脚本；当前仅保留自动模式，不包含油猴版手动按钮/菜单配置界面。
-- This repository is meant to be a personal long-term remote config source.
-
-## Usage
-
-Import the raw URL into Surge as a remote configuration source, or import individual modules separately.
-
-## Claude 分流说明
-
-- 新增独立 `Claude` 策略组，默认可在 `Proxies / HK / JP / SG / TW / US` 之间手动选择。
-- 规则集使用 `blackmatrix7/ios_rule_script` 的 `rule/Surge/Claude/Claude.list`。
-- 当前匹配范围主要覆盖：`claude.ai`、`anthropic.com` 与 `cdn.usefathom.com`。
-- 由于 Qure 图标库当前没有 Claude 专用图标，本仓库已自托管 `Icon/claude.png`，避免远程图标失效。
-- 所有策略组图标均已从 Qure 外链迁移到本仓库 `Icon/` 目录下自托管，彻底消除外部图标库依赖。
-- README 已同步说明这次变更，后续你直接拉公开配置就能拿到该分流组。
-
-## 新闻网站智能重定向模块说明
-
-### ⚠️ 关于镜像站付费/私域的说明（必读）
-
-**重要提醒：新闻重定向模块跳转目标为私域付费镜像站，非免费公共资源。**
-
-- `news.redirect.aioneas.sgmodule` 跳转目标为 `https://best.viatl.de` 系列镜像站
-- `news.redirect.caixin.sgmodule` 跳转目标为 `https://best.998888.best` 系列镜像站
-- 上述镜像站内容**非免费**，为私人运营的付费私域服务
-- **一般情况不建议使用**此模块；如确有需求请自行安装，镜像站页面底部有 TG 联系方式
-- 作者（Aioneas）仅做 Surge 适配，镜像站运营方非本人，付费相关事宜请自行与镜像站运营方联系
-- 模块本身可正常安装使用，但跳转后的内容是否免费取决于镜像站，与 Surge 配置无关
-
-### news.redirect.aioneas.sgmodule（主模块）
-
-- 模块文件：`Module/news.redirect.aioneas.sgmodule`
-- Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule`
-- 支持站点：财新主站 / FT中文 / FT英文 / WSJ / Bloomberg / Economist / NYT / 端传媒
-- FT中文当前已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面
-- 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转
-- 镜像目标使用 `https://best.viatl.de`
-
-### news.redirect.caixin.sgmodule（财新&周边模块）
-
-- 模块文件：`Module/news.redirect.caixin.sgmodule`
-- Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule`
-- 支持站点：财新主站 / DeepView 专题 / DeepView 活动 / Entities 人物 / Entities 公司 / 三联生活周刊 / 混沌课程 / 三联中读书籍 / 三联中读课程
-- 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转
-- 镜像目标使用 `https://best.998888.best` 系列
-- **注意**：三联生活周刊为 SPA 单页应用，站内导航后需手动刷新触发跳转
-
-### 关于两个模块的关系
-
-两个模块覆盖站点互补，`news.redirect.aioneas.sgmodule` 侧重 FT/WSJ/Bloomberg 等英文媒体，
-`news.redirect.caixin.sgmodule` 侧重财新旗下产品线及三联生活周刊/混沌/三联中读。两模块可同时安装，也可单独使用。
-
-## 如何替换订阅地址
-
-下载或打开 `Conf/surge.conf`，找到以下内容：
-
-```text
+```ini
 policy-path=请替换为你自己的Surge订阅地址
 ```
 
-将 `请替换为你自己的Surge订阅地址` 替换为你的机场订阅 URL（Surge 格式），保存后重新导入即可。
+将占位符替换为你自己的 Surge 订阅链接后，保存并重新导入即可。
+
+> [!IMPORTANT]
+> 本仓库为公开仓库，主配置默认只保留安全占位符，不会直接写入你的私人订阅地址、证书口令或其他敏感信息。
+
+### 3) 按需叠加独立模块
+
+如果你不想整套导入，也可以只安装自己需要的模块；所有模块均可单独作为远程模块使用。
+
+## Configuration Highlights
+
+- 独立策略组已覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Speedtest 等常用场景
+- `Claude` 独立分流已内置，并使用自托管图标 [`Icon/claude.png`](./Icon/claude.png)
+- Rewrite 与 MITM 范围保持克制，优先降低副作用与误伤概率
+- 配置、模块、脚本、图标分目录维护，结构清晰，适合长期迭代
+- 所有关键资源尽量自托管，减少外链失效导致的不可控问题
+- 适合作为个人主配置基底，再按需叠加功能模块
+
+<a id="modules"></a>
+## Modules
+
+### 日常模块
+
+| 模块 | 功能 | 安装链接 | 备注 |
+| --- | --- | --- | --- |
+| [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | 适合作为基础模块 |
+| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | 当前仅保留 hide-Shorts 版本 |
+| [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | 脚本自托管 |
+| [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | 脚本自托管 |
+
+### 新闻跳转模块（按需安装）
+
+> [!WARNING]
+> `news.redirect.aioneas.sgmodule` 与 `news.redirect.caixin.sgmodule` 会将部分新闻站文章自动 302 跳转到私域付费镜像站（`best.viatl.de` / `best.998888.best` 系列）。这些站点不是免费公共资源；本仓库作者仅提供 Surge / Sugar 适配，不参与镜像站运营。如无明确需求，一般不建议安装。
+
+| 模块 | 支持范围 | 安装链接 | 说明 |
+| --- | --- | --- | --- |
+| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | 跳转目标：`best.viatl.de` |
+| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | 跳转目标：`best.998888.best` 系列 |
+
+<details>
+  <summary><strong>展开查看新闻模块的补充说明</strong></summary>
+
+- `news.redirect.aioneas.sgmodule` 当前已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/&lt;id&gt;` 与 `interactive/&lt;id&gt;` 页面
+- `news.redirect.caixin.sgmodule` 覆盖财新周边产品线与三联生活周刊 / 混沌 / 三联中读等站点
+- 三联生活周刊属于 SPA 页面，站内跳转后通常需要手动刷新一次才能触发跳转
+- 两个模块覆盖站点互补，可同时安装，也可单独使用
+
+</details>
+
+<a id="principles"></a>
+## Principles
+
+### 1. Stability first
+优先保证日常可用性，而不是盲目堆积规则与功能；Rewrite、MITM 与策略组都尽量维持在“够用、可控、低副作用”的范围内。
+
+### 2. Self-host where it matters
+脚本与图标尽可能放回仓库自托管，避免外部图标库、脚本源、第三方站点失效后牵连主配置。
+
+### 3. Modular by default
+主配置负责提供稳定骨架，功能则通过独立模块按需叠加；这样更清晰，也更方便长期维护与问题定位。
+
+### 4. Public repo hygiene
+公开版仓库始终坚持脱敏原则：私人订阅、凭据、证书等信息不进入公开仓库，避免误传与泄漏风险。
+
+## Current Focus
+
+这套配置目前主要围绕以下日常使用场景整理：
+
+- Apple / Google / Microsoft / GitHub
+- OpenAI / ChatGPT / Claude
+- YouTube / Netflix / Disney / Spotify / Steam
+- Telegram / PayPal / Speedtest / BiliBili / Bahamut
+- AMap / 12306 / Tesla / Mi Home
+- 百度网盘 / Infuse / 微信读书 / 掌阅等常用应用
+
+## Repository Structure
+
+<details>
+  <summary><strong>展开查看仓库结构</strong></summary>
+
+```text
+Surge/
+├── assets/        # README 视觉资源
+│   └── hero-claude.svg
+├── Conf/          # 主配置
+│   └── surge.conf
+├── Module/        # 可独立导入的模块
+├── Script/        # 模块自托管脚本
+├── Icon/          # 策略组与模块图标
+└── README.md
+```
+
+</details>
+
+## Usage Notes
+
+- 想直接使用：从 [`Conf/surge.conf`](./Conf/surge.conf) 开始
+- 想按功能叠加：从 [`Module/`](./Module) 里选择需要的模块单独安装
+- 想看具体实现：脚本请查看 [`Script/`](./Script)，图标请查看 [`Icon/`](./Icon)
 
 ## Maintainer
 
