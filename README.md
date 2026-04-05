@@ -23,12 +23,13 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 | 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
 | 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
 | 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动跳转镜像阅读页 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
+| 财新&周边自动跳转@Aioneas | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动跳转（三联生活周刊需手动刷新） | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule` |
 
 > YouTube 当前仅提供隐藏 Shorts 版（含底部"+ "创建/上传按钮隐藏）。
 
 > 所有模块脚本均自托管在 `Script/` 目录下，不依赖外部脚本源。
-
-> 新增“新闻网站智能重定向@Aioneas”模块：将 3 个油猴新闻跳转脚本整合为 Surge 模块，当前覆盖 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒，采用 URL Rewrite 302 自动跳转到镜像阅读页。
+> 新增“新闻网站智能重定向@Aioneas”模块（主模块）：FT / WSJ / Bloomberg / Economist / NYT / 端传媒 + 财新主站自动跳转镜像阅读页。
+> 新增“财新&周边自动跳转@Aioneas”模块：财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读自动跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）。
 
 ## Structure
 
@@ -67,6 +68,7 @@ Surge/
 │   ├── adblock.sgmodule
 │   ├── kanlixiang.sgmodule
 │   ├── news.redirect.aioneas.sgmodule
+│   ├── news.redirect.caixin.sgmodule
 │   ├── sanlianzhongdu.sgmodule
 │   ├── youtube.aioneas.hide-shorts.sgmodule
 ├── Script/
@@ -91,7 +93,7 @@ Surge/
 - Updated adblock module with Jooan compatibility fixes
 - Added 看理想 (Vistopia) VIP unlock + profile ad cleanup module with self-hosted scripts
 - Added 三联中读 (Lifeweek) VIP unlock + ad removal module with self-hosted scripts
-- Added 新闻网站智能重定向模块 for 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒
+- Added 新闻网站智能重定向模块：news.redirect.aioneas（FT/WSJ/Bloomberg 等英文媒体 + 财新主站）
 - All module scripts are self-hosted under `Script/` — no external script dependencies
 - Added YouTube module: Aioneas hide-Shorts module (去广告 + PIP/后台播放 + 隐藏 Shorts 入口 + 隐藏底部"+"按钮)
 - Only the hide-Shorts module is kept; original-compatible and stable modules have been removed.
@@ -134,14 +136,28 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 
 ## 新闻网站智能重定向模块说明
 
+### news.redirect.aioneas.sgmodule（主模块）
+
 - 模块文件：`Module/news.redirect.aioneas.sgmodule`
 - Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule`
-- 支持站点：财新、FT中文、FT英文、WSJ、Bloomberg、Economist、NYT、端传媒
+- 支持站点：财新主站 / FT中文 / FT英文 / WSJ / Bloomberg / Economist / NYT / 端传媒
 - FT中文当前已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面
-- 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转，替代原本运行在油猴/Tampermonkey 中的 3 份新闻跳转脚本
+- 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转
 - 当前镜像目标统一使用 `https://best.viatl.de`
-- 与油猴增强版的差异：当前模块版仅保留“自动跳转”能力，不包含菜单配置、手动跳转按钮、按站点切换模式等前端交互功能
-- 适用场景：更适合放进 Surge / Sugar 作为长期稳定可远程安装的模块
+
+### news.redirect.caixin.sgmodule（财新&周边模块）
+
+- 模块文件：`Module/news.redirect.caixin.sgmodule`
+- Raw URL：`https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule`
+- 支持站点：财新主站 / DeepView 专题 / DeepView 活动 / Entities 人物 / Entities 公司 / 三联生活周刊 / 混沌课程 / 三联中读书籍 / 三联中读课程
+- 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转
+- 镜像目标使用 `https://best.998888.best` 系列
+- **注意**：三联生活周刊为 SPA 单页应用，站内导航后需手动刷新触发跳转
+
+### 关于两个模块的关系
+
+两个模块覆盖站点互补，`news.redirect.aioneas.sgmodule` 侧重 FT/WSJ/Bloomberg 等英文媒体，
+`news.redirect.caixin.sgmodule` 侧重财新旗下产品线及三联生活周刊/混沌/三联中读。两模块可同时安装，也可单独使用。
 
 ## 如何替换订阅地址
 

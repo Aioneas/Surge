@@ -1,0 +1,37 @@
+#!name=财新&周边自动跳转@Aioneas
+#!desc=财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动 302 跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）
+#!author=caixinshop + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Global.png
+#!category=Aioneas
+
+[URL Rewrite]
+# 财新主站文章（7位及以上数字 ID）
+^https?:\/\/(?!(?:deepview|datanews|entities)\.)[^\/]*caixin\.com\/.*?\/(\d{7,})\.html https://best.998888.best/cx/$1 302
+
+# DeepView 专题
+^https?:\/\/deepview\.caixin\.com\/topic\/(.+?)\.html https://cxv.998888.best/topic/$1 302
+
+# DeepView 活动
+^https?:\/\/deepview\.caixin\.com\/event\/(.+?)\.html https://cxv.998888.best/event/$1 302
+
+# Entities 人物
+^https?:\/\/entities\.caixin\.com\/persons\/index\?id=(.+) https://cxd.998888.best/person/$1 302
+
+# Entities 公司
+^https?:\/\/entities\.caixin\.com\/companies\/index\?id=(.+) https://cxd.998888.best/company/$1 302
+
+# 三联生活周刊（三联生活周刊为 SPA，站内跳转后需手动刷新触发跳转）
+^https?:\/\/www\.lifeweek\.com\.cn\/article\/(\d+) https://best.998888.best/lw/$1 302
+
+# 混沌课程
+^https?:\/\/www\.hundun\.cn\/course\/intro\/(.+) https://hd.998888.best/course/$1 302
+
+# 三联中读/樊登读书 书籍
+^https?:\/\/www\.dushu365\.com\/book\/(\d+) https://fs.998888.best/book/$1 302
+
+# 三联中读/樊登读书 课程
+^https?:\/\/www\.dushu365\.com\/course\/(\d+) https://fs.998888.best/course/$1 302
+
+[MITM]
+hostname = %APPEND% *.caixin.com, deepview.caixin.com, entities.caixin.com, www.lifeweek.com.cn, www.hundun.cn, www.dushu365.com
