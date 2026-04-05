@@ -19,14 +19,12 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 | 模块 | 功能 | Raw URL |
 |------|------|---------|
 | 去广告 | 广告过滤 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule` |
-| YouTube（原版兼容） | 去广告 + PIP/后台播放 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.sgmodule` |
-| YouTube 稳定版@Aioneas | 基于自托管稳定逻辑：去广告 + PIP/后台播放 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.stable.sgmodule` |
 | YouTube 隐藏Shorts版@Aioneas | 在稳定版基础上额外隐藏 Shorts 入口与底部上传/创建（+）按钮 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule` |
 | 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
 | 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
 | 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动跳转镜像阅读页 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
 
-> YouTube 当前提供原版兼容、稳定版、隐藏 Shorts 版三个模块；其中隐藏 Shorts 版已同步包含底部“+”创建/上传按钮隐藏逻辑。
+> YouTube 当前仅提供隐藏 Shorts 版（含底部"+ "创建/上传按钮隐藏）。
 
 > 所有模块脚本均自托管在 `Script/` 目录下，不依赖外部脚本源。
 
@@ -71,8 +69,6 @@ Surge/
 │   ├── news.redirect.aioneas.sgmodule
 │   ├── sanlianzhongdu.sgmodule
 │   ├── youtube.aioneas.hide-shorts.sgmodule
-│   ├── youtube.aioneas.stable.sgmodule
-│   └── youtube.sgmodule
 ├── Script/
 │   ├── kanlixiang_vip.js
 │   ├── klx_profile_clean.js
@@ -97,8 +93,8 @@ Surge/
 - Added 三联中读 (Lifeweek) VIP unlock + ad removal module with self-hosted scripts
 - Added 新闻网站智能重定向模块 for 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒
 - All module scripts are self-hosted under `Script/` — no external script dependencies
-- Added YouTube module variants: original-compatible module, Aioneas stable module, and hide-Shorts module
-- The Aioneas hide-Shorts module now also hides the bottom create/upload (+) button
+- Added YouTube module: Aioneas hide-Shorts module (去广告 + PIP/后台播放 + 隐藏 Shorts 入口 + 隐藏底部"+"按钮)
+- Only the hide-Shorts module is kept; original-compatible and stable modules have been removed.
 
 ## Current Focus
 
