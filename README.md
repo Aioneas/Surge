@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero-surge.svg" alt="Surge by Aioneas" width="100%" />
   <h1>Surge</h1>
-  <p>Personal Surge / Sugar configuration for iPhone.</p>
+  <p>A personal Surge / Sugar setup for iPhone.</p>
   <p>
     <a href="https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf"><strong>Remote Config</strong></a>
     ·
@@ -18,13 +18,13 @@
 
 ## Quick Start
 
-**Remote Config**
+### Remote Config
 
 ```text
 https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 ```
 
-**Replace your subscription**
+### Replace your subscription
 
 打开 [`Conf/surge.conf`](./Conf/surge.conf)，找到：
 
@@ -40,9 +40,13 @@ policy-path=请替换为你自己的Surge订阅地址
 ## At a glance
 
 - **Main Config**: [`Conf/surge.conf`](./Conf/surge.conf)
+
 - **Modules**: [`Module/`](./Module)
+
 - **Scripts**: [`Script/`](./Script)
+
 - **Icons**: [`Icon/`](./Icon)
+
 - **Focus**: Stability-first · Minimal · Self-hosted · iPhone / Surge
 
 > [!NOTE]
