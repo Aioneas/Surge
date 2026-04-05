@@ -1,5 +1,5 @@
 #!name=新闻网站智能重定向@Aioneas
-#!desc=整合 3 个油猴重定向脚本：财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒，自动 302 到镜像阅读页（模块版仅保留自动模式）
+#!desc=财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页。⚠️ 注意：镜像站（best.viatl.de）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge\/Sugar 适配，非镜像站运营方。
 #!author=caixinshop + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Global.png
