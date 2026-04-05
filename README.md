@@ -25,7 +25,7 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 | 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页 ⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
 | 财新&周边自动跳转@Aioneas | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动 302 跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule` |
 
-> ⚠️ 新闻重定向模块（news.redirect.aioneas / news.redirect.caixin）跳转目标为**私域付费镜像站**（best.viatl.de / best.998888.best 系列），站内内容非免费。作者仅做 Surge/Sugar 适配，镜像站运营方非本人。一般情况不建议使用；如确有需求请自行安装，镜像站页面底部有 TG 联系方式。
+> ⚠️ 新闻重定向模块（news.redirect.aioneas / news.redirect.caixin）跳转目标为**私域付费镜像站**（best.viatl.de / best.998888.best 系列），站内内容非免费。作者仅做 Surge 适配，镜像站运营方非本人。一般情况不建议使用；如确有需求请自行安装，镜像站页面底部有 TG 联系方式。
 
 > YouTube 当前仅提供隐藏 Shorts 版（含底部"+ "创建/上传按钮隐藏）。
 
@@ -118,7 +118,7 @@ This configuration is tuned around the following daily-use ecosystem:
 - Claude traffic is split into an independent policy group via blackmatrix7 rule set.
 - The Claude icon is now self-hosted in this repository to avoid external icon library misses.
 - All icons referenced in the config are self-hosted under `Icon/` — no external icon dependencies.
-- 新闻网站智能重定向模块当前走 `URL Rewrite 302` 方案，适合作为 Surge/Sugar 模块替代原油猴自动跳转脚本；当前仅保留自动模式，不包含油猴版手动按钮/菜单配置界面。
+- 新闻网站智能重定向模块当前走 `URL Rewrite 302` 方案，适合作为 Surge 模块替代原油猴自动跳转脚本；当前仅保留自动模式，不包含油猴版手动按钮/菜单配置界面。
 - This repository is meant to be a personal long-term remote config source.
 
 ## Usage
@@ -144,7 +144,7 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 - `news.redirect.caixin.sgmodule` 跳转目标为 `https://best.998888.best` 系列镜像站
 - 上述镜像站内容**非免费**，为私人运营的付费私域服务
 - **一般情况不建议使用**此模块；如确有需求请自行安装，镜像站页面底部有 TG 联系方式
-- 作者（Aioneas）仅做 Surge/Sugar 适配，镜像站运营方非本人，付费相关事宜请自行与镜像站运营方联系
+- 作者（Aioneas）仅做 Surge 适配，镜像站运营方非本人，付费相关事宜请自行与镜像站运营方联系
 - 模块本身可正常安装使用，但跳转后的内容是否免费取决于镜像站，与 Surge 配置无关
 
 ### news.redirect.aioneas.sgmodule（主模块）
