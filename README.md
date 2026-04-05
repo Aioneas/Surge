@@ -22,14 +22,14 @@ https://github.com/Aioneas/Surge/tree/main/Conf
 | YouTube 隐藏Shorts版@Aioneas | 在稳定版基础上额外隐藏 Shorts 入口与底部上传/创建（+）按钮 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule` |
 | 看理想 | VIP解锁 + 资料页去推广昵称 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule` |
 | 三联中读 | 匿名登录自动7天会员 + 去推广 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule` |
-| 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动跳转镜像阅读页 | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
-| 财新&周边自动跳转@Aioneas | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动跳转（三联生活周刊需手动刷新） | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule` |
+| 新闻网站智能重定向@Aioneas | 财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页 ⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule` |
+| 财新&周边自动跳转@Aioneas | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动 302 跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）⚠️ | `https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule` |
+
+> ⚠️ 新闻重定向模块（news.redirect.aioneas / news.redirect.caixin）跳转目标为**私域付费镜像站**（best.viatl.de / best.998888.best 系列），站内内容非免费。作者仅做 Surge/Sugar 适配，镜像站运营方非本人。一般情况不建议使用；如确有需求请自行安装，镜像站页面底部有 TG 联系方式。
 
 > YouTube 当前仅提供隐藏 Shorts 版（含底部"+ "创建/上传按钮隐藏）。
 
 > 所有模块脚本均自托管在 `Script/` 目录下，不依赖外部脚本源。
-> 新增“新闻网站智能重定向@Aioneas”模块（主模块）：FT / WSJ / Bloomberg / Economist / NYT / 端传媒 + 财新主站自动跳转镜像阅读页。
-> 新增“财新&周边自动跳转@Aioneas”模块：财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读自动跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）。
 
 ## Structure
 
@@ -70,7 +70,7 @@ Surge/
 │   ├── news.redirect.aioneas.sgmodule
 │   ├── news.redirect.caixin.sgmodule
 │   ├── sanlianzhongdu.sgmodule
-│   ├── youtube.aioneas.hide-shorts.sgmodule
+│   └── youtube.aioneas.hide-shorts.sgmodule
 ├── Script/
 │   ├── kanlixiang_vip.js
 │   ├── klx_profile_clean.js
@@ -136,6 +136,17 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 
 ## 新闻网站智能重定向模块说明
 
+### ⚠️ 关于镜像站付费/私域的说明（必读）
+
+**重要提醒：新闻重定向模块跳转目标为私域付费镜像站，非免费公共资源。**
+
+- `news.redirect.aioneas.sgmodule` 跳转目标为 `https://best.viatl.de` 系列镜像站
+- `news.redirect.caixin.sgmodule` 跳转目标为 `https://best.998888.best` 系列镜像站
+- 上述镜像站内容**非免费**，为私人运营的付费私域服务
+- **一般情况不建议使用**此模块；如确有需求请自行安装，镜像站页面底部有 TG 联系方式
+- 作者（Aioneas）仅做 Surge/Sugar 适配，镜像站运营方非本人，付费相关事宜请自行与镜像站运营方联系
+- 模块本身可正常安装使用，但跳转后的内容是否免费取决于镜像站，与 Surge 配置无关
+
 ### news.redirect.aioneas.sgmodule（主模块）
 
 - 模块文件：`Module/news.redirect.aioneas.sgmodule`
@@ -143,7 +154,7 @@ Import the raw URL into Surge as a remote configuration source, or import indivi
 - 支持站点：财新主站 / FT中文 / FT英文 / WSJ / Bloomberg / Economist / NYT / 端传媒
 - FT中文当前已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面
 - 技术实现：使用 Surge `URL Rewrite 302` 做自动跳转
-- 当前镜像目标统一使用 `https://best.viatl.de`
+- 镜像目标使用 `https://best.viatl.de`
 
 ### news.redirect.caixin.sgmodule（财新&周边模块）
 
@@ -172,5 +183,3 @@ policy-path=请替换为你自己的Surge订阅地址
 ## Maintainer
 
 **Aioneas**
-
-
