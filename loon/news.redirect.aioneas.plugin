@@ -1,0 +1,33 @@
+#!name=新闻网站智能重定向@Aioneas
+#!desc=财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页（Loon 版）
+#!author=caixinshop + Aioneas
+#!homepage=https://github.com/Aioneas/Surge/tree/news-redirect-loon-qx
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/news-redirect-loon-qx/Icon/Global.png
+
+[Url Rewrite]
+# 财新：如 /2026-04-03/102431052.html
+^https?:\/\/(?!(?:deepview|datanews)\.)[^\/]*caixin\.com\/.*?\/(\d{9})\.html(?:\?.*)?$ https://best.viatl.de/cx/$1 302
+
+# FT 中文网：兼容 www / 裸域 / m 子域文章页与 interactive 页面
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/(?:story|interactive)\/(\d+)(?:\?.*)?$ https://best.viatl.de/ft/$1 302
+
+# FT 英文版：如 /content/<uuid>
+^https?:\/\/www\.ft\.com\/content\/([0-9a-fA-F-]+)(?:\?.*)?$ https://best.viatl.de/fte/$1 302
+
+# WSJ：文章 slug 末尾带 8 位十六进制 ID
+^(https?:\/\/(?:(?:www|cn)\.)?wsj\.com\/(?:[^\/?#]+\/)*[^\/?#]*-[A-Fa-f0-9]{8}(?:\?[^#]*)?)$ https://best.viatl.de/wsj/$1 302
+
+# Bloomberg：articles / features / newsletters
+^(https?:\/\/www\.bloomberg\.com\/(?:[^?#]+\/)?(?:articles|features|newsletters)\/[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/bb/$1 302
+
+# Economist：文章路径中包含 YYYY/MM/DD
+^(https?:\/\/www\.economist\.com\/[^?#]*\/\d{4}\/\d{2}\/\d{2}\/[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/te/$1 302
+
+# NYT：仅收敛到常见日期型文章页，避免误伤站内资源请求
+^(https?:\/\/www\.nytimes\.com\/\d{4}\/\d{2}\/\d{2}\/[^?#]+(?:\.html)?(?:\?[^#]*)?)$ https://best.viatl.de/nyt/$1 302
+
+# 端传媒：路径以 /YYYYMMDD- 开头
+^(https?:\/\/(?:theinitium\.com|[^\/]+\.theinitium\.com)\/\d{8}-[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/duan/$1 302
+
+[MITM]
+hostname = *.caixin.com, ftchinese.com, *.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, *.theinitium.com

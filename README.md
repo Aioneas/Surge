@@ -75,12 +75,12 @@ policy-path=请替换为你自己的Surge订阅地址
 ### News redirect modules
 
 > [!WARNING]
-> `news.redirect.aioneas.sgmodule` 与 `news.redirect.caixin.sgmodule` 会将部分新闻站文章自动 302 跳转到私域付费镜像站（`best.viatl.de` / `best.998888.best` 系列）。这些站点不是免费公共资源；本仓库仅提供 Surge / Sugar 适配，不参与镜像站运营。如无明确需求，一般不建议安装。
+> 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
 
-| 模块 | 支持范围 | 安装链接 | 说明 |
-| --- | --- | --- | --- |
-| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | 跳转目标：`best.viatl.de` |
-| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | 跳转目标：`best.998888.best` 系列 |
+| 模块 | 支持范围 | Surge / Sugar | Loon | Quantumult X | 说明 |
+| --- | --- | --- | --- | --- | --- |
+| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
+| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
 
 <details>
   <summary><strong>展开查看新闻模块补充说明</strong></summary>
@@ -89,6 +89,7 @@ policy-path=请替换为你自己的Surge订阅地址
 - `news.redirect.caixin.sgmodule` 覆盖财新周边产品线与三联生活周刊 / 混沌 / 三联中读等站点
 - 三联生活周刊属于 SPA 页面，站内跳转后通常需要手动刷新一次才能触发跳转
 - 两个模块覆盖站点互补，可同时安装，也可单独使用
+- Loon 版位于 [`loon/`](./loon)，Quantumult X 版位于 [`quantumultx/`](./quantumultx)
 
 </details>
 
@@ -125,7 +126,9 @@ Surge/
 │   └── hero-surge.svg
 ├── Conf/          # 主配置
 │   └── surge.conf
-├── Module/        # 可独立导入的模块
+├── Module/        # Surge / Sugar 模块
+├── loon/          # Loon 适配版
+├── quantumultx/   # Quantumult X 适配版
 ├── Script/        # 模块自托管脚本
 ├── Icon/          # 策略组与模块图标
 └── README.md
