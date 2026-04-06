@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero-surge.svg" alt="Surge by Aioneas" width="100%" />
   <h1>Surge</h1>
-  <p>A personal Surge setup for iPhone.</p>
+  <p>Personal Surge configuration, modules, and self-hosted assets for iPhone.</p>
   <p>
     <a href="https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf"><strong>Remote Config</strong></a>
     ·
@@ -14,7 +14,7 @@
 </div>
 
 > [!TIP]
-> 面向长期使用整理的一套个人配置：减少外部依赖，保留清晰结构，把常用能力拆成可维护、可复用、可按需组合的模块。
+> 面向长期使用整理的一套个人 Surge 配置：减少外部依赖、保持目录清晰，把常用能力拆成可维护、可复用、可按需组合的模块。
 
 ## Quick Start
 
@@ -37,26 +37,7 @@ policy-path=请替换为你自己的Surge订阅地址
 > [!IMPORTANT]
 > 本仓库为公开仓库，主配置默认只保留安全占位符，不会写入私人订阅地址、证书口令或其他敏感信息。
 
-## At a glance
-
-- **Main Config**: [`Conf/surge.conf`](./Conf/surge.conf)
-
-- **Modules**: [`Module/`](./Module)
-
-- **Lists**: [`List/`](./List)
-
-- **Scripts**: [`Script/`](./Script)
-
-- **Tools**: [`tools/`](./tools)
-
-- **Icons**: [`Icon/`](./Icon)
-
-- **Focus**: Stability-first · Minimal · Self-hosted · iPhone / Surge
-
-> [!NOTE]
-> 关键脚本放在 [`Script/`](./Script)，关键图标放在 [`Icon/`](./Icon)，尽量避免第三方资源失效带来的长期维护成本。
-
-## Configuration Highlights
+## Highlights
 
 - 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Speedtest 等常用场景
 - 已内置 `Claude` 独立分流，并使用自托管图标 [`Icon/claude.png`](./Icon/claude.png)
@@ -64,10 +45,23 @@ policy-path=请替换为你自己的Surge订阅地址
 - 配置、模块、脚本、图标分目录维护，适合作为长期迭代的个人主配置基底
 - 关键资源尽量自托管，减少外链失效带来的不可控问题
 
+## Repository at a glance
+
+| 路径 | 说明 |
+| --- | --- |
+| [`Conf/`](./Conf) | 主配置 |
+| [`Module/`](./Module) | Surge 模块 |
+| [`List/`](./List) | 外部广告模块使用的远程 `DOMAIN-SET` 列表 |
+| [`Script/`](./Script) | 自托管脚本 |
+| [`tools/`](./tools) | 规则生成与维护脚本 |
+| [`Icon/`](./Icon) | 图标资源 |
+| [`loon/`](./loon) | Loon 适配版 |
+| [`quantumultx/`](./quantumultx) | Quantumult X 适配版 |
+
 <a id="modules"></a>
 ## Modules
 
-### Daily modules
+### Core modules
 
 | 模块 | 功能 | 安装链接 | 备注 |
 | --- | --- | --- | --- |
@@ -76,23 +70,14 @@ policy-path=请替换为你自己的Surge订阅地址
 | [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | 脚本自托管 |
 | [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | 脚本自托管 |
 
-### News redirect modules
-
-> [!WARNING]
-> 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
-
-| 模块 | 支持范围 | Surge | Loon | Quantumult X | 说明 |
-| --- | --- | --- | --- | --- | --- |
-| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
-| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
-
 ### External ad filter modules
 
 > [!IMPORTANT]
-> 下面 4 个模块是把 EasyList / EasyPrivacy / uBlock filters / AdGuard Mobile Ads 中**可稳定映射到 Surge 网络层**的域名级规则拆出来做成 Surge 模块：
-> - 适合你现在这种「拆开单独装、避免单模块过大」的需求
-> - **不包含** 浏览器扩展专属的元素隐藏、脚本替换、参数移除等能力
-> - 其中 `EasyList` 体量最大，首次下载与更新会明显更慢一些
+> 以下 4 个模块把 EasyList / EasyPrivacy / uBlock filters / AdGuard Mobile Ads 中**可稳定映射到 Surge 网络层**的域名级规则拆成独立模块，适合按需安装、单独更新。
+>
+> - 适合“拆开装，避免单模块过大”的使用方式
+> - **不包含** 元素隐藏、脚本替换、参数移除等浏览器扩展专属能力
+> - `easylist.sgmodule` 体量最大，首次下载与更新会更慢一些
 
 | 模块 | 来源 | 安装链接 | 当前规模 |
 | --- | --- | --- | --- |
@@ -104,7 +89,7 @@ policy-path=请替换为你自己的Surge订阅地址
 <!-- external-ad-filter-table:end -->
 
 <details>
-  <summary><strong>展开查看这 4 个模块的实现说明</strong></summary>
+  <summary><strong>展开查看外部广告模块实现说明</strong></summary>
 
 - 模块本体放在 [`Module/`](./Module)，实际域名列表放在 [`List/`](./List)
 - 采用 `DOMAIN-SET` + 远程列表的方式，便于后续持续更新上游规则
@@ -113,9 +98,19 @@ policy-path=请替换为你自己的Surge订阅地址
   - 元素隐藏（`##` / `#@#`）
   - 参数移除 / replace / redirect / scriptlet
   - 复杂 URL 正则与依赖扩展语法的规则
-- 这样做的目的不是“100% 复刻浏览器扩展效果”，而是优先保证 **Surge 下可用、可维护、可更新**
+- 目标不是“100% 复刻浏览器扩展效果”，而是优先保证 **Surge 下可用、可维护、可更新**
 
 </details>
+
+### News redirect modules
+
+> [!WARNING]
+> 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
+
+| 模块 | 支持范围 | Surge | Loon | Quantumult X | 说明 |
+| --- | --- | --- | --- | --- | --- |
+| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
+| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
 
 <details>
   <summary><strong>展开查看新闻模块补充说明</strong></summary>
@@ -131,26 +126,10 @@ policy-path=请替换为你自己的Surge订阅地址
 <a id="principles"></a>
 ## Principles
 
-### Stability first
-优先保证日常可用性，而不是盲目堆积规则与功能；Rewrite、MITM 与策略组尽量维持在够用、可控、低副作用的范围内。
-
-### Self-host where it matters
-脚本与图标尽可能放回仓库自托管，避免外部图标库、脚本源、第三方站点失效后牵连主配置。
-
-### Modular by default
-主配置负责提供稳定骨架，功能通过独立模块按需叠加；这样更清晰，也更方便长期维护与问题定位。
-
-### Public repo hygiene
-公开版仓库始终坚持脱敏原则：私人订阅、凭据、证书等信息不进入公开仓库，避免误传与泄漏风险。
-
-## Current Focus
-
-- Apple / Google / Microsoft / GitHub
-- OpenAI / ChatGPT / Claude
-- YouTube / Netflix / Disney / Spotify / Steam
-- Telegram / PayPal / Speedtest / BiliBili / Bahamut
-- AMap / 12306 / Tesla / Mi Home
-- 百度网盘 / Infuse / 微信读书 / 掌阅等常用应用
+- **Stability first**：优先保证日常可用性，而不是盲目堆积规则与功能；Rewrite、MITM 与策略组尽量维持在够用、可控、低副作用的范围内。
+- **Self-host where it matters**：脚本与图标尽可能放回仓库自托管，避免外部图标库、脚本源、第三方站点失效后牵连主配置。
+- **Modular by default**：主配置负责提供稳定骨架，功能通过独立模块按需叠加；这样更清晰，也更方便长期维护与问题定位。
+- **Public repo hygiene**：公开版仓库始终坚持脱敏原则：私人订阅、凭据、证书等信息不进入公开仓库，避免误传与泄漏风险。
 
 <a id="structure"></a>
 ## Structure
