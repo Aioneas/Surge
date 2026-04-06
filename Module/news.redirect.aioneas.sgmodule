@@ -31,8 +31,8 @@
 ^(https?:\/\/(?:theinitium\.com|[^\/]+\.theinitium\.com)\/\d{8}-[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/duan/$1 302
 
 [MITM]
-# 精确指定需要 MITM 的子域名，避免通配符覆盖图片 CDN / API / 统计域名导致大量无效 TLS 解密
-# 财新：仅文章页相关域名（排除 img/apollo/file/c2/api/gateway 等图片和 API 子域名）
-# FT中文：仅文章页域名（排除 static/app 等静态资源子域名）
-# 端传媒：仅主站和 www（排除 shop/support 等非文章子域名）
-hostname = %APPEND% www.caixin.com, m.caixin.com, weekly.caixin.com, deepview.caixin.com, entities.caixin.com, datanews.caixin.com, ftchinese.com, www.ftchinese.com, m.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, www.theinitium.com
+# 财新：通配符覆盖所有频道子域名（opinion/international/finance/companies 等），
+# 排除高频资源域名避免无效 TLS 解密（img/apollo/file 等图片CDN和统计域名）
+# FT中文/端传媒：精确指定文章页域名
+# 其他站点：已是精确域名，无需调整
+hostname = %APPEND% *.caixin.com, -img.caixin.com, -apollo.caixin.com, -file.caixin.com, -c2.caixin.com, -getavatar.caixin.com, -gateway.caixin.com, -stock.caixin.com, -api.caixin.com, -mall.caixin.com, -datanews.caixin.com, ftchinese.com, www.ftchinese.com, m.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, www.theinitium.com
