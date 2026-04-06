@@ -81,7 +81,7 @@ policy-path=请替换为你自己的Surge订阅地址
 > [!WARNING]
 > 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
 
-| 模块 | 支持范围 | Surge / Sugar | Loon | Quantumult X | 说明 |
+| 模块 | 支持范围 | Surge | Loon | Quantumult X | 说明 |
 | --- | --- | --- | --- | --- | --- |
 | [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
 | [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
