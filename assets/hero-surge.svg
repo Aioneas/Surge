@@ -50,7 +50,7 @@
 
   <text x="120" y="186" fill="#2F241D" font-size="92" font-weight="700" font-family="SF Pro Display, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Surge</text>
   <text x="120" y="240" fill="#6F5B4A" font-size="32" font-weight="500" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Calm · minimal · self-hosted</text>
-  <text x="120" y="300" fill="#4D3E33" font-size="22" font-weight="400" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">A personal Surge / Sugar setup for iPhone, focused on stability, readable structure,</text>
+  <text x="120" y="300" fill="#4D3E33" font-size="22" font-weight="400" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">A personal Surge setup for iPhone, focused on stability, readable structure,</text>
   <text x="120" y="334" fill="#4D3E33" font-size="22" font-weight="400" font-family="SF Pro Text, Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">modular rewrites, and long-term maintenance without external fragility.</text>
 
   <g transform="translate(120 382)">

@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-04-06T06:22:31+00:00",
+  "generator": "tools/build_surge_adlists.py",
+  "items": [
+    {
+      "slug": "easylist",
+      "display_name": "EasyList（Surge适配）",
+      "source_name": "EasyList",
+      "module": "Module/easylist.sgmodule",
+      "block_count": 57343,
+      "allow_count": 0,
+      "sources": [
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers_popup.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_thirdparty.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_thirdparty_popup.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_allowlist.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_allowlist_dimensions.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_allowlist_popup.txt"
+      ]
+    },
+    {
+      "slug": "adguard-mobile-ads",
+      "display_name": "AdGuard Mobile Ads（Surge适配）",
+      "source_name": "AdGuard/uBO – Mobile Ads",
+      "module": "Module/adguard.mobile-ads.sgmodule",
+      "block_count": 923,
+      "allow_count": 2,
+      "sources": [
+        "https://filters.adtidy.org/extension/ublock/filters/11.txt"
+      ]
+    },
+    {
+      "slug": "ublock-filters",
+      "display_name": "uBlock filters（Surge适配）",
+      "source_name": "uBlock filters – Ads, trackers, and more",
+      "module": "Module/ublock.filters.sgmodule",
+      "block_count": 416,
+      "allow_count": 4,
+      "sources": [
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+      ]
+    },
+    {
+      "slug": "easyprivacy",
+      "display_name": "EasyPrivacy（Surge适配）",
+      "source_name": "EasyPrivacy",
+      "module": "Module/easyprivacy.sgmodule",
+      "block_count": 6380,
+      "allow_count": 4,
+      "sources": [
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_general.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_international.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_notifications.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_mining.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_thirdparty.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_allowlist.txt",
+        "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_allowlist_international.txt"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero-surge.svg" alt="Surge by Aioneas" width="100%" />
   <h1>Surge</h1>
-  <p>A personal Surge / Sugar setup for iPhone.</p>
+  <p>A personal Surge setup for iPhone.</p>
   <p>
     <a href="https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf"><strong>Remote Config</strong></a>
     ·
@@ -43,7 +43,11 @@ policy-path=请替换为你自己的Surge订阅地址
 
 - **Modules**: [`Module/`](./Module)
 
+- **Lists**: [`List/`](./List)
+
 - **Scripts**: [`Script/`](./Script)
+
+- **Tools**: [`tools/`](./tools)
 
 - **Icons**: [`Icon/`](./Icon)
 
@@ -81,6 +85,37 @@ policy-path=请替换为你自己的Surge订阅地址
 | --- | --- | --- | --- | --- | --- |
 | [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
 | [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
+
+### External ad filter modules
+
+> [!IMPORTANT]
+> 下面 4 个模块是把 EasyList / EasyPrivacy / uBlock filters / AdGuard Mobile Ads 中**可稳定映射到 Surge 网络层**的域名级规则拆出来做成 Surge 模块：
+> - 适合你现在这种「拆开单独装、避免单模块过大」的需求
+> - **不包含** 浏览器扩展专属的元素隐藏、脚本替换、参数移除等能力
+> - 其中 `EasyList` 体量最大，首次下载与更新会明显更慢一些
+
+| 模块 | 来源 | 安装链接 | 当前规模 |
+| --- | --- | --- | --- |
+<!-- external-ad-filter-table:start -->
+| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 57,343 条拦截域名 / 0 条放行域名 |
+| [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 923 条拦截域名 / 2 条放行域名 |
+| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 416 条拦截域名 / 4 条放行域名 |
+| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,380 条拦截域名 / 4 条放行域名 |
+<!-- external-ad-filter-table:end -->
+
+<details>
+  <summary><strong>展开查看这 4 个模块的实现说明</strong></summary>
+
+- 模块本体放在 [`Module/`](./Module)，实际域名列表放在 [`List/`](./List)
+- 采用 `DOMAIN-SET` + 远程列表的方式，便于后续持续更新上游规则
+- 规则生成脚本为 [`tools/build_surge_adlists.py`](./tools/build_surge_adlists.py)
+- 当前仅提取 `||domain^` 这类**纯域名网络规则**及其 allowlist / exception，刻意跳过：
+  - 元素隐藏（`##` / `#@#`）
+  - 参数移除 / replace / redirect / scriptlet
+  - 复杂 URL 正则与依赖扩展语法的规则
+- 这样做的目的不是“100% 复刻浏览器扩展效果”，而是优先保证 **Surge 下可用、可维护、可更新**
+
+</details>
 
 <details>
   <summary><strong>展开查看新闻模块补充说明</strong></summary>
@@ -126,11 +161,13 @@ Surge/
 │   └── hero-surge.svg
 ├── Conf/          # 主配置
 │   └── surge.conf
-├── Module/        # Surge / Sugar 模块
+├── Module/        # Surge 模块
+├── List/          # 模块引用的远程 DOMAIN-SET 列表
 ├── loon/          # Loon 适配版
 ├── quantumultx/   # Quantumult X 适配版
 ├── Script/        # 模块自托管脚本
 ├── Icon/          # 策略组与模块图标
+├── tools/         # 规则生成与维护脚本
 └── README.md
 ```
 
@@ -139,6 +176,7 @@ Surge/
 - 想直接使用：从 [`Conf/surge.conf`](./Conf/surge.conf) 开始
 - 想按功能叠加：从 [`Module/`](./Module) 里选择需要的模块单独安装
 - 想看具体实现：脚本请查看 [`Script/`](./Script)，图标请查看 [`Icon/`](./Icon)
+- 想看外部广告模块如何生成：请查看 [`tools/build_surge_adlists.py`](./tools/build_surge_adlists.py) 与 [`List/manifest.json`](./List/manifest.json)
 
 ## Maintainer
 
