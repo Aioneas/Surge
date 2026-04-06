@@ -63,29 +63,29 @@ policy-path=请替换为你自己的Surge订阅地址
 
 ### Core modules
 
-| 模块 | 功能 | 安装 |
-| --- | --- | --- |
-| [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) |
-| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 · 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) |
-| [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 · 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) |
-| [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录 · 自动 7 天会员 · 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) |
+| 模块 | 功能 | 安装链接 | 备注 |
+| --- | --- | --- | --- |
+| [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | 基础模块 |
+| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | 当前仅保留 hide-Shorts 版 |
+| [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | 脚本自托管 |
+| [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | 脚本自托管 |
 
 ### External ad filter modules
 
 > [!IMPORTANT]
 > 以下 4 个模块把 EasyList / EasyPrivacy / uBlock filters / AdGuard Mobile Ads 中**可稳定映射到 Surge 网络层**的域名级规则拆成独立模块，适合按需安装、单独更新。
 >
-> - 适合"拆开装，避免单模块过大"的使用方式
+> - 适合“拆开装，避免单模块过大”的使用方式
 > - **不包含** 元素隐藏、脚本替换、参数移除等浏览器扩展专属能力
 > - `easylist.sgmodule` 体量最大，首次下载与更新会更慢一些
 
-| 模块 | 来源 | 安装 | 规模 |
+| 模块 | 来源 | 安装链接 | 当前规模 |
 | --- | --- | --- | --- |
 <!-- external-ad-filter-table:start -->
-| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 57,343 拦截 / 0 放行 |
-| [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 923 拦截 / 2 放行 |
-| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 416 拦截 / 4 放行 |
-| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,380 拦截 / 4 放行 |
+| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 57,343 条拦截域名 / 0 条放行域名 |
+| [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 923 条拦截域名 / 2 条放行域名 |
+| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 416 条拦截域名 / 4 条放行域名 |
+| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,380 条拦截域名 / 4 条放行域名 |
 <!-- external-ad-filter-table:end -->
 
 <details>
@@ -98,7 +98,7 @@ policy-path=请替换为你自己的Surge订阅地址
   - 元素隐藏（`##` / `#@#`）
   - 参数移除 / replace / redirect / scriptlet
   - 复杂 URL 正则与依赖扩展语法的规则
-- 目标不是"100% 复刻浏览器扩展效果"，而是优先保证 **Surge 下可用、可维护、可更新**
+- 目标不是“100% 复刻浏览器扩展效果”，而是优先保证 **Surge 下可用、可维护、可更新**
 
 </details>
 
@@ -107,16 +107,16 @@ policy-path=请替换为你自己的Surge订阅地址
 > [!WARNING]
 > 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
 
-| 模块 | 支持范围 | 安装 |
-| --- | --- | --- |
-| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) |
-| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) |
+| 模块 | 支持范围 | Surge | Loon | Quantumult X | 说明 |
+| --- | --- | --- | --- | --- | --- |
+| [`news.redirect.aioneas.sgmodule`](./Module/news.redirect.aioneas.sgmodule) | 财新主站 / FT 中文 / FT 英文 / WSJ / Bloomberg / Economist / NYT / 端传媒 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.aioneas.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.aioneas.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.aioneas.conf) | 跳转目标：`best.viatl.de` |
+| [`news.redirect.caixin.sgmodule`](./Module/news.redirect.caixin.sgmodule) | 财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/news.redirect.caixin.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/news.redirect.caixin.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/news.redirect.caixin.conf) | 跳转目标：`best.998888.best` 系列 |
 
 <details>
   <summary><strong>展开查看新闻模块补充说明</strong></summary>
 
-- `news.redirect.aioneas.sgmodule` 已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面，跳转目标为 `best.viatl.de`
-- `news.redirect.caixin.sgmodule` 覆盖财新周边产品线与三联生活周刊 / 混沌 / 三联中读等站点，跳转目标为 `best.998888.best` 系列
+- `news.redirect.aioneas.sgmodule` 已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/&lt;id&gt;` 与 `interactive/&lt;id&gt;` 页面
+- `news.redirect.caixin.sgmodule` 覆盖财新周边产品线与三联生活周刊 / 混沌 / 三联中读等站点
 - 三联生活周刊属于 SPA 页面，站内跳转后通常需要手动刷新一次才能触发跳转
 - 两个模块覆盖站点互补，可同时安装，也可单独使用
 - Loon 版位于 [`loon/`](./loon)，Quantumult X 版位于 [`quantumultx/`](./quantumultx)
