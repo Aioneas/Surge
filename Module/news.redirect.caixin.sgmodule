@@ -34,4 +34,6 @@
 ^https?:\/\/www\.dushu365\.com\/course\/(\d+) https://fs.998888.best/course/$1 302
 
 [MITM]
-hostname = %APPEND% *.caixin.com, deepview.caixin.com, entities.caixin.com, www.lifeweek.com.cn, www.hundun.cn, www.dushu365.com
+# 精确指定需要 MITM 的子域名，避免通配符覆盖图片 CDN / API / 统计域名
+# 排除 img/apollo/file/c2/api/gateway/getavatar/stock 等无关子域名
+hostname = %APPEND% www.caixin.com, m.caixin.com, weekly.caixin.com, deepview.caixin.com, entities.caixin.com, www.lifeweek.com.cn, www.hundun.cn, www.dushu365.com
