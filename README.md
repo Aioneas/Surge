@@ -79,13 +79,15 @@ policy-path=请替换为你自己的Surge订阅地址
 > - **不包含** 元素隐藏、脚本替换、参数移除等浏览器扩展专属能力
 > - `easylist.sgmodule` 体量最大，首次下载与更新会更慢一些
 
+<!-- external-ad-filter-table:start -->
+
 | 模块 | 来源 | 安装链接 | 当前规模 |
 | --- | --- | --- | --- |
-<!-- external-ad-filter-table:start -->
 | [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 57,343 条拦截域名 / 0 条放行域名 |
 | [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 923 条拦截域名 / 2 条放行域名 |
 | [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 416 条拦截域名 / 4 条放行域名 |
 | [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,380 条拦截域名 / 4 条放行域名 |
+
 <!-- external-ad-filter-table:end -->
 
 <details>

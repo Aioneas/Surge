@@ -258,14 +258,19 @@ def update_readme_table(manifest: dict) -> None:
     start_marker = "<!-- external-ad-filter-table:start -->"
     end_marker = "<!-- external-ad-filter-table:end -->"
     readme = README_PATH.read_text(encoding="utf-8")
-    table_lines = [start_marker]
+    table_lines = [
+        start_marker,
+        "",
+        "| 模块 | 来源 | 安装链接 | 当前规模 |",
+        "| --- | --- | --- | --- |",
+    ]
     for item in manifest["items"]:
         table_lines.append(
             f"| [`{Path(item['module']).name}`](./{item['module']}) | {item['source_name']} | "
             f"[Install]({RAW_BASE}/{item['module']}) | "
             f"{item['block_count']:,} 条拦截域名 / {item['allow_count']:,} 条放行域名 |"
         )
-    table_lines.append(end_marker)
+    table_lines.extend(["", end_marker])
     replacement = "\n".join(table_lines)
     pattern = re.compile(
         rf"{re.escape(start_marker)}.*?{re.escape(end_marker)}",
