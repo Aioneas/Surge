@@ -1,0 +1,24 @@
+# mirrored rule sources for self-hosted maintenance
+# name,surge_url,clash_url,group
+YouTube,https://raw.githubusercontent.com/Aioneas/Surge/main/List/youtube.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/youtube.clash.yaml,YouTube
+Disney,https://raw.githubusercontent.com/Aioneas/Surge/main/List/disney.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/disney.clash.yaml,Disney
+HBOMax,https://raw.githubusercontent.com/Aioneas/Surge/main/List/hbomax.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/hbomax.clash.yaml,HBOMax
+Netflix,https://raw.githubusercontent.com/Aioneas/Surge/main/List/netflix.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/netflix.clash.yaml,Netflix
+Bahamut,https://raw.githubusercontent.com/Aioneas/Surge/main/List/bahamut.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/bahamut.clash.yaml,Bahamut
+BiliBili,https://raw.githubusercontent.com/Aioneas/Surge/main/List/bilibili.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/bilibili.clash.yaml,BiliBili
+Spotify,https://raw.githubusercontent.com/Aioneas/Surge/main/List/spotify.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/spotify.clash.yaml,Spotify
+Steam,https://raw.githubusercontent.com/Aioneas/Surge/main/List/steam.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/steam.clash.yaml,Steam
+Telegram,https://raw.githubusercontent.com/Aioneas/Surge/main/List/telegram.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/telegram.clash.yaml,Telegram
+Google,https://raw.githubusercontent.com/Aioneas/Surge/main/List/google.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/google.clash.yaml,Google
+Microsoft,https://raw.githubusercontent.com/Aioneas/Surge/main/List/microsoft.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/microsoft.clash.yaml,Microsoft
+GitHub,https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.clash.yaml,GitHub
+OpenAI,https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.clash.yaml,OpenAI
+Claude,https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.clash.yaml,Claude
+PayPal,https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.clash.yaml,PayPal
+Link,https://raw.githubusercontent.com/Aioneas/Surge/main/List/link.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/link.clash.yaml,Link
+Apple,https://raw.githubusercontent.com/Aioneas/Surge/main/List/apple.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/apple.clash.yaml,Apple
+Speedtest,https://raw.githubusercontent.com/Aioneas/Surge/main/List/speedtest.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/speedtest.clash.yaml,Speedtest
+Global,https://raw.githubusercontent.com/Aioneas/Surge/main/List/global.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/global.clash.yaml,Proxies
+Pixiv,https://raw.githubusercontent.com/Aioneas/Surge/main/List/pixiv.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/pixiv.clash.yaml,JP
+China,https://raw.githubusercontent.com/Aioneas/Surge/main/List/china.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/china.clash.yaml,DIRECT
+Lan,https://raw.githubusercontent.com/Aioneas/Surge/main/List/lan.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/lan.clash.yaml,DIRECT
