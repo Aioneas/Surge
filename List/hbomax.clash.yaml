@@ -1,0 +1,18 @@
+# NAME: HBOMax
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-08 06:55:01
+# SOURCE: upstream mirror
+# NOTES: self-hosted rule mirror for OpenClash provider
+payload:
+  - DOMAIN,wmff.warnermediacdn.com
+  - DOMAIN-SUFFIX,cinemax.com
+  - DOMAIN-SUFFIX,discomax.com
+  - DOMAIN-SUFFIX,h264.io
+  - DOMAIN-SUFFIX,hbomax.com
+  - DOMAIN-SUFFIX,hbomaxcdn.com
+  - DOMAIN-SUFFIX,hbomaxdash.s.llnwi.net
+  - DOMAIN-SUFFIX,hbonow.com
+  - DOMAIN-SUFFIX,max.com
+  - DOMAIN-SUFFIX,maxgo.com
+  - PROCESS-NAME,com.hbo.hbonow

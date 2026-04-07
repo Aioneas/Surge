@@ -1,0 +1,10 @@
+# NAME: Claude
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-08 06:55:15
+# SOURCE: upstream mirror
+# NOTES: self-hosted rule mirror for Surge / OpenClash shared maintenance
+#
+DOMAIN,cdn.usefathom.com
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai

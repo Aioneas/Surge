@@ -1,0 +1,27 @@
+# NAME: Link
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-08 06:55:22
+# SOURCE: local link.list
+# NOTES: self-hosted rule mirror for OpenClash provider
+payload:
+  - DOMAIN,app.link.com
+  - DOMAIN,app.link.co
+  - DOMAIN,link.com
+  - DOMAIN,link.co
+  - DOMAIN,support.link.com
+  - DOMAIN,api.stripe.com
+  - DOMAIN,edge-api.stripe.com
+  - DOMAIN,js.stripe.com
+  - DOMAIN,edge-js.stripe.com
+  - DOMAIN,crypto-js.stripe.com
+  - DOMAIN,verify.stripe.com
+  - DOMAIN,files.stripe.com
+  - DOMAIN,errors.stripe.com
+  - DOMAIN,b.stripecdn.com
+  - DOMAIN,q.stripe.com
+  - DOMAIN,r.stripe.com
+  - DOMAIN,stripe-images.s3.amazonaws.com
+  - DOMAIN,m.stripe.network
+  - DOMAIN,api.sprig.com
+  - DOMAIN-SUFFIX,hcaptcha.com

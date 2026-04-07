@@ -1,9 +1,9 @@
 # NAME: Apple
 # AUTHOR: Minis
 # REPO: https://github.com/Aioneas/Surge
-# UPDATED: 2026-04-08 06:33:07
-# SOURCE: upstream blackmatrix7 Apple.list + local apple.patch.list
-# NOTES: self-hosted Apple rule for Surge / OpenClash shared maintenance
+# UPDATED: 2026-04-08 06:54:57
+# SOURCE: upstream mirror + local patches (apple)
+# NOTES: self-hosted rule mirror for Surge / OpenClash shared maintenance
 #
 DOMAIN,gateway.icloud.com
 DOMAIN,setup.icloud.com
