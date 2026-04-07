@@ -1,0 +1,31 @@
+# NAME: Link
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-07
+# DOMAIN-SUFFIX / DOMAIN list for Stripe Link (app.link.com)
+# Notes:
+# - Built from live page requests, CSP allowlists, JS bundle references,
+#   and domains already observed in the user's private config.
+# - Scope is intentionally conservative: only Link/Stripe-hosted domains and
+#   directly related runtime dependencies for the Link web app are included.
+
+DOMAIN,app.link.com
+DOMAIN,app.link.co
+DOMAIN,link.com
+DOMAIN,link.co
+DOMAIN,support.link.com
+DOMAIN,api.stripe.com
+DOMAIN,edge-api.stripe.com
+DOMAIN,js.stripe.com
+DOMAIN,edge-js.stripe.com
+DOMAIN,crypto-js.stripe.com
+DOMAIN,verify.stripe.com
+DOMAIN,files.stripe.com
+DOMAIN,errors.stripe.com
+DOMAIN,b.stripecdn.com
+DOMAIN,q.stripe.com
+DOMAIN,r.stripe.com
+DOMAIN,stripe-images.s3.amazonaws.com
+DOMAIN,m.stripe.network
+DOMAIN,api.sprig.com
+DOMAIN-SUFFIX,hcaptcha.com

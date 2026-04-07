@@ -41,6 +41,7 @@ policy-path=请替换为你自己的Surge订阅地址
 
 - 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Speedtest 等常用场景
 - 已内置 `Claude` 独立分流，并使用自托管图标 [`Icon/claude.png`](./Icon/claude.png)
+- 新增 `Link` 独立分流，规则集为 [`List/link.list`](./List/link.list)，图标为 [`Icon/Link.png`](./Icon/Link.png)
 - Rewrite 与 MITM 范围保持克制，优先降低副作用与误伤概率
 - 配置、模块、脚本、图标分目录维护，适合作为长期迭代的个人主配置基底
 - 关键资源尽量自托管，减少外链失效带来的不可控问题
