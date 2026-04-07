@@ -39,12 +39,37 @@ policy-path=请替换为你自己的Surge订阅地址
 
 ## Highlights
 
-- 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Speedtest 等常用场景
-- 已内置 `Claude` 独立分流，并使用自托管图标 [`Icon/claude.png`](./Icon/claude.png)
-- 新增 `Link` 独立分流，规则集为 [`List/link.list`](./List/link.list)，图标为 [`Icon/Link.png`](./Icon/Link.png)
+- 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Link / Speedtest 等常用场景
+- `Link`（Stripe Link）独立策略组，规则集自托管于 [`List/link.list`](./List/link.list)，图标自托管于 [`Icon/Link.png`](./Icon/Link.png)；默认走 PayPal 节点，可按需切换
+- `Claude` 独立策略组，图标自托管于 [`Icon/claude.png`](./Icon/claude.png)
 - Rewrite 与 MITM 范围保持克制，优先降低副作用与误伤概率
 - 配置、模块、脚本、图标分目录维护，适合作为长期迭代的个人主配置基底
 - 关键资源尽量自托管，减少外链失效带来的不可控问题
+
+## Policy Groups
+
+| 策略组 | 默认候选 | 图标 | 说明 |
+| --- | --- | --- | --- |
+| `Proxies` | 订阅节点 | Global | 主节点组，所有分组的流量出口 |
+| `Final` | Proxies / DIRECT | — | 兜底策略 |
+| `Google` | Proxies / 地区组 | Google | — |
+| `Apple` | Proxies / DIRECT / 地区组 | Apple | — |
+| `OpenAI` | Proxies / 地区组 | ChatGPT | — |
+| `Claude` | Proxies / 地区组 | Claude | — |
+| `YouTube` | Proxies / 地区组 | YouTube | — |
+| `Netflix` | Proxies / 地区组 | Netflix | — |
+| `Disney` | Proxies / 地区组 | Disney | — |
+| `HBOMax` | Proxies / 地区组 | HBO | — |
+| `Bahamut` | Proxies / HK / TW | Bahamut | — |
+| `BiliBili` | DIRECT / HK / TW | bilibili | — |
+| `Spotify` | Proxies / DIRECT / 地区组 | Spotify | — |
+| `Steam` | Proxies / DIRECT / 地区组 | Steam | — |
+| `Telegram` | Proxies / 地区组 | Telegram | — |
+| `Microsoft` | Proxies / DIRECT / 地区组 | Microsoft | — |
+| `GitHub` | Proxies / DIRECT / 地区组 | GitHub | — |
+| `PayPal` | Proxies / DIRECT / 地区组 | PayPal | — |
+| `Link` | PayPal / Proxies / DIRECT / 地区组 | Link | Stripe Link，默认跟随 PayPal |
+| `Speedtest` | DIRECT / Proxies / 地区组 | Speedtest | — |
 
 ## Repository at a glance
 
@@ -52,7 +77,7 @@ policy-path=请替换为你自己的Surge订阅地址
 | --- | --- |
 | [`Conf/`](./Conf) | 主配置 |
 | [`Module/`](./Module) | Surge 模块 |
-| [`List/`](./List) | 外部广告模块使用的远程 `DOMAIN-SET` 列表 |
+| [`List/`](./List) | 自托管规则集（Link 等）及外部广告模块 `DOMAIN-SET` 列表 |
 | [`Script/`](./Script) | 自托管脚本 |
 | [`tools/`](./tools) | 规则生成与维护脚本 |
 | [`Icon/`](./Icon) | 图标资源 |
@@ -76,7 +101,7 @@ policy-path=请替换为你自己的Surge订阅地址
 > [!IMPORTANT]
 > 以下 4 个模块把 EasyList / EasyPrivacy / uBlock filters / AdGuard Mobile Ads 中**可稳定映射到 Surge 网络层**的域名级规则拆成独立模块，适合按需安装、单独更新。
 >
-> - 适合“拆开装，避免单模块过大”的使用方式
+> - 适合"拆开装，避免单模块过大"的使用方式
 > - **不包含** 元素隐藏、脚本替换、参数移除等浏览器扩展专属能力
 > - `easylist.sgmodule` 体量最大，首次下载与更新会更慢一些
 
@@ -101,7 +126,7 @@ policy-path=请替换为你自己的Surge订阅地址
   - 元素隐藏（`##` / `#@#`）
   - 参数移除 / replace / redirect / scriptlet
   - 复杂 URL 正则与依赖扩展语法的规则
-- 目标不是“100% 复刻浏览器扩展效果”，而是优先保证 **Surge 下可用、可维护、可更新**
+- 目标不是"100% 复刻浏览器扩展效果"，而是优先保证 **Surge 下可用、可维护、可更新**
 
 </details>
 
@@ -118,7 +143,7 @@ policy-path=请替换为你自己的Surge订阅地址
 <details>
   <summary><strong>展开查看新闻模块补充说明</strong></summary>
 
-- `news.redirect.aioneas.sgmodule` 已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/&lt;id&gt;` 与 `interactive/&lt;id&gt;` 页面
+- `news.redirect.aioneas.sgmodule` 已兼容 `www.ftchinese.com` / `ftchinese.com` / `m.ftchinese.com` 下的 `story/<id>` 与 `interactive/<id>` 页面
 - `news.redirect.caixin.sgmodule` 覆盖财新周边产品线与三联生活周刊 / 混沌 / 三联中读等站点
 - 三联生活周刊属于 SPA 页面，站内跳转后通常需要手动刷新一次才能触发跳转
 - 两个模块覆盖站点互补，可同时安装，也可单独使用
@@ -144,11 +169,12 @@ Surge/
 ├── Conf/          # 主配置
 │   └── surge.conf
 ├── Module/        # Surge 模块
-├── List/          # 模块引用的远程 DOMAIN-SET 列表
+├── List/          # 自托管规则集（link.list 等）及广告模块 DOMAIN-SET 列表
+│   └── link.list  # Stripe Link 分流规则集
 ├── loon/          # Loon 适配版
 ├── quantumultx/   # Quantumult X 适配版
 ├── Script/        # 模块自托管脚本
-├── Icon/          # 策略组与模块图标
+├── Icon/          # 策略组与模块图标（含 Link.png）
 ├── tools/         # 规则生成与维护脚本
 └── README.md
 ```
