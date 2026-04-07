@@ -1,0 +1,24 @@
+# NAME: Apple Patch
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-08
+# Purpose:
+# - Patch upstream Apple rules for campus-network scenarios
+# - Keep the rule source under Aioneas/Surge for both Surge and OpenClash
+# Notes:
+# - Lines in this file use Surge rule syntax
+# - tools/build_apple_rules.py will merge this file into both Surge and Clash outputs
+
+DOMAIN,gateway.icloud.com
+DOMAIN,setup.icloud.com
+DOMAIN-SUFFIX,acsegateway.icloud.com
+DOMAIN,mask-api.icloud.com
+DOMAIN,bag.itunes.apple.com
+DOMAIN,entitlements.itunes.apple.com
+DOMAIN,is1-ssl.mzstatic.com
+DOMAIN,gsa.apple.com
+DOMAIN,ocsp2.apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,ls.apple.com
+DOMAIN-SUFFIX,mzstatic.com

@@ -41,6 +41,7 @@ policy-path=请替换为你自己的Surge订阅地址
 
 - 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Link / Speedtest 等常用场景
 - `Link`（Stripe Link）独立策略组，规则集自托管于 [`List/link.list`](./List/link.list)，图标自托管于 [`Icon/Link.png`](./Icon/Link.png)；默认走 PayPal 节点，可按需切换
+- `Apple` 规则已改为自托管：补丁源位于 [`List/apple.patch.list`](./List/apple.patch.list)，构建脚本位于 [`tools/build_apple_rules.py`](./tools/build_apple_rules.py)，输出 Surge 版 [`List/apple.list`](./List/apple.list) 与 OpenClash 版 [`List/apple.clash.yaml`](./List/apple.clash.yaml)
 - `Claude` 独立策略组，图标自托管于 [`Icon/claude.png`](./Icon/claude.png)
 - Rewrite 与 MITM 范围保持克制，优先降低副作用与误伤概率
 - 配置、模块、脚本、图标分目录维护，适合作为长期迭代的个人主配置基底
@@ -77,7 +78,7 @@ policy-path=请替换为你自己的Surge订阅地址
 | --- | --- |
 | [`Conf/`](./Conf) | 主配置 |
 | [`Module/`](./Module) | Surge 模块 |
-| [`List/`](./List) | 自托管规则集（Link 等）及外部广告模块 `DOMAIN-SET` 列表 |
+| [`List/`](./List) | 自托管规则集（Link / Apple 等）及外部广告模块 `DOMAIN-SET` 列表 |
 | [`Script/`](./Script) | 自托管脚本 |
 | [`tools/`](./tools) | 规则生成与维护脚本 |
 | [`Icon/`](./Icon) | 图标资源 |

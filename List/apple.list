@@ -1,0 +1,76 @@
+# NAME: Apple
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-08 06:33:07
+# SOURCE: upstream blackmatrix7 Apple.list + local apple.patch.list
+# NOTES: self-hosted Apple rule for Surge / OpenClash shared maintenance
+#
+DOMAIN,gateway.icloud.com
+DOMAIN,setup.icloud.com
+DOMAIN-SUFFIX,acsegateway.icloud.com
+DOMAIN,mask-api.icloud.com
+DOMAIN,bag.itunes.apple.com
+DOMAIN,entitlements.itunes.apple.com
+DOMAIN,is1-ssl.mzstatic.com
+DOMAIN,gsa.apple.com
+DOMAIN,ocsp2.apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,ls.apple.com
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN-KEYWORD,apple-support.akadns.net
+DOMAIN-KEYWORD,apple.com.akadns.net
+DOMAIN-KEYWORD,apple.com.edgekey.net
+DOMAIN-KEYWORD,buy.itunes.apple.com
+DOMAIN-KEYWORD,smp-device
+DOMAIN-KEYWORD,testflight
+DOMAIN-KEYWORD,icloud.com.akadns.net
+IP-CIDR,139.178.128.0/18,no-resolve
+IP-CIDR,144.178.0.0/19,no-resolve
+IP-CIDR,144.178.36.0/22,no-resolve
+IP-CIDR,144.178.48.0/20,no-resolve
+IP-CIDR,17.0.0.0/8,no-resolve
+IP-CIDR,192.35.50.0/24,no-resolve
+IP-CIDR,198.183.17.0/24,no-resolve
+IP-CIDR,205.180.175.0/24,no-resolve
+IP-CIDR,63.92.224.0/19,no-resolve
+IP-CIDR,65.199.22.0/23,no-resolve
+IP-CIDR6,2403:300::/32,no-resolve
+IP-CIDR6,2620:149::/32,no-resolve
+IP-CIDR6,2a01:b740::/32,no-resolve
+USER-AGENT,*FindMyiPhone?
+USER-AGENT,*Music?
+USER-AGENT,*WeatherFoundation*
+USER-AGENT,*com.apple.Maps?
+USER-AGENT,*com.apple.mobileme.fmip1
+USER-AGENT,FMDClient*
+USER-AGENT,FMFD*
+USER-AGENT,FindMyFriends*
+USER-AGENT,FindMyiPhone*
+USER-AGENT,Maps*
+USER-AGENT,Wallet*
+USER-AGENT,com.apple.Maps
+USER-AGENT,com.apple.appstored*
+USER-AGENT,fmflocatord*
+USER-AGENT,geod*
+USER-AGENT,locationd*
+USER-AGENT,passd*
+USER-AGENT,Music*
+USER-AGENT,AppleNews*
+USER-AGENT,com.apple.news*
+USER-AGENT,com.apple.trustd*
+USER-AGENT,AppleTV*
+USER-AGENT,com.apple.tv*
+PROCESS-NAME,CoreLocationAgent
+PROCESS-NAME,WeatherWidget
+PROCESS-NAME,apsd
+PROCESS-NAME,com.apple.Maps
+PROCESS-NAME,findmydevice-user-agent
+PROCESS-NAME,fmfd
+PROCESS-NAME,mapspushd
+PROCESS-NAME,netbiosd
+PROCESS-NAME,trustd
+PROCESS-NAME,com.apple.geod
+PROCESS-NAME,Music
+PROCESS-NAME,LookupViewService
+PROCESS-NAME,TV
