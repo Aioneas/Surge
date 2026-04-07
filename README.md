@@ -89,10 +89,14 @@ policy-path=请替换为你自己的Surge订阅地址
 
 ### Core modules
 
+> [!IMPORTANT]
+> `youtube.aioneas.hide-shorts.sgmodule` 建议作为 **Surge 模块列表中的第一个模块（最置顶）** 安装/启用。
+> 实测放在最前面时，更不容易出现 YouTube 弹窗去除失效、PIP / 后台播放被后续模块干扰的问题；如与其他模块同时使用，请优先保证它的加载顺序最高。
+
 | 模块 | 功能 | 安装链接 | 备注 |
 | --- | --- | --- | --- |
+| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | **建议在 Surge 模块中置顶**；当前仅保留 hide-Shorts 版 |
 | [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | 基础模块 |
-| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | 当前仅保留 hide-Shorts 版 |
 | [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | 脚本自托管 |
 | [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | 脚本自托管 |
 
