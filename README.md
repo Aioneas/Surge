@@ -7,6 +7,8 @@
     ·
     <a href="#modules"><strong>Modules</strong></a>
     ·
+    <a href="#policy-groups"><strong>Policy Groups</strong></a>
+    ·
     <a href="#principles"><strong>Principles</strong></a>
     ·
     <a href="#structure"><strong>Structure</strong></a>
@@ -47,31 +49,6 @@ policy-path=请替换为你自己的Surge订阅地址
 - Rewrite 与 MITM 范围保持克制，优先降低副作用与误伤概率
 - 配置、模块、脚本、图标分目录维护，适合作为长期迭代的个人主配置基底
 - 关键资源尽量自托管，减少外链失效带来的不可控问题
-
-## Policy Groups
-
-| 策略组 | 默认候选 | 图标 | 说明 |
-| --- | --- | --- | --- |
-| `Proxies` | 订阅节点 | Global | 主节点组，所有分组的流量出口 |
-| `Final` | Proxies / DIRECT | — | 兜底策略 |
-| `Google` | Proxies / 地区组 | Google | — |
-| `Apple` | Proxies / DIRECT / 地区组 | Apple | — |
-| `OpenAI` | Proxies / 地区组 | ChatGPT | — |
-| `Claude` | Proxies / 地区组 | Claude | — |
-| `YouTube` | Proxies / 地区组 | YouTube | — |
-| `Netflix` | Proxies / 地区组 | Netflix | — |
-| `Disney` | Proxies / 地区组 | Disney | — |
-| `HBOMax` | Proxies / 地区组 | HBO | — |
-| `Bahamut` | Proxies / HK / TW | Bahamut | — |
-| `BiliBili` | DIRECT / HK / TW | bilibili | — |
-| `Spotify` | Proxies / DIRECT / 地区组 | Spotify | — |
-| `Steam` | Proxies / DIRECT / 地区组 | Steam | — |
-| `Telegram` | Proxies / 地区组 | Telegram | — |
-| `Microsoft` | Proxies / DIRECT / 地区组 | Microsoft | — |
-| `GitHub` | Proxies / DIRECT / 地区组 | GitHub | — |
-| `PayPal` | Proxies / DIRECT / 地区组 | PayPal | — |
-| `Link` | PayPal / Proxies / DIRECT / 地区组 | Link | Stripe Link，默认跟随 PayPal |
-| `Speedtest` | DIRECT / Proxies / 地区组 | Speedtest | — |
 
 ## Repository at a glance
 
@@ -154,6 +131,41 @@ policy-path=请替换为你自己的Surge订阅地址
 - 三联生活周刊属于 SPA 页面，站内跳转后通常需要手动刷新一次才能触发跳转
 - 两个模块覆盖站点互补，可同时安装，也可单独使用
 - Loon 版位于 [`loon/`](./loon)，Quantumult X 版位于 [`quantumultx/`](./quantumultx)
+
+</details>
+
+---
+
+<a id="policy-groups"></a>
+## Policy Groups
+
+共 20 个策略组，覆盖 `Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Speedtest` · `Final`。
+
+<details>
+  <summary><strong>展开查看完整策略组列表</strong></summary>
+
+| 策略组 | 默认候选 | 图标 | 说明 |
+| --- | --- | --- | --- |
+| `Proxies` | 订阅节点 | Global | 主节点组，所有分组的流量出口 |
+| `Final` | Proxies / DIRECT | — | 兜底策略 |
+| `Google` | Proxies / 地区组 | Google | — |
+| `Apple` | Proxies / DIRECT / 地区组 | Apple | — |
+| `OpenAI` | Proxies / 地区组 | ChatGPT | — |
+| `Claude` | Proxies / 地区组 | Claude | — |
+| `YouTube` | Proxies / 地区组 | YouTube | — |
+| `Netflix` | Proxies / 地区组 | Netflix | — |
+| `Disney` | Proxies / 地区组 | Disney | — |
+| `HBOMax` | Proxies / 地区组 | HBO | — |
+| `Bahamut` | Proxies / HK / TW | Bahamut | — |
+| `BiliBili` | DIRECT / HK / TW | bilibili | — |
+| `Spotify` | Proxies / DIRECT / 地区组 | Spotify | — |
+| `Steam` | Proxies / DIRECT / 地区组 | Steam | — |
+| `Telegram` | Proxies / 地区组 | Telegram | — |
+| `Microsoft` | Proxies / DIRECT / 地区组 | Microsoft | — |
+| `GitHub` | Proxies / DIRECT / 地区组 | GitHub | — |
+| `PayPal` | Proxies / DIRECT / 地区组 | PayPal | — |
+| `Link` | PayPal / Proxies / DIRECT / 地区组 | Link | Stripe Link，默认跟随 PayPal |
+| `Speedtest` | DIRECT / Proxies / 地区组 | Speedtest | — |
 
 </details>
 
