@@ -185,6 +185,35 @@ Surge/
 └── README.md
 ```
 
+## Zero Trust / WARP 链式说明（Surge）
+
+> [!IMPORTANT]
+> 公开仓库仅提供模板，`WARP-ZT` 的 `private-key / self-ip / client-id / token` 等敏感内容必须保留在本地私有配置，勿上传。
+
+### 目标链路
+
+`设备流量 -> 机场代理(Proxies 或固定节点) -> WARP-ZT(WireGuard) -> 目标网站`
+
+### 公共模板位置
+
+- 节点模板：[`Conf/surge.conf`](./Conf/surge.conf) 中的 `[Proxy]` + `[WireGuard oneasai-ZT]`
+- 图标：[`Icon/Cloudflare_ZeroTrust.png`](./Icon/Cloudflare_ZeroTrust.png)
+
+### 私有配置建议
+
+1. 用 `warp.sh -T <teams_jwt>` 或 `-R <refresh_token>` 生成 WireGuard 参数。
+2. 将真实值填入私有配置的 `[WireGuard oneasai-ZT]`。
+3. 若中国大陆直连不稳定，使用 `via = Proxies` 或 `via = <固定机场节点名>`。
+4. 若握手超时，依次尝试：
+   - 调整 `mtu`：`1280 -> 1240 -> 1200`
+   - 更换 endpoint 端口：`2408 / 500 / 1701 / 4500`
+
+### 策略组设计
+
+- `ZeroTrust = select, WARP-ZT`
+- 业务分组（Google / OpenAI / Claude / YouTube / ...）均可加入 `ZeroTrust` 作为可选出口。
+- 若你希望所有业务都可随时切 Zero Trust，建议统一把 `ZeroTrust` 加入常用分组候选。
+
 ## Usage Notes
 
 - 想直接使用：从 [`Conf/surge.conf`](./Conf/surge.conf) 开始
