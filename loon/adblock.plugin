@@ -1,0 +1,101 @@
+#!name=去广告（牛精灵兼容修正版 v2）
+#!desc=基于 Aioneas/Surge 的 adblock.sgmodule 调整，移除会影响牛精灵（Jooan/乔安）监控预览/连接的拦截项，并显式放行已验证的业务域名。（Loon 版）
+#!author=OpenAI
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+
+[Rule]
+DOMAIN,qacloudapi.jooancloud.com,DIRECT
+DOMAIN,living-accs.ap-southeast-1.aliyuncs.com,DIRECT
+DOMAIN,mpush-api.aliyun.com,DIRECT
+DOMAIN,commserver4.qalink.cn,DIRECT
+DOMAIN-SUFFIX,iotcplatform.com,DIRECT
+DOMAIN,sdk.e.qq.com,REJECT
+DOMAIN,mi.gdt.qq.com,REJECT
+DOMAIN,win.gdt.qq.com,REJECT
+DOMAIN,mobads.baidu.com,REJECT
+DOMAIN,api-access.pangolin-sdk-toutiao.com,REJECT
+DOMAIN,api-access.pangolin-sdk-toutiao1.com,REJECT
+DOMAIN,log-api.pangolin-sdk-toutiao.com,REJECT
+DOMAIN,log-api.pangolin-sdk-toutiao-b.com,REJECT
+DOMAIN,sf3-fe-tos.pglstatp-toutiao.com,REJECT
+DOMAIN,open.e.kuaishou.com,REJECT
+DOMAIN,event.tradplusad.com,REJECT
+DOMAIN,tk.bridgeoos.com,REJECT
+DOMAIN,logrcv.yunxish.com,REJECT
+DOMAIN,mon.zijieapi.com,REJECT
+DOMAIN,errlog.umeng.com,REJECT
+DOMAIN,sdk.beizi.biz,REJECT
+DOMAIN,t2.fancyapi.com,REJECT
+DOMAIN,g.fancyapi.com,REJECT
+DOMAIN,lftxali.fancyapi.com,REJECT
+DOMAIN,sdk.1rtb.net,REJECT
+DOMAIN,cdn.1rtb.com,REJECT
+DOMAIN,sdk-track.66mobi.com,REJECT
+DOMAIN,static.66mobi.com,REJECT
+DOMAIN,tstatic.66mobi.com,REJECT
+DOMAIN,da.bridgeoos.com,REJECT
+DOMAIN,api.bridgeoos.com,REJECT
+DOMAIN,adx-os.bridgeoos.com,REJECT
+DOMAIN,als.baidu.com,REJECT
+DOMAIN,mobads-pre-config.cdn.bcebos.com,REJECT
+DOMAIN,wn.pos.baidu.com,REJECT
+DOMAIN,ad-api.adn-plus.com.cn,REJECT
+DOMAIN,sdk.adx.adwangmai.com,REJECT
+DOMAIN,sdk-cfg.adx.adwangmai.com,REJECT
+DOMAIN,sdk.zhangyuyidong.cn,REJECT
+DOMAIN,sdklog.zhangyuyidong.cn,REJECT
+DOMAIN,s.tuia.cn,REJECT
+DOMAIN,entry-su1.ubixioe.com,REJECT
+DOMAIN,e-u1.ubixioe.com,REJECT
+DOMAIN,adx-cfg-u1.ubixioe.com,REJECT
+DOMAIN,adx-strategy-api.hookspf.com,REJECT
+DOMAIN,tk.hookspf.com,REJECT
+DOMAIN,da.hookspf.com,REJECT
+DOMAIN,bridgeads.massx.com,REJECT
+DOMAIN,adx.halomobi.com,REJECT
+DOMAIN,api.anythinktech.com,REJECT
+DOMAIN,t-dsp.pinduoduo.com,REJECT
+DOMAIN,p66-ad.adkwai.com,REJECT
+DOMAIN,open.e.kuaishou.cn,REJECT
+DOMAIN,api-access.pangolin-sdk-toutiao-b.com,REJECT
+DOMAIN,cpc-service-square.yunxish.com,REJECT
+DOMAIN,tracelog-debug.yunxish.com,REJECT
+
+[Rewrite]
+^https?:\/\/m\d{1}\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\/ - reject
+^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/guanggao\/ - reject
+^https?:\/\/update\.pan\.baidu\.com\/statistics - reject
+^https?:\/\/app\.bilibili\.com\/x\/v\d\/splash\/ - reject
+^https?:\/\/.+\.youtube\.com\/api\/stats\/.+adformat - reject
+^https?:\/\/.+\.youtube\.com\/api\/stats\/ads - reject
+^https?:\/\/.+\.youtube\.com\/get_midroll - reject
+^https?:\/\/.+\.youtube\.com\/get_midroll_ - reject
+^https?:\/\/.+\.youtube\.com\/pagead\/ - reject
+^https?:\/\/.+\.youtube\.com\/ptracking - reject
+^https?:\/\/.+\.youtube\.com\/ptracking\? - reject
+^https?:\/\/pagead2.googlesyndication.com\/pagead\/js\/? - reject
+^https?:\/\/premiumyva\.appspot\.com\/vmclickstoadvertisersite - reject
+^https?:\/\/www.google-analytics.com\/analytics.js - reject
+^https?:\/\/youtubei\.googleapis\.com\/.+ad_break - reject
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/.+ad_ - reject
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/.+log_ - reject
+^https?:\/\/3gimg\.qq\.com\/tencentMapTouch\/app\/activity\/ - reject
+^https?:\/\/newsso\.map\.qq\.com\/\?&attime= - reject
+^https?:\/\/mp\.weixin\.qq.com\/mp\/advertisement_report - reject
+^https?:\/\/mp\.weixin\.qq.com\/mp\/ad_complaint - reject
+^https?:\/\/mp\.weixin\.qq.com\/mp\/ad_video - reject
+^https?:\/\/qt\.qq\.com\/lua\/mengyou\/get_splash_screen_info - reject
+^https?:\/\/ssl\.kohsocialapp\.qq\.com:10001\/game\/buttons - reject
+^https:\/\/app\.variflight\.com\/v4\/advert\/ - reject
+^https?:\/\/service\.yunxish\.com\/qmcd\/get - reject
+^https?:\/\/tracelog-debug\.yunxish\.com\/ - reject
+^https?:\/\/cpc-service-square\.yunxish\.com\/v1\/getConfig - reject
+^https?:\/\/lp\.pinduoduo\.com\/ - reject
+^https?:\/\/sdk\.1rtb\.net\/sdk\/req_ad - reject
+^https?:\/\/sdk\.1rtb\.net\/sdk\/notice - reject
+^https?:\/\/sdk\.1rtb\.net\/ext\/notice - reject
+^https?:\/\/t2\.fancyapi\.com\/(launchApp|exitApp) - reject
+^https?:\/\/mobads\.baidu\.com\/cpro\/ui\/mads\.php - reject
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk\/get_ads\/ - reject
+^https?:\/\/api-access\.pangolin-sdk-toutiao-b\.com\/api\/ad\/union\/sdk\/get_ads\/ - reject

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero-surge.svg" alt="Surge by Aioneas" width="100%" />
   <h1>Surge</h1>
-  <p>Personal Surge configuration, modules, and self-hosted assets for iPhone.</p>
+  <p>Personal Surge config with self-hosted modules, clean routing, and stability-first maintenance.</p>
   <p>
     <a href="https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf"><strong>Remote Config</strong></a>
     ·
@@ -95,12 +95,12 @@ policy-path=请替换为你自己的Surge订阅地址
 > `youtube.aioneas.hide-shorts.sgmodule` 建议作为 **Surge 模块列表中的第一个模块（最置顶）** 安装/启用。
 > **建议在 Surge 模块中置顶**；可改善后台小窗 / PIP 首次转圈问题。如与其他模块同时使用，请优先保证它的加载顺序最高。
 
-| 模块 | 功能 | 安装链接 | 备注 |
-| --- | --- | --- | --- |
-| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | **建议在 Surge 模块中置顶**；可改善后台小窗 / PIP 首次转圈问题 |
-| [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | 基础模块 |
-| [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | 脚本自托管 |
-| [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | 脚本自托管 |
+| 模块 | 功能 | Surge | Loon | Quantumult X | 说明 |
+| --- | --- | --- | --- | --- | --- |
+| [`youtube.aioneas.hide-shorts.sgmodule`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/youtube.aioneas.hide-shorts.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/youtube.aioneas.hide-shorts.conf) | **建议置顶安装**；可改善后台小窗 / PIP 首次转圈问题 |
+| [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/adblock.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/adblock.conf) | 基础模块 |
+| [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/kanlixiang.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/kanlixiang.conf) | 脚本自托管 |
+| [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/sanlianzhongdu.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/sanlianzhongdu.conf) | 脚本自托管 |
 
 ### External ad filter modules
 
@@ -139,7 +139,7 @@ policy-path=请替换为你自己的Surge订阅地址
 ### News redirect modules
 
 > [!WARNING]
-> 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / QX 适配，非镜像站运营方。
+> 注意：镜像站（`best.viatl.de` / `best.998888.best` 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge / Loon / Quantumult X 适配，非镜像站运营方。
 
 | 模块 | 支持范围 | Surge | Loon | Quantumult X | 说明 |
 | --- | --- | --- | --- | --- | --- |
@@ -188,7 +188,7 @@ Surge/
 ## Usage Notes
 
 - 想直接使用：从 [`Conf/surge.conf`](./Conf/surge.conf) 开始
-- 想按功能叠加：从 [`Module/`](./Module) 里选择需要的模块单独安装
+- 想按功能叠加：可按所用客户端从 [`Module/`](./Module) / [`loon/`](./loon) / [`quantumultx/`](./quantumultx) 选择对应模块单独安装
 - 想看具体实现：脚本请查看 [`Script/`](./Script)，图标请查看 [`Icon/`](./Icon)
 - 想看外部广告模块如何生成：请查看 [`tools/build_surge_adlists.py`](./tools/build_surge_adlists.py) 与 [`List/manifest.json`](./List/manifest.json)
 
