@@ -1,0 +1,10 @@
+#!name=AdGuard Mobile Ads（Loon适配）@Aioneas
+#!desc=将 AdGuard/uBO – Mobile Ads 中可稳定映射到网络层的移动广告域名规则独立拆分为模块。不包含浏览器元素隐藏 / 脚本替换等扩展专属能力。
+#!author=AdGuard Team + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+
+[Rule]
+# Block domains: 926 / Allow domains: 2
+DOMAIN-SET,https://raw.githubusercontent.com/Aioneas/Surge/main/List/adguard-mobile-ads.block.domainset,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/Aioneas/Surge/main/List/adguard-mobile-ads.allow.domainset,DIRECT
