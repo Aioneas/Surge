@@ -1,0 +1,3 @@
+# Claude 规则补丁（本地维护）
+# 用于补充 upstream 未覆盖但实际访问出现的域名
+DOMAIN-SUFFIX,claude.com
