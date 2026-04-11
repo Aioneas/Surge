@@ -41,7 +41,7 @@ policy-path=请替换为你自己的Surge订阅地址
 
 ## Highlights
 
-- 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Link / Speedtest 等常用场景
+- 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Link / Economist / NewYorkTimes / Speedtest 等常用场景
 - `Link`（Stripe Link）独立策略组，规则集自托管于 [`List/link.list`](./List/link.list)，图标自托管于 [`Icon/Link.png`](./Icon/Link.png)；默认走 PayPal 节点，可按需切换
 - 核心规则集（YouTube / Netflix / Global / China / Lan / Google / Microsoft / GitHub / OpenAI / Claude / Apple 等）已统一改为自托管镜像，主维护入口位于 [`List/`](./List) 与 [`tools/build_rule_mirrors.py`](./tools/build_rule_mirrors.py)
 - `Apple` 规则补丁源位于 [`List/apple.patch.list`](./List/apple.patch.list)，构建脚本会合并上游 Apple 规则并输出 Surge / Clash 双版本
@@ -139,7 +139,7 @@ policy-path=请替换为你自己的Surge订阅地址
 <a id="policy-groups"></a>
 ## Policy Groups
 
-共 20 个策略组，覆盖 `Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Speedtest` · `Final`。
+共 22 个策略组，覆盖 `Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Speedtest` · `Final`。
 
 <details>
   <summary><strong>展开查看完整策略组列表</strong></summary>
@@ -165,6 +165,8 @@ policy-path=请替换为你自己的Surge订阅地址
 | `GitHub` | Proxies / DIRECT / 地区组 | GitHub | — |
 | `PayPal` | Proxies / DIRECT / 地区组 | PayPal | — |
 | `Link` | PayPal / Proxies / DIRECT / 地区组 | Link | Stripe Link，默认跟随 PayPal |
+| `Economist` | SG / Proxies / HK / JP / TW / US / DIRECT | Economist | 经济学人分流，默认 SG |
+| `NewYorkTimes` | SG / Proxies / HK / JP / TW / US / DIRECT | NewYorkTimes | 纽约时报分流，默认 SG |
 | `Speedtest` | DIRECT / Proxies / 地区组 | Speedtest | — |
 
 </details>
