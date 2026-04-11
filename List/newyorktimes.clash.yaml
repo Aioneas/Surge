@@ -1,0 +1,11 @@
+# NAME: NewYorkTimes
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-11
+# SOURCE: local newyorktimes.list
+payload:
+  - DOMAIN-SUFFIX,nytimes.com
+  - DOMAIN-SUFFIX,nyt.com
+  - DOMAIN-SUFFIX,nytco.com
+  - DOMAIN-SUFFIX,nytcooking.com
+  - DOMAIN-SUFFIX,nytimeschina.com
