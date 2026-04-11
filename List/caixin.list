@@ -1,0 +1,9 @@
+# NAME: Caixin
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-11
+# DOMAIN-SUFFIX list for Caixin
+DOMAIN-SUFFIX,caixin.com
+DOMAIN-SUFFIX,caixin.com.cn
+DOMAIN-SUFFIX,caixinglobal.com
+DOMAIN-SUFFIX,caixinpost.com

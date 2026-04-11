@@ -1,0 +1,10 @@
+# NAME: Economist
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-04-11
+# SOURCE: local economist.list
+payload:
+  - DOMAIN-SUFFIX,economist.com
+  - DOMAIN-SUFFIX,economistgroup.com
+  - DOMAIN-SUFFIX,economist.digital
+  - DOMAIN-SUFFIX,economist.com.cn
