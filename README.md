@@ -42,6 +42,7 @@ policy-path=请替换为你自己的Surge订阅地址
 ## Highlights
 
 - 独立策略组覆盖 Apple / Google / OpenAI / Claude / GitHub / YouTube / Netflix / Disney / Telegram / Spotify / Steam / PayPal / Link / Economist / NewYorkTimes / Caixin / Speedtest 等常用场景
+- Economist / NewYorkTimes / Caixin 已改为自托管远程规则集（`List/economist.list` / `List/newyorktimes.list` / `List/caixin.list`），主配置通过 `RULE-SET` 拉取，便于后续独立维护
 - `Link`（Stripe Link）独立策略组，规则集自托管于 [`List/link.list`](./List/link.list)，图标自托管于 [`Icon/Link.png`](./Icon/Link.png)；默认走 PayPal 节点，可按需切换
 - 核心规则集（YouTube / Netflix / Global / China / Lan / Google / Microsoft / GitHub / OpenAI / Claude / Apple 等）已统一改为自托管镜像，主维护入口位于 [`List/`](./List) 与 [`tools/build_rule_mirrors.py`](./tools/build_rule_mirrors.py)
 - `Apple` 规则补丁源位于 [`List/apple.patch.list`](./List/apple.patch.list)，构建脚本会合并上游 Apple 规则并输出 Surge / Clash 双版本
