@@ -79,6 +79,34 @@ policy-path=请替换为你自己的Surge订阅地址
 | [`adblock.sgmodule`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/adblock.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/adblock.conf) | 基础模块 |
 | [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/kanlixiang.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/kanlixiang.conf) | 脚本自托管 |
 | [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/sanlianzhongdu.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/sanlianzhongdu.conf) | 脚本自托管 |
+| [`qqzone.adblock.aioneas.sgmodule`](./Module/qqzone.adblock.aioneas.sgmodule) | QQ 空间去开屏广告 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/qqzone.adblock.aioneas.sgmodule) | — | — | 基于实际抓包分析，规则覆盖广告素材、SDK、上报、追踪全链路 |
+
+<details>
+  <summary><strong>展开查看 QQ 空间去广告模块说明</strong></summary>
+
+基于对 QQ 空间 App 启动流程的完整抓包分析（HAR + PCAP），覆盖以下广告链路：
+
+| 分类 | 域名 | 说明 |
+| --- | --- | --- |
+| 广告素材 CDN | `pgdt.gtimg.cn` | 开屏广告图片/视频素材下载，单次启动可拉取 4–5 MB |
+| 广告曝光上报 | `rpt.gdt.qq.com` | `/creative_view` 广告曝光打点 |
+| 广告 SDK 配置 | `tangram.e.qq.com` | `/updateSetting` 广告 SDK 初始化配置下发 |
+| 广告 SDK 上报 | `sdkreport.e.qq.com` | `/link_event` SDK 事件上报 |
+| 广告请求接口 | `us.l.qq.com` | `/exapp` 开屏广告拉取接口（posid 参数标识广告位） |
+| 广告点击追踪 | `p.l.qq.com` | `/p` 广告点击 ping |
+| 腾讯广告联盟 | `*.gdt.qq.com` | 兜底拦截全部 GDT 子域名 |
+| 数据上报 | `mazu.m.qq.com` | 腾讯数据平台上报 |
+| 测速上报 | `wspeed.qq.com` | 网络测速数据上报 |
+| 崩溃/性能上报 | `ios.rqd.qq.com` | RQD 崩溃与性能数据 |
+| 视频广告上报 | `soup.v.qq.com` | cmd=54 广告相关配置 |
+| DNS 探测追踪 | `ping.huatuo.qq.com` + `*.imtmp.net` | 动态子域名 DNS 探测，用于广告链路追踪 |
+| 广告配置下发 | `snowflake.qq.com` | 开屏广告开关与频控配置 |
+| QQ 空间广告上报 | `h5.qzone.qq.com/report/*` | `/report/native` 与 `/report/compass` 广告曝光 |
+
+> 模块同时包含 URL Rewrite 规则，对无法通过域名整体拦截的接口（如与正常功能共用域名）精确匹配路径拦截，避免误伤。
+> 需要在 Surge 中开启 MITM 并信任 CA 证书，URL Rewrite 规则才能生效。
+
+</details>
 
 ### External ad filter modules
 
