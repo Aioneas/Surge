@@ -64,3 +64,4 @@ amap = type=http-response, pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search
 
 [MITM]
 hostname = %APPEND% m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com
+
