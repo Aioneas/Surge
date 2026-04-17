@@ -1,12 +1,12 @@
 #!name=QQ空间去开屏广告
-#!desc=屏蔽 QQ 空间开屏广告及相关广告请求
+#!desc=屏蔽 QQ 空间开屏广告及相关广告请求。基于实际抓包分析,拦截广告素材下载、曝光上报、SDK 数据上报等。
 #!author=Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/QQ.png
 #!category=去广告
 
 [Rule]
-# QQ 空间广告域名
+# 腾讯广告联盟 - 核心域名
 DOMAIN,pgdt.gtimg.cn,REJECT
 DOMAIN,rpt.gdt.qq.com,REJECT
 DOMAIN,mi.gdt.qq.com,REJECT
@@ -15,21 +15,50 @@ DOMAIN,win.gdt.qq.com,REJECT
 DOMAIN,c.gdt.qq.com,REJECT
 DOMAIN,c2.gdt.qq.com,REJECT
 DOMAIN,t.gdt.qq.com,REJECT
+
+# 腾讯广告 SDK
 DOMAIN,tangram.e.qq.com,REJECT
 DOMAIN,sdk.e.qq.com,REJECT
 DOMAIN,sdkreport.e.qq.com,REJECT
 
-# 腾讯广告联盟
+# 广告请求与上报
+DOMAIN,us.l.qq.com,REJECT
+DOMAIN,p.l.qq.com,REJECT
+
+# 数据上报与监控
+DOMAIN,mazu.m.qq.com,REJECT
+DOMAIN,wspeed.qq.com,REJECT
+DOMAIN,ios.rqd.qq.com,REJECT
+DOMAIN,soup.v.qq.com,REJECT
+
+# DNS 探测与追踪
+DOMAIN,ping.huatuo.qq.com,REJECT
+DOMAIN-SUFFIX,imtmp.net,REJECT
+
+# 配置下发
+DOMAIN,snowflake.qq.com,REJECT
+
+# 兜底规则
 DOMAIN-SUFFIX,gdt.qq.com,REJECT
 DOMAIN-KEYWORD,trace.qq.com,REJECT
-DOMAIN-KEYWORD,trace.video.qq.com,REJECT
 
 [URL Rewrite]
-# 拦截广告请求路径
+# 拦截广告素材下载
 ^https?:\/\/pgdt\.gtimg\.cn\/.+\/(snscosdownload|reserved)\/ - reject
+
+# 拦截广告曝光上报
 ^https?:\/\/rpt\.gdt\.qq\.com\/creative_view\? - reject
+
+# 拦截广告 SDK 请求
 ^https?:\/\/tangram\.e\.qq\.com\/ - reject
 ^https?:\/\/sdkreport\.e\.qq\.com\/ - reject
 
+# 拦截广告请求接口
+^https?:\/\/us\.l\.qq\.com\/exapp\? - reject
+^https?:\/\/p\.l\.qq\.com\/p\? - reject
+
+# 拦截 QQ 空间广告上报
+^https?:\/\/h5\.qzone\.qq\.com\/report\/(native|compass) - reject
+
 [MITM]
-hostname = %APPEND% pgdt.gtimg.cn, rpt.gdt.qq.com, tangram.e.qq.com, sdkreport.e.qq.com, *.gdt.qq.com
+hostname = %APPEND% pgdt.gtimg.cn, rpt.gdt.qq.com, tangram.e.qq.com, sdkreport.e.qq.com, *.gdt.qq.com, us.l.qq.com, p.l.qq.com, h5.qzone.qq.com
