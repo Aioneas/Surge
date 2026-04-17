@@ -1,0 +1,35 @@
+#!name=QQ空间去开屏广告
+#!desc=屏蔽 QQ 空间开屏广告及相关广告请求
+#!author=Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/QQ.png
+#!category=去广告
+
+[Rule]
+# QQ 空间广告域名
+DOMAIN,pgdt.gtimg.cn,REJECT
+DOMAIN,rpt.gdt.qq.com,REJECT
+DOMAIN,mi.gdt.qq.com,REJECT
+DOMAIN,v.gdt.qq.com,REJECT
+DOMAIN,win.gdt.qq.com,REJECT
+DOMAIN,c.gdt.qq.com,REJECT
+DOMAIN,c2.gdt.qq.com,REJECT
+DOMAIN,t.gdt.qq.com,REJECT
+DOMAIN,tangram.e.qq.com,REJECT
+DOMAIN,sdk.e.qq.com,REJECT
+DOMAIN,sdkreport.e.qq.com,REJECT
+
+# 腾讯广告联盟
+DOMAIN-SUFFIX,gdt.qq.com,REJECT
+DOMAIN-KEYWORD,trace.qq.com,REJECT
+DOMAIN-KEYWORD,trace.video.qq.com,REJECT
+
+[URL Rewrite]
+# 拦截广告请求路径
+^https?:\/\/pgdt\.gtimg\.cn\/.+\/(snscosdownload|reserved)\/ - reject
+^https?:\/\/rpt\.gdt\.qq\.com\/creative_view\? - reject
+^https?:\/\/tangram\.e\.qq\.com\/ - reject
+^https?:\/\/sdkreport\.e\.qq\.com\/ - reject
+
+[MITM]
+hostname = %APPEND% pgdt.gtimg.cn, rpt.gdt.qq.com, tangram.e.qq.com, sdkreport.e.qq.com, *.gdt.qq.com
