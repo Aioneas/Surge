@@ -44,6 +44,7 @@ DOMAIN,second-card.cn-hangzhou.log.aliyuncs.com,REJECT
 DOMAIN,compus-log.cn-hangzhou.log.aliyuncs.com,REJECT
 
 # 数盾反作弊SDK
+DOMAIN,api-verify.dutils.com,REJECT
 DOMAIN,cdn-api-verify.dutils.com,REJECT
 DOMAIN,log-verify.dutils.com,REJECT
 DOMAIN,m.mpl.dutils.com,REJECT
