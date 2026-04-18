@@ -80,6 +80,7 @@ policy-path=请替换为你自己的Surge订阅地址
 | [`kanlixiang.sgmodule`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/kanlixiang.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/kanlixiang.conf) | 脚本自托管 |
 | [`sanlianzhongdu.sgmodule`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/sanlianzhongdu.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/sanlianzhongdu.conf) | 脚本自托管 |
 | [`qqzone.adblock.aioneas.sgmodule`](./Module/qqzone.adblock.aioneas.sgmodule) | QQ 空间去开屏广告 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/qqzone.adblock.aioneas.sgmodule) | — | — | 基于实际抓包分析，规则覆盖广告素材、SDK、上报、追踪全链路 |
+| [`shuzhiyizheng.adblock.aioneas.sgmodule`](./Module/shuzhiyizheng.adblock.aioneas.sgmodule) | 数智易正去广告 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/shuzhiyizheng.adblock.aioneas.sgmodule) | — | — | 基于实际抓包分析，拦截多家广告SDK聚合、数据追踪、日志上报 |
 
 <details>
   <summary><strong>展开查看 QQ 空间去广告模块说明</strong></summary>
@@ -105,6 +106,31 @@ policy-path=请替换为你自己的Surge订阅地址
 
 > 模块同时包含 URL Rewrite 规则，对无法通过域名整体拦截的接口（如与正常功能共用域名）精确匹配路径拦截，避免误伤。
 > 需要在 Surge 中开启 MITM 并信任 CA 证书，URL Rewrite 规则才能生效。
+
+</details>
+
+<details>
+  <summary><strong>展开查看数智易正去广告模块说明</strong></summary>
+
+基于对数智易正 App（`cn.com.yunma.company.app`）启动流程的实际抓包分析，覆盖以下广告与追踪链路：
+
+| 分类 | 域名 | 说明 |
+| --- | --- | --- |
+| 广告 SDK 聚合 | `api.anythinktech.com` / `tk.anythinktech.com` / `da.anythinktech.com` | TopOn (AnyThink) 广告聚合平台，`/v2/open/app` 初始化、`/v2/open/placement` 广告位请求 |
+| 广告 SDK 聚合 | `api.bridgeoos.com` | BridgeOOS 广告聚合，与 AnyThink 同接口结构 |
+| 广告 SDK | `ad.baihemob.com` | 百合互动广告 SDK，`/setGInfo` 设备信息上报、`/checkCd` 广告频控、`/infoConfig` 配置拉取 |
+| 广告 SDK | `ad.shunchangzhixing.com` / `inner-empty.shunchangzhixing.com` / `static.shunchangzhixing.com` | 顺昌智行广告 SDK，`/init2` 初始化、`/ck.js` 点击追踪脚本 |
+| 广告 SDK | `admin.hzjizhun.cn` | 杭州极准广告 SDK，接口结构与百合互动一致 |
+| IP 直连广告 | `120.46.138.110` | 广告服务器 IP 直连，`/init2` 初始化、`/ad2` 广告请求 |
+| 数据追踪 | `cnlogs.umeng.com` / `utoken.umeng.com` | 友盟统计与设备标识 |
+| 推送 SDK | `sdk.push.mob.com` / `api.share.mob.com` | MobTech 推送与分享 SDK |
+| 日志上报 | `compus-browse-statistics.cn-hangzhou.log.aliyuncs.com` / `second-card.cn-hangzhou.log.aliyuncs.com` | 阿里云日志服务，浏览统计与二级卡片数据 |
+| 反作弊 SDK | `cdn-api-verify.dutils.com` / `log-verify.dutils.com` / `m.mpl.dutils.com` / `h.m.mpl.dutils.com` | 数盾 (dutils) 反作弊与设备指纹 |
+| 崩溃上报 | `ios.bugly.qq.com` | 腾讯 Bugly 崩溃上报 |
+| 配置与上报 | `cfgc.zztfly.com` / `upc.zztfly.com` | 配置下发与数据上报 |
+
+> 模块同时包含 IP-CIDR 规则拦截 IP 直连广告服务器，以及 URL Rewrite 精确匹配路径拦截，避免误伤业务接口。
+> 业务域名 `compus.xiaofubao.com` 未被拦截，确保 App 正常功能不受影响。
 
 </details>
 
