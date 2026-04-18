@@ -100,5 +100,12 @@ IP-CIDR,101.32.133.0/24,REJECT,no-resolve
 ^https?:\/\/yumao\.puata\.info\/cc_info - reject
 ^https?:\/\/audid-api\.taobao\.com\/v2\.0\/i\/audid\/req\/ - reject
 
+# 拦截 App 自营开屏广告配置接口
+^https?:\/\/compus\.xiaofubao\.com\/compus\/advertising\/getStartupAdvertising - reject-dict
+# 拦截 App 自营广告配置（悬浮广告、弹窗广告等）
+^https?:\/\/compus\.xiaofubao\.com\/compus\/advertising\/getAdvertisingMap - reject-dict
+# 拦截广告素材图片
+^https?:\/\/oss\.yixiaoyuan\.com\/compus\/advertising\/ - reject
+
 [MITM]
-hostname = %APPEND% api.anythinktech.com, api.bridgeoos.com, ad.baihemob.com, admin.hzjizhun.cn, report.shunchangzhixing.com, s.adxvip.com, i.youjingnetwork.com, sdk.push.mob.com, api.share.mob.com, log-verify.dutils.com, m.mpl.dutils.com, cnlogs.umengcloud.com, resolve.umeng.com, ucc.umeng.com, yumao.puata.info, audid-api.taobao.com
+hostname = %APPEND% api.anythinktech.com, api.bridgeoos.com, ad.baihemob.com, admin.hzjizhun.cn, report.shunchangzhixing.com, s.adxvip.com, i.youjingnetwork.com, sdk.push.mob.com, api.share.mob.com, log-verify.dutils.com, m.mpl.dutils.com, cnlogs.umengcloud.com, resolve.umeng.com, ucc.umeng.com, yumao.puata.info, audid-api.taobao.com, compus.xiaofubao.com
