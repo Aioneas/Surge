@@ -61,10 +61,8 @@ DOMAIN,upc.zztfly.com,REJECT
 DOMAIN,yumao.puata.info,REJECT
 DOMAIN,audid-api.taobao.com,REJECT
 
-# IP直连广告服务器
+# IP直连广告服务器（仅精确拦截已确认的广告 IP，不拦截 /24 段避免误伤微信等腾讯服务）
 IP-CIDR,120.46.138.110/32,REJECT,no-resolve
-IP-CIDR,43.160.156.0/24,REJECT,no-resolve
-IP-CIDR,101.32.133.0/24,REJECT,no-resolve
 
 [URL Rewrite]
 # 拦截广告SDK初始化

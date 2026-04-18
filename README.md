@@ -123,7 +123,7 @@ policy-path=请替换为你自己的Surge订阅地址
 | 广告 SDK | `admin.hzjizhun.cn` | 杭州极准广告 SDK，接口结构与百合互动一致 |
 | 广告素材与追踪 | `adimage.bwton.com` | 广告图片素材 CDN |
 | 广告交换与追踪 | `s.adxvip.com` / `i.youjingnetwork.com` | 广告交换平台与有景网络追踪，`/jy3c` `/jypi` `/jyci` 广告请求，`/e` `/c` `/s` 事件追踪 |
-| IP 直连广告 | `120.46.138.110` / `43.160.156.0/24` / `101.32.133.0/24` | 广告服务器 IP 直连，`/init2` 初始化、`/ad2` 广告请求、`/mmtls/*` 加密通信 |
+| IP 直连广告 | `120.46.138.110` | 广告服务器 IP 直连，`/init2` 初始化、`/ad2` 广告请求 |
 | 数据追踪 | `cnlogs.umeng.com` / `cnlogs.umengcloud.com` / `utoken.umeng.com` / `resolve.umeng.com` / `ucc.umeng.com` | 友盟统计、设备标识、域名解析、配置下发 |
 | 推送 SDK | `sdk.push.mob.com` / `api.share.mob.com` | MobTech 推送与分享 SDK |
 | 日志上报 | `compus-browse-statistics.cn-hangzhou.log.aliyuncs.com` / `second-card.cn-hangzhou.log.aliyuncs.com` / `compus-log.cn-hangzhou.log.aliyuncs.com` | 阿里云日志服务，浏览统计、二级卡片、业务日志 |
