@@ -112,25 +112,28 @@ policy-path=请替换为你自己的Surge订阅地址
 <details>
   <summary><strong>展开查看数智易正去广告模块说明</strong></summary>
 
-基于对数智易正 App（`cn.com.yunma.company.app`）启动流程的实际抓包分析，覆盖以下广告与追踪链路：
+基于对数智易正 App（`cn.com.yunma.company.app`）启动流程的完整抓包分析（HAR + PCAP），覆盖以下广告与追踪链路：
 
 | 分类 | 域名 | 说明 |
 | --- | --- | --- |
 | 广告 SDK 聚合 | `api.anythinktech.com` / `tk.anythinktech.com` / `da.anythinktech.com` | TopOn (AnyThink) 广告聚合平台，`/v2/open/app` 初始化、`/v2/open/placement` 广告位请求 |
 | 广告 SDK 聚合 | `api.bridgeoos.com` | BridgeOOS 广告聚合，与 AnyThink 同接口结构 |
 | 广告 SDK | `ad.baihemob.com` | 百合互动广告 SDK，`/setGInfo` 设备信息上报、`/checkCd` 广告频控、`/infoConfig` 配置拉取 |
-| 广告 SDK | `ad.shunchangzhixing.com` / `inner-empty.shunchangzhixing.com` / `static.shunchangzhixing.com` | 顺昌智行广告 SDK，`/init2` 初始化、`/ck.js` 点击追踪脚本 |
+| 广告 SDK | `ad.shunchangzhixing.com` / `inner-empty.shunchangzhixing.com` / `static.shunchangzhixing.com` / `report.shunchangzhixing.com` | 顺昌智行广告 SDK，`/init2` 初始化、`/ck.js` 点击追踪、`/channel/report` 广告事件上报 |
 | 广告 SDK | `admin.hzjizhun.cn` | 杭州极准广告 SDK，接口结构与百合互动一致 |
-| IP 直连广告 | `120.46.138.110` | 广告服务器 IP 直连，`/init2` 初始化、`/ad2` 广告请求 |
-| 数据追踪 | `cnlogs.umeng.com` / `utoken.umeng.com` | 友盟统计与设备标识 |
+| 广告素材与追踪 | `adimage.bwton.com` | 广告图片素材 CDN |
+| 广告交换与追踪 | `s.adxvip.com` / `i.youjingnetwork.com` | 广告交换平台与有景网络追踪，`/jy3c` `/jypi` `/jyci` 广告请求，`/e` `/c` `/s` 事件追踪 |
+| IP 直连广告 | `120.46.138.110` / `43.160.156.0/24` / `101.32.133.0/24` | 广告服务器 IP 直连，`/init2` 初始化、`/ad2` 广告请求、`/mmtls/*` 加密通信 |
+| 数据追踪 | `cnlogs.umeng.com` / `cnlogs.umengcloud.com` / `utoken.umeng.com` / `resolve.umeng.com` / `ucc.umeng.com` | 友盟统计、设备标识、域名解析、配置下发 |
 | 推送 SDK | `sdk.push.mob.com` / `api.share.mob.com` | MobTech 推送与分享 SDK |
-| 日志上报 | `compus-browse-statistics.cn-hangzhou.log.aliyuncs.com` / `second-card.cn-hangzhou.log.aliyuncs.com` | 阿里云日志服务，浏览统计与二级卡片数据 |
+| 日志上报 | `compus-browse-statistics.cn-hangzhou.log.aliyuncs.com` / `second-card.cn-hangzhou.log.aliyuncs.com` / `compus-log.cn-hangzhou.log.aliyuncs.com` | 阿里云日志服务，浏览统计、二级卡片、业务日志 |
 | 反作弊 SDK | `cdn-api-verify.dutils.com` / `log-verify.dutils.com` / `m.mpl.dutils.com` / `h.m.mpl.dutils.com` | 数盾 (dutils) 反作弊与设备指纹 |
+| 设备指纹 | `yumao.puata.info` / `audid-api.taobao.com` | 羽毛设备指纹、淘宝设备 ID |
 | 崩溃上报 | `ios.bugly.qq.com` | 腾讯 Bugly 崩溃上报 |
 | 配置与上报 | `cfgc.zztfly.com` / `upc.zztfly.com` | 配置下发与数据上报 |
 
-> 模块同时包含 IP-CIDR 规则拦截 IP 直连广告服务器，以及 URL Rewrite 精确匹配路径拦截，避免误伤业务接口。
-> 业务域名 `compus.xiaofubao.com` 未被拦截，确保 App 正常功能不受影响。
+> 模块同时包含 IP-CIDR 规则拦截 IP 直连广告服务器（含微信 mmtls 加密通信），以及 URL Rewrite 精确匹配路径拦截，避免误伤业务接口。
+> 业务域名 `compus.xiaofubao.com` / `application.xiaofubao.com` / `oss.yixiaoyuan.com` 未被拦截，确保 App 正常功能不受影响。
 
 </details>
 

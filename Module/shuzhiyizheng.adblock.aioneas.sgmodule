@@ -19,19 +19,29 @@ DOMAIN,ad.baihemob.com,REJECT
 DOMAIN,ad.shunchangzhixing.com,REJECT
 DOMAIN,inner-empty.shunchangzhixing.com,REJECT
 DOMAIN,static.shunchangzhixing.com,REJECT
+DOMAIN,report.shunchangzhixing.com,REJECT
 
 # 广告SDK - 杭州极准
 DOMAIN,admin.hzjizhun.cn,REJECT
 
+# 广告素材与追踪
+DOMAIN,adimage.bwton.com,REJECT
+DOMAIN,s.adxvip.com,REJECT
+DOMAIN,i.youjingnetwork.com,REJECT
+
 # 数据追踪与统计
 DOMAIN,cnlogs.umeng.com,REJECT
+DOMAIN,cnlogs.umengcloud.com,REJECT
 DOMAIN,utoken.umeng.com,REJECT
+DOMAIN,resolve.umeng.com,REJECT
+DOMAIN,ucc.umeng.com,REJECT
 DOMAIN,sdk.push.mob.com,REJECT
 DOMAIN,api.share.mob.com,REJECT
 
 # 日志上报
 DOMAIN,compus-browse-statistics.cn-hangzhou.log.aliyuncs.com,REJECT
 DOMAIN,second-card.cn-hangzhou.log.aliyuncs.com,REJECT
+DOMAIN,compus-log.cn-hangzhou.log.aliyuncs.com,REJECT
 
 # 数盾反作弊SDK
 DOMAIN,cdn-api-verify.dutils.com,REJECT
@@ -46,8 +56,14 @@ DOMAIN,ios.bugly.qq.com,REJECT
 DOMAIN,cfgc.zztfly.com,REJECT
 DOMAIN,upc.zztfly.com,REJECT
 
+# 设备指纹与追踪
+DOMAIN,yumao.puata.info,REJECT
+DOMAIN,audid-api.taobao.com,REJECT
+
 # IP直连广告服务器
 IP-CIDR,120.46.138.110/32,REJECT,no-resolve
+IP-CIDR,43.160.156.0/24,REJECT,no-resolve
+IP-CIDR,101.32.133.0/24,REJECT,no-resolve
 
 [URL Rewrite]
 # 拦截广告SDK初始化
@@ -62,11 +78,27 @@ IP-CIDR,120.46.138.110/32,REJECT,no-resolve
 ^https?:\/\/120\.46\.138\.110\/(init2|ad2) - reject
 ^https?:\/\/inner-empty\.shunchangzhixing\.com\/init2 - reject
 
+# 拦截广告上报
+^https?:\/\/report\.shunchangzhixing\.com\/channel\/report - reject
+
+# 拦截广告追踪
+^https?:\/\/s\.adxvip\.com\/(jy3c|jypi|jyci) - reject
+^https?:\/\/i\.youjingnetwork\.com\/(e|c|s) - reject
+
 # 拦截数据上报
-^https?:\/\/sdk\.push\.mob\.com\/(conf|bind|badge|updateIsPro) - reject
+^https?:\/\/sdk\.push\.mob\.com\/(conf|bind|badge|updateIsPro|v4\/conf) - reject
 ^https?:\/\/api\.share\.mob\.com\/(conf5|snsconf) - reject
 ^https?:\/\/log-verify\.dutils\.com\/api\/log - reject
 ^https?:\/\/m\.mpl\.dutils\.com\/tcp\/config\/init - reject
 
+# 拦截友盟追踪
+^https?:\/\/cnlogs\.umengcloud\.com\/unify_logs - reject
+^https?:\/\/resolve\.umeng\.com\/resolve - reject
+^https?:\/\/ucc\.umeng\.com\/v2\/inn\/fetch - reject
+
+# 拦截设备指纹
+^https?:\/\/yumao\.puata\.info\/cc_info - reject
+^https?:\/\/audid-api\.taobao\.com\/v2\.0\/i\/audid\/req\/ - reject
+
 [MITM]
-hostname = %APPEND% api.anythinktech.com, api.bridgeoos.com, ad.baihemob.com, admin.hzjizhun.cn, sdk.push.mob.com, api.share.mob.com, log-verify.dutils.com, m.mpl.dutils.com
+hostname = %APPEND% api.anythinktech.com, api.bridgeoos.com, ad.baihemob.com, admin.hzjizhun.cn, report.shunchangzhixing.com, s.adxvip.com, i.youjingnetwork.com, sdk.push.mob.com, api.share.mob.com, log-verify.dutils.com, m.mpl.dutils.com, cnlogs.umengcloud.com, resolve.umeng.com, ucc.umeng.com, yumao.puata.info, audid-api.taobao.com
