@@ -13,15 +13,15 @@ DOMAIN-SUFFIX,tobdatarangers.com,REJECT
 DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
-[URL Rewrite]
-# 开屏弹窗（HAR 实测响应全空，直接 reject-200 最轻量）
-^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) - reject-200
+[Map Local]
+# 开屏弹窗 → 直接本地返回空结构（不经过服务器，最快）
+^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"success\",\"data\":{\"id\":\"0\",\"pop_up_image\":\"\",\"number\":\" \",\"image\":\"\",\"background_image\":\"\",\"black_background_image\":\"\",\"mark_image\":\"\",\"title\":\"\",\"receive_date\":\"\",\"desc\":[],\"btn_text\":\"\",\"btn_url\":\"\"}}" status-code=200 header="Content-Type: application/json"
+
+# 开屏内容推荐（Banner 广告） → 直接本地返回空数组
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"success\",\"data\":[]}" status-code=200 header="Content-Type: application/json"
 
 [Script]
-# 开屏内容推荐（Banner） → 返回空数组
-看理想去开屏推荐 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
-
-# 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置）
+# 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置，必须走 http-response）
 看理想去Config广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
 # VIP 解锁
