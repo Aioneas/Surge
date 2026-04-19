@@ -15,14 +15,14 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [URL Rewrite]
 # 开屏弹窗（HAR 实测响应全空，直接 reject-200 最轻量）
-^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up - reject-200
+^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) - reject-200
 
 [Script]
 # 开屏内容推荐（Banner） → 返回空数组
-看理想去开屏推荐 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+看理想去开屏推荐 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
 # 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置）
-看理想去Config广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+看理想去Config广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
 # VIP 解锁
 看理想VIP原逻辑 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
