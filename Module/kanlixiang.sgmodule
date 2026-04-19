@@ -1,5 +1,5 @@
 #!name=看理想 VIP解锁 + 去广告 + 去推广昵称
-#!desc=① 去开屏推荐广告/弹窗 ② 清除 config 广告字段 ③ 屏蔽字节/友盟埋点 ④ VIP解锁 ⑤ 资料页去推广昵称
+#!desc=① 保留内容推荐开屏 ② 去第三方弹窗广告 ③ 清除 config dialog ④ 屏蔽字节/友盟埋点 ⑤ VIP解锁 ⑥ 资料页去推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -8,10 +8,10 @@
 # 实测环境：看理想 v4.11.2 / iOS 26 / 2026-04-19
 #
 # 已确认有效：
-#   [Map Local] pop-up         → modified:true，弹窗不再出现
-#   [Map Local] advertisement  → App 不再请求该接口（404 后 App 放弃拉取）
-#   [Script]    config         → modified:true，advertisements[]/dialog 已清空
+#   [Map Local] pop-up    → modified:true，第三方弹窗广告不再出现
+#   [Script]    config    → modified:true，dialog 已清空
 #   [Rule]      字节/友盟埋点  → REJECT 生效
+#   advertisement 接口    → 正常放行（看理想自有内容推荐，保留）
 #
 # 网络层已到极限（品牌启动页"看见另一种可能"为 App 内置原生 UI，无接口控制）：
 #   右上角"跳过"按钮属于本地原生控件，Surge 无法干预
@@ -30,8 +30,6 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
-# 开屏内容推荐 → 404，App 直接放弃拉取，不再发起该请求（实测请求消失）
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
 [Script]
 # 全局配置：清除 advertisements[] / dialog（保留 app_config 等正常字段）
