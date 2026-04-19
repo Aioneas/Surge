@@ -1,8 +1,20 @@
-#!name=看理想VIP解锁 + 资料页去推广昵称
-#!desc=保留原VIP模块逻辑，并将 user/profile 改为仅清理推广昵称，避免重复命中
+#!name=看理想VIP解锁 + 去广告 + 资料页去推广昵称
+#!desc=VIP解锁、去开屏弹窗广告、去首页Banner广告、屏蔽字节埋点、资料页清理推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
+
+[Rule]
+# 字节系埋点 & 远控（实测每 ~10s 高频请求）
+DOMAIN-SUFFIX,mon.zijieapi.com,REJECT
+DOMAIN-SUFFIX,configure-platform.bytedance.com,REJECT
+DOMAIN-SUFFIX,tobdatarangers.com,REJECT
+
+[URL Rewrite]
+# 开屏弹窗广告接口 → 空 200（App 不弹窗）
+^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up - reject-200
+# 首页 Banner 广告接口 → 空 200
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement - reject-200
 
 [Script]
 看理想VIP原逻辑 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
