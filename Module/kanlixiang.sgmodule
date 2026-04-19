@@ -1,11 +1,24 @@
-#!name=看理想VIP解锁 + 去广告 + 资料页去推广昵称
-#!desc=VIP解锁、去开屏内容推荐/弹窗、清除config广告字段、屏蔽字节埋点、资料页清理推广昵称
+#!name=看理想 VIP解锁 + 去广告 + 去推广昵称
+#!desc=① 去开屏推荐广告/弹窗 ② 清除 config 广告字段 ③ 屏蔽字节/友盟埋点 ④ VIP解锁 ⑤ 资料页去推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
 
+# ─────────────────────────────────────────────────────────────
+# 实测环境：看理想 v4.11.2 / iOS 26 / 2026-04-19
+#
+# 已确认有效：
+#   [Map Local] pop-up         → modified:true，弹窗不再出现
+#   [Map Local] advertisement  → App 不再请求该接口（404 后 App 放弃拉取）
+#   [Script]    config         → modified:true，advertisements[]/dialog 已清空
+#   [Rule]      字节/友盟埋点  → REJECT 生效
+#
+# 网络层已到极限（品牌启动页"看见另一种可能"为 App 内置原生 UI，无接口控制）：
+#   右上角"跳过"按钮属于本地原生控件，Surge 无法干预
+# ─────────────────────────────────────────────────────────────
+
 [Rule]
-# 字节系埋点 & 远控（实测每 ~10s 高频请求）
+# 字节系埋点 & 远控（实测每 ~10s 高频轮询）
 DOMAIN-SUFFIX,mon.zijieapi.com,REJECT
 DOMAIN-SUFFIX,configure-platform.bytedance.com,REJECT
 DOMAIN-SUFFIX,tobdatarangers.com,REJECT
@@ -14,21 +27,21 @@ DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [Map Local]
-# 开屏弹窗 → 返回失败，App 跳过弹窗容器
+# 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
-# 开屏内容推荐（Banner 广告） → 返回失败，App 跳过广告容器（含品牌 Splash）
+# 开屏内容推荐 → 404，App 直接放弃拉取，不再发起该请求（实测请求消失）
 ^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
 [Script]
-# 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置，必须走 http-response）
-看理想去Config广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+# 全局配置：清除 advertisements[] / dialog（保留 app_config 等正常字段）
+看理想去广告配置 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
 # VIP 解锁
-看理想VIP原逻辑 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
+看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
 
 # 资料页去推广昵称
-看理想资料页去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(?:\?.*)?$, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
+看理想去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
 [MITM]
 hostname = %APPEND% api.vistopia.com.cn
