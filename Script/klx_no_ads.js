@@ -15,14 +15,14 @@ try {
   const data = JSON.parse(body);
 
   // ── 1. 开屏内容推荐（Banner 广告）────────────────────────────
-  if (/\/api\/v2\/home\/advertisement/.test(url)) {
+  if (/\/api\/v2\/home\/advertisement(\?|$)/.test(url)) {
     data.data = [];
     $done({ body: JSON.stringify(data) });
     return;
   }
 
   // ── 2. 全局配置接口 - 清除广告字段 ───────────────────────────
-  if (/\/api\/v2\/other\/config/.test(url)) {
+  if (/\/api\/v2\/other\/config(\?|$)/.test(url)) {
     if (data.data) {
       // 清除开屏广告图片列表
       data.data.advertisements = [];
@@ -34,7 +34,7 @@ try {
   }
 
   // ── 3. 弹窗广告（兜底，URL Rewrite reject-200 优先命中）──────
-  if (/\/api\/v2\/other\/pop-up/.test(url)) {
+  if (/\/api\/v2\/other\/pop-up(\?|$)/.test(url)) {
     data.data = {
       id: "0", pop_up_image: "", number: " ", image: "",
       background_image: "", black_background_image: "",
