@@ -17,8 +17,6 @@ try {
   const data = JSON.parse(body);
 
   if (/\/api\/v2\/other\/config(\?|$)/.test(url) && data.data) {
-    // 清除开屏广告图片列表
-    data.data.advertisements = [];
     // 清除服务端弹窗
     data.data.dialog = null;
     $done({ body: JSON.stringify(data) });
