@@ -14,11 +14,11 @@ DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [Map Local]
-# 开屏弹窗 → 直接本地返回空结构（不经过服务器，最快）
-^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"success\",\"data\":{\"id\":\"0\",\"pop_up_image\":\"\",\"number\":\" \",\"image\":\"\",\"background_image\":\"\",\"black_background_image\":\"\",\"mark_image\":\"\",\"title\":\"\",\"receive_date\":\"\",\"desc\":[],\"btn_text\":\"\",\"btn_url\":\"\"}}" status-code=200 header="Content-Type: application/json"
+# 开屏弹窗 → 返回失败，App 跳过弹窗容器
+^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
-# 开屏内容推荐（Banner 广告） → 直接本地返回空数组
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"success\",\"data\":[]}" status-code=200 header="Content-Type: application/json"
+# 开屏内容推荐（Banner 广告） → 返回失败，App 跳过广告容器（含品牌 Splash）
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
 [Script]
 # 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置，必须走 http-response）
