@@ -1,5 +1,5 @@
 #!name=看理想VIP解锁 + 去广告 + 资料页去推广昵称
-#!desc=VIP解锁、去开屏弹窗广告、去首页Banner广告、屏蔽字节埋点、资料页清理推广昵称
+#!desc=VIP解锁、去开屏内容推荐/弹窗、清除config广告字段、屏蔽字节埋点、资料页清理推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -9,15 +9,25 @@
 DOMAIN-SUFFIX,mon.zijieapi.com,REJECT
 DOMAIN-SUFFIX,configure-platform.bytedance.com,REJECT
 DOMAIN-SUFFIX,tobdatarangers.com,REJECT
+# 友盟埋点
+DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
+DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [URL Rewrite]
-# 开屏弹窗广告接口 → 空 200（App 不弹窗）
+# 开屏弹窗（HAR 实测响应全空，直接 reject-200 最轻量）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up - reject-200
-# 首页 Banner 广告接口 → 空 200
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement - reject-200
 
 [Script]
+# 开屏内容推荐（Banner） → 返回空数组
+看理想去开屏推荐 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+
+# 全局配置 → 清除 advertisements / dialog 字段（保留其余正常配置）
+看理想去Config广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+
+# VIP 解锁
 看理想VIP原逻辑 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
+
+# 资料页去推广昵称
 看理想资料页去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(?:\?.*)?$, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
 [MITM]
