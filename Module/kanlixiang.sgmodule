@@ -1,5 +1,5 @@
 #!name=看理想 VIP解锁 + 去广告 + 去推广昵称
-#!desc=① 保留内容推荐开屏 ② 去第三方弹窗广告 ③ 清除 config dialog ④ 屏蔽字节/友盟埋点 ⑤ VIP解锁 ⑥ 资料页去推广昵称
+#!desc=① 去开屏推荐广告 ② 去第三方弹窗广告 ③ 清除 config 广告字段/dialog ④ 屏蔽字节/友盟埋点 ⑤ VIP解锁 ⑥ 资料页去推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -8,13 +8,14 @@
 # 实测环境：看理想 v4.11.2 / iOS 26 / 2026-04-19
 #
 # 已确认有效：
-#   [Map Local] pop-up    → modified:true，第三方弹窗广告不再出现
-#   [Script]    config    → modified:true，dialog 已清空
-#   [Rule]      字节/友盟埋点  → REJECT 生效
-#   advertisement 接口    → 正常放行（看理想自有内容推荐，保留）
+#   [Map Local] pop-up           → modified:true，第三方弹窗广告不再出现
+#   [Script]    home/advertisement → 返回空 data[]，开屏推荐广告不再下发
+#   [Script]    other/config     → 清空 advertisements[] / dialog，避免残留广告配置
+#   [Rule]      字节/友盟埋点     → REJECT 生效
 #
-# 网络层已到极限（品牌启动页"看见另一种可能"为 App 内置原生 UI，无接口控制）：
-#   右上角"跳过"按钮属于本地原生控件，Surge 无法干预
+# 说明：
+#   品牌启动页“看见另一种可能”若仍短暂出现，属于 App 内置原生 UI；
+#   但服务端开屏推荐广告已在网络层清空，右上角“跳过”通常也会随广告页一并消失。
 # ─────────────────────────────────────────────────────────────
 
 [Rule]
@@ -32,6 +33,9 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 
 [Script]
+# 开屏广告：清空 home/advertisement 返回的 data[]，避免下发开屏推荐内容
+看理想去开屏广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
+
 # 全局配置：清除 advertisements[] / dialog（保留 app_config 等正常字段）
 看理想去广告配置 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
