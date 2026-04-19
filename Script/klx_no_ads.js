@@ -28,6 +28,15 @@ try {
       data.data.advertisements = [];
       // 清除弹窗
       data.data.dialog = null;
+      // 模拟审核模式 → App 跳过品牌 Splash 启动页
+      if (data.data.app_config) {
+        data.data.app_config.app_in_review = "yes";
+        // 关闭登录弹窗
+        data.data.app_config.show_login_perday = "0";
+        data.data.app_config.guest_buy_is_show = "0";
+        data.data.app_config.wx_buy_tip_is_show = "0";
+        data.data.app_config.gift_sale_tip_is_show = "0";
+      }
     }
     $done({ body: JSON.stringify(data) });
     return;
