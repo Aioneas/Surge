@@ -100,12 +100,12 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 
 <!-- external-ad-filter-table:start -->
 
-| 模块 | 来源 | 安装链接 | 规模 |
+| 模块 | 来源 | 安装链接 | 当前规模 |
 | --- | --- | --- | --- |
-| [`easylist`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 54,470 条拦截 / 0 条放行 |
-| [`adguard.mobile-ads`](./Module/adguard.mobile-ads.sgmodule) | AdGuard / uBO Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 929 条拦截 / 2 条放行 |
-| [`ublock.filters`](./Module/ublock.filters.sgmodule) | uBlock filters | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 400 条拦截 / 4 条放行 |
-| [`easyprivacy`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,405 条拦截 / 4 条放行 |
+| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) | 54,751 条拦截域名 / 0 条放行域名 |
+| [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) | 929 条拦截域名 / 2 条放行域名 |
+| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) | 401 条拦截域名 / 4 条放行域名 |
+| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) | 6,406 条拦截域名 / 4 条放行域名 |
 
 <!-- external-ad-filter-table:end -->
 
