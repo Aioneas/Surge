@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T05:54:00+00:00",
+  "generated_at": "2026-04-27T06:11:57+00:00",
   "generator": "tools/build_surge_adlists.py",
   "items": [
     {
@@ -7,7 +7,7 @@
       "display_name": "EasyList（Surge适配）",
       "source_name": "EasyList",
       "module": "Module/easylist.sgmodule",
-      "block_count": 54644,
+      "block_count": 54918,
       "allow_count": 0,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt",
@@ -35,7 +35,7 @@
       "display_name": "uBlock filters（Surge适配）",
       "source_name": "uBlock filters – Ads, trackers, and more",
       "module": "Module/ublock.filters.sgmodule",
-      "block_count": 406,
+      "block_count": 405,
       "allow_count": 4,
       "sources": [
         "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
@@ -46,7 +46,7 @@
       "display_name": "EasyPrivacy（Surge适配）",
       "source_name": "EasyPrivacy",
       "module": "Module/easyprivacy.sgmodule",
-      "block_count": 6416,
+      "block_count": 6415,
       "allow_count": 4,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers.txt",
