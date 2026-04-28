@@ -145,7 +145,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 <a id="policy-groups"></a>
 ## Policy Groups
 
-共 23 个策略组：`Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest` · `Final`
+共 24 个策略组：`Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `DeepSeek` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest` · `Final`
 
 <details>
 <summary><strong>展开完整列表</strong></summary>
@@ -158,6 +158,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 | `Apple` | Proxies / DIRECT / 地区组 | — |
 | `OpenAI` | Proxies / 地区组 | — |
 | `Claude` | Proxies / 地区组 | 图标自托管 |
+| `DeepSeek` | Proxies / 地区组 | deepseek.com / API / 相关 CDN，图标自托管 |
 | `YouTube` | Proxies / 地区组 | — |
 | `Netflix` | Proxies / 地区组 | — |
 | `Disney` | Proxies / 地区组 | — |
@@ -176,6 +177,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 | `Caixin` | SG / Proxies / HK / JP / TW / US / DIRECT | 默认 SG |
 | `Speedtest` | DIRECT / Proxies / 地区组 | — |
 
+
 </details>
 
 ---
@@ -188,6 +190,7 @@ Surge/
 ├── Conf/          # 主配置
 ├── Module/        # Surge 模块
 ├── List/          # 自托管规则集 + 广告模块 DOMAIN-SET 列表
+│   └── deepseek.list # DeepSeek 分流规则集
 ├── Script/        # 自托管脚本
 ├── Icon/          # 策略组与模块图标
 ├── tools/         # 规则生成与维护脚本
