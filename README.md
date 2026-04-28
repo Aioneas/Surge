@@ -158,7 +158,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 | `Apple` | Proxies / DIRECT / 地区组 | — |
 | `OpenAI` | Proxies / 地区组 | — |
 | `Claude` | Proxies / 地区组 | 图标自托管 |
-| `DeepSeek` | Proxies / 地区组 | deepseek.com / API / 相关 CDN，图标自托管 |
+| `DeepSeek` | Proxies / DIRECT / 地区组 | deepseek.com / API / 相关 CDN，图标自托管 |
 | `YouTube` | Proxies / 地区组 | — |
 | `Netflix` | Proxies / 地区组 | — |
 | `Disney` | Proxies / 地区组 | — |
