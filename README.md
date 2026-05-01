@@ -145,14 +145,15 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 <a id="policy-groups"></a>
 ## Policy Groups
 
-共 24 个策略组：`Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `DeepSeek` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest` · `Final`
+共 25 个策略组：`Proxy Pool` · `Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `DeepSeek` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest` · `Final`
 
 <details>
 <summary><strong>展开完整列表</strong></summary>
 
 | 策略组 | 默认候选 | 说明 |
 | --- | --- | --- |
-| `Proxies` | 订阅节点 | 主节点组 |
+| `Proxy Pool` | 订阅节点 | 隐藏节点池，供地区组筛选 |
+| `Proxies` | HK / JP / SG / TW / US / DIRECT | 主节点组，仅展示地区入口 |
 | `Final` | Proxies / DIRECT | 兜底 |
 | `Google` | Proxies / 地区组 | — |
 | `Apple` | Proxies / DIRECT / 地区组 | — |
