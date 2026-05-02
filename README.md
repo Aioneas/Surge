@@ -15,14 +15,22 @@
 
 ## Quick Start
 
+### iOS / Generic Surge
+
 ```text
 https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 ```
 
-打开 [`Conf/surge.conf`](./Conf/surge.conf)，将 `policy-path=请替换为你自己的Surge订阅地址` 替换为你的订阅链接后重新导入。
+### Surge Mac
+
+```text
+https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
+```
+
+打开对应的 `Conf/*.conf`，将 `policy-path=请替换为你自己的Surge订阅地址` 替换为你的订阅链接后重新导入。
 
 > [!IMPORTANT]
-> 公开仓库不保存订阅地址、证书口令等敏感信息。
+> 公开仓库不保存订阅地址、证书口令等敏感信息。Mac 本机私人配置如需兼容完整 Surge 订阅，可将订阅里的 `[Proxy]` 节点内联到私人配置；公开版仍保留 `policy-path` 占位符。
 
 ---
 
@@ -188,7 +196,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge.conf
 
 ```text
 Surge/
-├── Conf/          # 主配置
+├── Conf/          # 主配置（surge.conf 通用版；surge-mac.conf 为 Mac 公开版）
 ├── Module/        # Surge 模块
 ├── List/          # 自托管规则集 + 广告模块 DOMAIN-SET 列表
 │   └── deepseek.list # DeepSeek 分流规则集
