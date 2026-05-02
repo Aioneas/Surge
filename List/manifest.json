@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T06:24:17+00:00",
+  "generated_at": "2026-05-02T05:45:35+00:00",
   "generator": "tools/build_surge_adlists.py",
   "items": [
     {
@@ -7,7 +7,7 @@
       "display_name": "EasyList（Surge适配）",
       "source_name": "EasyList",
       "module": "Module/easylist.sgmodule",
-      "block_count": 55752,
+      "block_count": 56019,
       "allow_count": 0,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt",
