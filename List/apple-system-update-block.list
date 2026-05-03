@@ -17,9 +17,9 @@ DOMAIN-SUFFIX,swdownload.apple.com
 DOMAIN-SUFFIX,swcdn.apple.com
 # --- CDN for update payloads ---
 DOMAIN,updates-http.cdn-apple.com
-DOMAIN,updates.cdn-apple.com
+# DOMAIN,updates.cdn-apple.com          # 暂不屏蔽：壁纸下载需要此域名
 DOMAIN-SUFFIX,updates-http.cdn-apple.com
-DOMAIN-SUFFIX,updates.cdn-apple.com
+# DOMAIN-SUFFIX,updates.cdn-apple.com   # 同上
 # --- Device management / update metadata ---
 DOMAIN,gdmf.apple.com
 DOMAIN-SUFFIX,gdmf.apple.com
