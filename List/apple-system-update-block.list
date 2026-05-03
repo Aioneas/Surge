@@ -1,0 +1,43 @@
+# NAME: Apple System Update Block
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-05-03
+# NOTES: Block Apple software update check & download domains.
+#        Synced from /etc/hosts block list on Mac.
+#        This prevents macOS/iOS from discovering or downloading system updates.
+#
+# --- Software Update catalog & download ---
+DOMAIN,swscan.apple.com
+DOMAIN,swdist.apple.com
+DOMAIN,swdownload.apple.com
+DOMAIN,swcdn.apple.com
+DOMAIN-SUFFIX,swscan.apple.com
+DOMAIN-SUFFIX,swdist.apple.com
+DOMAIN-SUFFIX,swdownload.apple.com
+DOMAIN-SUFFIX,swcdn.apple.com
+# --- CDN for update payloads ---
+DOMAIN,updates-http.cdn-apple.com
+DOMAIN,updates.cdn-apple.com
+DOMAIN-SUFFIX,updates-http.cdn-apple.com
+DOMAIN-SUFFIX,updates.cdn-apple.com
+# --- Device management / update metadata ---
+DOMAIN,gdmf.apple.com
+DOMAIN-SUFFIX,gdmf.apple.com
+# --- Update experience / telemetry ---
+DOMAIN,xp.apple.com
+DOMAIN-SUFFIX,xp.apple.com
+# --- Mobile/device software update catalog ---
+DOMAIN,mesu.apple.com
+DOMAIN-SUFFIX,mesu.apple.com
+# --- Software lookup / update service ---
+DOMAIN,gsp64-ssl.ls.apple.com
+# --- Additional OTA update domains ---
+DOMAIN,oscdn.apple.com
+DOMAIN-SUFFIX,oscdn.apple.com
+DOMAIN,osrecovery.apple.com
+DOMAIN-SUFFIX,osrecovery.apple.com
+DOMAIN,gg.apple.com
+DOMAIN-SUFFIX,gg.apple.com
+DOMAIN,ns.itunes.apple.com
+DOMAIN,appldnld.apple.com
+DOMAIN-SUFFIX,appldnld.apple.com
