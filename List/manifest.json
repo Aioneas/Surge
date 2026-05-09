@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T05:37:46+00:00",
+  "generated_at": "2026-05-09T06:01:42+00:00",
   "generator": "tools/build_surge_adlists.py",
   "items": [
     {
@@ -7,7 +7,7 @@
       "display_name": "EasyList（Surge适配）",
       "source_name": "EasyList",
       "module": "Module/easylist.sgmodule",
-      "block_count": 54364,
+      "block_count": 54570,
       "allow_count": 0,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt",
@@ -24,7 +24,7 @@
       "display_name": "AdGuard Mobile Ads（Surge适配）",
       "source_name": "AdGuard/uBO – Mobile Ads",
       "module": "Module/adguard.mobile-ads.sgmodule",
-      "block_count": 939,
+      "block_count": 940,
       "allow_count": 2,
       "sources": [
         "https://filters.adtidy.org/extension/ublock/filters/11.txt"
@@ -46,7 +46,7 @@
       "display_name": "EasyPrivacy（Surge适配）",
       "source_name": "EasyPrivacy",
       "module": "Module/easyprivacy.sgmodule",
-      "block_count": 6428,
+      "block_count": 6430,
       "allow_count": 4,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers.txt",
