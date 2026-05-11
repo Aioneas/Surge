@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T06:21:15+00:00",
+  "generated_at": "2026-05-11T06:51:54+00:00",
   "generator": "tools/build_surge_adlists.py",
   "items": [
     {
@@ -7,7 +7,7 @@
       "display_name": "EasyList（Surge适配）",
       "source_name": "EasyList",
       "module": "Module/easylist.sgmodule",
-      "block_count": 54756,
+      "block_count": 54948,
       "allow_count": 0,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easylist/easylist_adservers.txt",
@@ -46,7 +46,7 @@
       "display_name": "EasyPrivacy（Surge适配）",
       "source_name": "EasyPrivacy",
       "module": "Module/easyprivacy.sgmodule",
-      "block_count": 6430,
+      "block_count": 6432,
       "allow_count": 4,
       "sources": [
         "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers.txt",
