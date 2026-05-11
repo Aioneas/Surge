@@ -18,7 +18,7 @@ DOMAIN-SUFFIX,swcdn.apple.com
 # --- CDN for update payloads / MobileAsset wallpapers ---
 # NOTE: Do NOT block updates-http.cdn-apple.com or updates.cdn-apple.com.
 # macOS wallpaper / MobileAsset downloads use these CDN hosts; system update
-# discovery is still blocked by swscan/swdist/swdownload/swcdn/gdmf/mesu/etc.
+# discovery is still blocked by swscan/swdist/swdownload/swcdn/gdmf/oscdn/etc.
 # DOMAIN,updates-http.cdn-apple.com     # 暂不屏蔽：壁纸/MobileAsset 下载需要此域名
 # DOMAIN,updates.cdn-apple.com          # 暂不屏蔽：壁纸下载需要此域名
 # DOMAIN-SUFFIX,updates-http.cdn-apple.com # 同上
@@ -29,9 +29,12 @@ DOMAIN-SUFFIX,gdmf.apple.com
 # --- Update experience / telemetry ---
 DOMAIN,xp.apple.com
 DOMAIN-SUFFIX,xp.apple.com
-# --- Mobile/device software update catalog ---
-DOMAIN,mesu.apple.com
-DOMAIN-SUFFIX,mesu.apple.com
+# --- MobileAsset catalog ---
+# NOTE: Do NOT block mesu.apple.com globally. macOS Wallpaper/MobileAsset also
+# queries mesu.apple.com for asset catalogs. System update discovery/download
+# remains blocked by swscan/swdist/swdownload/swcdn/gdmf/oscdn/etc.
+# DOMAIN,mesu.apple.com                # 暂不屏蔽：壁纸/MobileAsset 目录需要
+# DOMAIN-SUFFIX,mesu.apple.com         # 同上
 # --- Software lookup / update service ---
 DOMAIN,gsp64-ssl.ls.apple.com
 # --- Additional OTA update domains ---
