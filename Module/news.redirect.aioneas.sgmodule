@@ -33,6 +33,6 @@
 [MITM]
 # 财新：通配符覆盖所有频道子域名（opinion/international/finance/companies 等），
 # 排除高频资源域名避免无效 TLS 解密（img/apollo/file 等图片CDN和统计域名）
-# FT中文/端传媒：精确指定文章页域名
+# FT中文：精确指定文章页域名；端传媒：覆盖多语言/地区子域
 # 其他站点：已是精确域名，无需调整
-hostname = %APPEND% *.caixin.com, -img.caixin.com, -apollo.caixin.com, -file.caixin.com, -c2.caixin.com, -getavatar.caixin.com, -gateway.caixin.com, -stock.caixin.com, -api.caixin.com, -mall.caixin.com, -datanews.caixin.com, ftchinese.com, www.ftchinese.com, m.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, www.theinitium.com
+hostname = %APPEND% *.caixin.com, -img.caixin.com, -apollo.caixin.com, -file.caixin.com, -c2.caixin.com, -getavatar.caixin.com, -gateway.caixin.com, -stock.caixin.com, -api.caixin.com, -mall.caixin.com, -datanews.caixin.com, ftchinese.com, www.ftchinese.com, m.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, *.theinitium.com
