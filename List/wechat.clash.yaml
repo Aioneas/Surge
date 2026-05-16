@@ -1,0 +1,11 @@
+# NAME: WeChat
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-05-16
+# SOURCE: local wechat.list
+payload:
+  - DOMAIN-SUFFIX,weixin.qq.com
+  - DOMAIN-SUFFIX,wechat.com
+  - DOMAIN-SUFFIX,wechatapp.com
+  - DOMAIN-SUFFIX,wechatpay.com
+  - DOMAIN-SUFFIX,tenpay.com

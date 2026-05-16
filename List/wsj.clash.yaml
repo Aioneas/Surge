@@ -1,0 +1,13 @@
+# NAME: WSJ
+# AUTHOR: Minis
+# REPO: https://github.com/Aioneas/Surge
+# UPDATED: 2026-05-16
+# SOURCE: local wsj.list
+payload:
+  - DOMAIN-SUFFIX,wsj.com
+  - DOMAIN-SUFFIX,wsj.net
+  - DOMAIN-SUFFIX,wsj.com.cn
+  - DOMAIN-SUFFIX,cn.wsj.com
+  - DOMAIN-SUFFIX,dowjones.com
+  - DOMAIN-SUFFIX,barrons.com
+  - DOMAIN-SUFFIX,marketwatch.com
