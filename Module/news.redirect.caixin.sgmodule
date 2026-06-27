@@ -1,39 +1,42 @@
-#!name=财新&周边自动跳转@Aioneas
-#!desc=财新 DeepView / Entities / 三联生活周刊 / 混沌 / 三联中读 自动 302 跳转镜像阅读页（三联生活周刊站内跳转需手动刷新）。⚠️ 注意：镜像站（best.998888.best 系列）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge 适配，非镜像站运营方。
+#!name=新闻网站重定向（通用版）@Aioneas
+#!desc=财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 / 南方周末 自动 302 跳转镜像阅读页。⚠️ 注意：镜像站（best.998888.best）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge 适配，非镜像站运营方。
 #!author=caixinshop + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Global.png
 #!category=Aioneas
 
 [URL Rewrite]
-# 财新主站文章（7位及以上数字 ID）
-^https?:\/\/(?!(?:deepview|datanews|entities)\.)[^\/]*caixin\.com\/.*?\/(\d{7,})\.html(?:\?.*)?$ https://best.998888.best/cx/$1 302
+# 财新：如 /2026-04-03/102431052.html
+^https?:\/\/(?!(?:deepview|datanews)\.)[^\/]*caixin\.com\/.*?\/(\d{9})\.html(?:\?.*)?$ https://best.998888.best/cx/$1 302
 
-# DeepView 专题
-^https?:\/\/deepview\.caixin\.com\/topic\/([^\/?#]+)\.html(?:\?.*)?$ https://cxv.998888.best/topic/$1 302
+# FT 中文网：优先匹配 story，兼容其他含数字 ID 的文章路径
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/story\/(\d+)(?:\?.*)?$ https://best.998888.best/ft/$1 302
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/(?:[^?#]*\/)?(\d+)(?:[^?#]*)?(?:\?.*)?$ https://best.998888.best/ft/$1 302
 
-# DeepView 活动
-^https?:\/\/deepview\.caixin\.com\/event\/([^\/?#]+)\.html(?:\?.*)?$ https://cxv.998888.best/event/$1 302
+# FT 英文版：如 /content/<uuid>
+^https?:\/\/www\.ft\.com\/content\/([^#]+)$ https://best.998888.best/fte/$1 302
 
-# Entities 人物
-^https?:\/\/entities\.caixin\.com\/persons\/index\?(?:[^#&]+&)*id=([^&#]+)(?:&[^#]*)?$ https://cxd.998888.best/person/$1 302
+# WSJ：文章 slug 末尾带 8 位十六进制 ID
+^(https?:\/\/(?:(?:www|cn)\.)?wsj\.com\/(?:[^\/?#]+\/)*[^\/?#]*-[a-f0-9]{8}(?:\?[^#]*)?)$ https://best.998888.best/wsj/$1 302
 
-# Entities 公司
-^https?:\/\/entities\.caixin\.com\/companies\/index\?(?:[^#&]+&)*id=([^&#]+)(?:&[^#]*)?$ https://cxd.998888.best/company/$1 302
+# Bloomberg：articles / features / newsletters
+^(https?:\/\/www\.bloomberg\.com\/(?:[^?#]+\/)*(?:articles|features|newsletters)\/[^#]+)$ https://best.998888.best/bb/$1 302
 
-# 三联生活周刊（三联生活周刊为 SPA，站内跳转后需手动刷新触发跳转）
-^https?:\/\/www\.lifeweek\.com\.cn\/article\/(\d+)(?:\?.*)?$ https://best.998888.best/lw/$1 302
+# Economist：URL 中包含 YYYY/MM/DD
+^(https?:\/\/www\.economist\.com\/[^#]*\d{4}\/\d{2}\/\d{2}[^#]*)$ https://best.998888.best/te/$1 302
 
-# 混沌课程
-^https?:\/\/www\.hundun\.cn\/course\/intro\/([^\/?#]+)(?:\?.*)?$ https://hd.998888.best/course/$1 302
+# NYT：标准日期型文章路径
+^(https?:\/\/www\.nytimes\.com\/\d{4}\/\d{2}\/\d{2}\/[^?#]+(?:\.html)?(?:\?[^#]*)?)$ https://best.998888.best/nyt/$1 302
 
-# 三联中读/樊登读书 书籍
-^https?:\/\/www\.dushu365\.com\/book\/(\d+)(?:\?.*)?$ https://fs.998888.best/book/$1 302
+# 端传媒：兼容 8 位纯数字或 6 位数字 + 2 个 x/X
+^(https?:\/\/(?:theinitium\.com|[^\/]+\.theinitium\.com)\/\d{6}[\dxX]{2}-[^?#]+(?:\?[^#]*)?)$ https://best.998888.best/duan/$1 302
 
-# 三联中读/樊登读书 课程
-^https?:\/\/www\.dushu365\.com\/course\/(\d+)(?:\?.*)?$ https://fs.998888.best/course/$1 302
+# 南方周末
+^https?:\/\/[^\/]*infzm\.com\/contents\/(\d+)(?:\?.*)?$ https://best.998888.best/nf/$1 302
 
 [MITM]
 # 财新：通配符覆盖所有频道子域名（opinion/international/finance/companies 等），
 # 排除高频资源域名避免无效 TLS 解密（img/apollo/file 等图片CDN和统计域名）
-hostname = %APPEND% *.caixin.com, -img.caixin.com, -apollo.caixin.com, -file.caixin.com, -c2.caixin.com, -getavatar.caixin.com, -gateway.caixin.com, -stock.caixin.com, -api.caixin.com, -mall.caixin.com, -datanews.caixin.com, deepview.caixin.com, entities.caixin.com, www.lifeweek.com.cn, www.hundun.cn, www.dushu365.com
+# FT中文：精确指定文章页域名；端传媒：覆盖多语言/地区子域
+# 其他站点：已是精确域名，无需调整
+hostname = %APPEND% *.caixin.com, -img.caixin.com, -apollo.caixin.com, -file.caixin.com, -c2.caixin.com, -getavatar.caixin.com, -gateway.caixin.com, -stock.caixin.com, -api.caixin.com, -mall.caixin.com, -datanews.caixin.com, ftchinese.com, www.ftchinese.com, m.ftchinese.com, www.ft.com, cn.wsj.com, www.wsj.com, www.bloomberg.com, www.economist.com, www.nytimes.com, theinitium.com, *.theinitium.com, *.infzm.com
