@@ -1,4 +1,4 @@
-#!name=新闻网站智能重定向@Aioneas
+#!name=新闻网站重定向（优选版）@Aioneas
 #!desc=财新 / FT中文 / FT / WSJ / Bloomberg / Economist / NYT / 端传媒 自动 302 跳转镜像阅读页。⚠️ 注意：镜像站（best.viatl.de）为私域付费站，内容非免费；一般情况不建议使用。如确有需求请自行安装，镜像站页面底部有 TG 联系方式。作者仅做 Surge 适配，非镜像站运营方。
 #!author=caixinshop + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
@@ -9,23 +9,24 @@
 # 财新：如 /2026-04-03/102431052.html
 ^https?:\/\/(?!(?:deepview|datanews)\.)[^\/]*caixin\.com\/.*?\/(\d{9})\.html(?:\?.*)?$ https://best.viatl.de/cx/$1 302
 
-# FT 中文网：兼容 www / 裸域 / m 子域文章页与 interactive 页面
-^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/(?:story|interactive)\/(\d+)(?:\?.*)?$ https://best.viatl.de/ft/$1 302
+# FT 中文网：优先匹配 story，兼容其他含数字 ID 的文章路径
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/story\/(\d+)(?:\?.*)?$ https://best.viatl.de/ft/$1 302
+^https?:\/\/(?:(?:www|m)\.)?ftchinese\.com\/(?:[^?#]*\/)?(\d+)(?:[^?#]*)?(?:\?.*)?$ https://best.viatl.de/ft/$1 302
 
 # FT 英文版：如 /content/<uuid>
-^https?:\/\/www\.ft\.com\/content\/([0-9a-fA-F-]+)(?:\?.*)?$ https://best.viatl.de/fte/$1 302
+^https?:\/\/www\.ft\.com\/content\/([^#]+)$ https://best.viatl.de/fte/$1 302
 
 # WSJ：文章 slug 末尾带 8 位十六进制 ID
-^(https?:\/\/(?:(?:www|cn)\.)?wsj\.com\/(?:[^\/?#]+\/)*[^\/?#]*-[A-Fa-f0-9]{8}(?:\?[^#]*)?)$ https://best.viatl.de/wsj/$1 302
+^(https?:\/\/(?:(?:www|cn)\.)?wsj\.com\/(?:[^\/?#]+\/)*[^\/?#]*-[a-f0-9]{8}(?:\?[^#]*)?)$ https://best.viatl.de/wsj/$1 302
 
 # Bloomberg：articles / features / newsletters
-^(https?:\/\/www\.bloomberg\.com\/(?:[^?#]+\/)?(?:articles|features|newsletters)\/[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/bb/$1 302
+^(https?:\/\/www\.bloomberg\.com\/(?:[^?#]+\/)*(?:articles|features|newsletters)\/[^#]+)$ https://best.viatl.de/bb/$1 302
 
-# Economist：文章路径中包含 YYYY/MM/DD
-^(https?:\/\/www\.economist\.com\/[^?#]*\/\d{4}\/\d{2}\/\d{2}\/[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/te/$1 302
+# Economist：URL 中包含 YYYY/MM/DD
+^(https?:\/\/www\.economist\.com\/[^#]*\d{4}\/\d{2}\/\d{2}[^#]*)$ https://best.viatl.de/te/$1 302
 
-# NYT：仅收敛到常见日期型文章页，避免误伤站内资源请求
-^(https?:\/\/www\.nytimes\.com\/\d{4}\/\d{2}\/\d{2}\/[^?#]+(?:\.html)?(?:\?[^#]*)?)$ https://best.viatl.de/nyt/$1 302
+# NYT：任意非首页路径（与 userscript 优选版保持一致）
+^(https?:\/\/www\.nytimes\.com\/[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/nyt/$1 302
 
 # 端传媒：路径以 /YYYYMMDD- 开头
 ^(https?:\/\/(?:theinitium\.com|[^\/]+\.theinitium\.com)\/\d{8}-[^?#]+(?:\?[^#]*)?)$ https://best.viatl.de/duan/$1 302
