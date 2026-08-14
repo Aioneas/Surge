@@ -1,0 +1,35 @@
+#!name=看理想 网页端完整音频 + 页面净化
+#!desc=仅适用于看理想网页端：首页/详情页/单集页净化，直连完整音频；不处理 App 端
+#!author=baby + Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+#!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
+
+# ─────────────────────────────────────────────────────────────
+# 实测环境：看理想 Web / macOS Safari / 2026-08-14
+#
+# 本模块只处理网页端：
+#   1. 首页去轮播推广与下载 App 入口
+#   2. 详情页隐藏购买按钮/会员弹窗
+#   3. 单集页隐藏试听播放器
+#   4. 文稿页去升级提示
+#   5. 详情页/单集页直连完整音频
+#
+# 不包含 App 端广告清理、VIP 接口改写和埋点规则。
+# 适合电脑端单独使用。
+# ─────────────────────────────────────────────────────────────
+
+[Script]
+# 网页首页：移除顶部轮播推广和下载 App 入口，并注入网页端完整音频接管
+看理想网页去首页推广 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/($|\?), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js?v=20260814e
+
+# 网页详情页：隐藏购买按钮/会员弹窗，修正内嵌解锁状态并接管完整音频播放
+看理想网页详情净化 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/detail\/\d+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js?v=20260814e
+
+# 网页单集页：隐藏网页端试听播放器并接管完整音频播放
+看理想网页单集页净化 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/article\/\d+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js?v=20260814e
+
+# 网页文稿页：去升级提示，避免跳 App
+看理想网页文稿净化 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v1\/web\/article-content\/[A-Za-z0-9]+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js?v=20260814e
+
+[MITM]
+hostname = %APPEND% api.vistopia.com.cn, www.vistopia.com.cn, vistopia.com.cn
