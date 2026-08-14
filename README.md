@@ -46,10 +46,17 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
 | --- | --- | --- | --- | --- |
 | [`youtube.aioneas.hide-shorts`](./Module/youtube.aioneas.hide-shorts.sgmodule) | YouTube 去广告 + PIP / 后台播放 + 隐藏 Shorts | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/youtube.aioneas.hide-shorts.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/youtube.aioneas.hide-shorts.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/youtube.aioneas.hide-shorts.conf) |
 | [`adblock`](./Module/adblock.sgmodule) | 常规广告过滤 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adblock.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/adblock.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/adblock.conf) |
-| [`kanlixiang`](./Module/kanlixiang.sgmodule) | 看理想 VIP 解锁 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/kanlixiang.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/kanlixiang.conf) |
+| [`kanlixiang.app`](./Module/kanlixiang.app.sgmodule) | 看理想 App 端：VIP 解锁 + 去推广 + 资料页清理 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.app.sgmodule) | — | — |
+| [`kanlixiang.web`](./Module/kanlixiang.web.sgmodule) | 看理想网页端：详情页净化 + 锁位修正 + 完整音频播放 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.web.sgmodule) | — | — |
+| [`kanlixiang`](./Module/kanlixiang.sgmodule) | 看理想融合版：App 端 + 网页端合并 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.sgmodule) | — | — |
 | [`sanlianzhongdu`](./Module/sanlianzhongdu.sgmodule) | 三联中读匿名登录自动 7 天会员 + 去推广 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/sanlianzhongdu.sgmodule) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/loon/sanlianzhongdu.plugin) | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/quantumultx/sanlianzhongdu.conf) |
 | [`qqzone.adblock`](./Module/qqzone.adblock.aioneas.sgmodule) | QQ 空间去广告 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/qqzone.adblock.aioneas.sgmodule) | — | — |
 | [`shuzhiyizheng.adblock`](./Module/shuzhiyizheng.adblock.aioneas.sgmodule) | 数智易正去广告 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/shuzhiyizheng.adblock.aioneas.sgmodule) | — | — |
+
+看理想现提供 `App 端`、`网页端`、`融合版` 三种 Surge 模块：
+- `kanlixiang.app` 适合 iPhone / iPad 只跑 App。
+- `kanlixiang.web` 适合 Mac / 浏览器只跑网页端。
+- `kanlixiang` 适合想用一条模块同时覆盖 App 与网页端的场景。
 
 <details>
 <summary><strong>QQ 空间去广告 — 规则说明</strong></summary>
