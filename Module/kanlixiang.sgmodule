@@ -1,17 +1,18 @@
 #!name=看理想 VIP解锁 + 去广告 + 去推广昵称
-#!desc=① 去开屏推荐广告 ② 去首页商品/会员推广 ③ 去第三方弹窗广告 ④ 清除 config 广告字段/dialog ⑤ 屏蔽字节/友盟埋点 ⑥ VIP解锁 ⑦ 资料页去推广昵称
+#!desc=① 去开屏推荐广告 ② 去首页商品/会员推广 ③ 去第三方弹窗广告 ④ 清除 config 广告字段/dialog ⑤ 屏蔽字节/友盟埋点 ⑥ VIP解锁 ⑦ 资料页去推广昵称 ⑧ 网页端首页/详情页/单集页净化并直连完整音频
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
 
 # ─────────────────────────────────────────────────────────────
-# 实测环境：看理想 v4.14.5 / iPhone + macOS（iPad 兼容版）/ 2026-08-14
+# 实测环境：看理想 v4.14.5 / iPhone + macOS（iPad 兼容版）/ Web / 2026-08-14
 #
 # 已确认有效：
 #   [URL Rewrite] home/advertisement → REJECT，直接触发网络失败回调
 #   [Map Local] pop-up             → 返回 404，第三方弹窗广告不再出现
 #   [Script]    home/header-new    → 移除商品广告卡片、新人会员推广及商品轮播
 #   [Script]    other/config       → 清空 advertisements[] / dialog，避免残留广告配置
+#   [Script]    Web 首页/详情页/单集页 → 移除网页端推广/弹窗，并把播放按钮接到完整音频
 #   [Rule]      字节/友盟埋点       → REJECT 生效
 #
 # 说明：
@@ -51,5 +52,17 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # 资料页去推广昵称
 看理想去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
+# 网页首页：移除顶部轮播推广和下载 App 入口，并注入网页端完整音频接管
+看理想网页去首页推广 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/($|\?), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js
+
+# 网页详情页：隐藏购买按钮/会员弹窗，修正内嵌解锁状态并接管完整音频播放
+看理想网页详情净化 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/detail\/\d+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js
+
+# 网页单集页：隐藏网页端试听播放器并接管完整音频播放
+看理想网页单集页净化 = type=http-response, pattern=^https?:\/\/(www\.)?vistopia\.com\.cn\/article\/\d+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js
+
+# 网页文稿页：去升级提示，避免跳 App
+看理想网页文稿净化 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v1\/web\/article-content\/[A-Za-z0-9]+(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_web_clean.js
+
 [MITM]
-hostname = %APPEND% api.vistopia.com.cn
+hostname = %APPEND% api.vistopia.com.cn, www.vistopia.com.cn, vistopia.com.cn
