@@ -2,17 +2,15 @@
  * 看理想 - 广告/推广清理脚本
  *
  * 覆盖接口：
- *   - /api/v2/home/advertisement
  *   - /api/v2/home/header-new
  *   - /api/v2/other/config
  *
  * 作用：
- *   - 清空开屏推荐广告 data[]
  *   - 从首页信息流移除商品广告卡片、新人会员推广及商品轮播
  *   - 清除 config 中 advertisements[] / dialog
  *   - 保留首页内容推荐和其余正常功能配置字段
  *
- * 实测于看理想 v4.14.5 / macOS（iPad 兼容版）/ 2026-08-14
+ * 实测于看理想 v4.14.5 / iPhone + macOS（iPad 兼容版）/ 2026-08-14
  */
 
 const url = $request.url;
@@ -25,13 +23,6 @@ const isPromotionLink = (link) =>
 
 try {
   const data = JSON.parse(body);
-
-  if (/\/api\/v2\/home\/advertisement(\?|$)/.test(url)) {
-    data.status = data.status || 'success';
-    data.data = [];
-    $done({ body: JSON.stringify(data) });
-    return;
-  }
 
   if (/\/api\/v2\/home\/header-new(\?|$)/.test(url) && Array.isArray(data.data)) {
     data.data = data.data

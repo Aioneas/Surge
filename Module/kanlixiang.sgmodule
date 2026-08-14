@@ -5,18 +5,18 @@
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
 
 # ─────────────────────────────────────────────────────────────
-# 实测环境：看理想 v4.14.5 / macOS（iPad 兼容版）/ 2026-08-14
+# 实测环境：看理想 v4.14.5 / iPhone + macOS（iPad 兼容版）/ 2026-08-14
 #
 # 已确认有效：
-#   [Map Local] pop-up             → modified:true，第三方弹窗广告不再出现
-#   [Script]    home/advertisement → 返回空 data[]，开屏推荐广告不再下发
+#   [Map Local] home/advertisement → 返回 404，跳过整个开屏广告容器
+#   [Map Local] pop-up             → 返回 404，第三方弹窗广告不再出现
 #   [Script]    home/header-new    → 移除商品广告卡片、新人会员推广及商品轮播
 #   [Script]    other/config       → 清空 advertisements[] / dialog，避免残留广告配置
 #   [Rule]      字节/友盟埋点       → REJECT 生效
 #
 # 说明：
 #   品牌启动页“看见另一种可能”若仍短暂出现，属于 App 内置原生 UI；
-#   服务端开屏推荐广告会在网络层清空，右上角“跳过”通常也会随广告页一并消失。
+#   开屏广告接口直接返回 404，避免空 data[] 仍生成白屏和右上角“跳过”按钮。
 # ─────────────────────────────────────────────────────────────
 
 [Rule]
@@ -29,14 +29,14 @@ DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [Map Local]
+# 开屏广告 → 404，让 App 进入请求失败路径并直接关闭整个开屏容器
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
+
 # 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
 
 [Script]
-# 开屏广告：清空 home/advertisement 返回的 data[]，避免下发开屏推荐内容
-看理想去开屏广告 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/advertisement(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
-
 # 首页信息流：移除商品广告卡片、新人会员推广及商品轮播，保留内容推荐
 看理想去首页推广 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/home\/header-new(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
