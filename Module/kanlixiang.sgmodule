@@ -48,7 +48,12 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 # VIP 解锁
 看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
+
+# 数字图书馆：修正列表/详情锁态，并补齐 library_article_id 对应的完整播放凭证
 看理想数字图书馆解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(library\/play_list(\?|$)|library\/article-detail(\?|$)|services\/play-token\?library_article_id=), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_library_unlock.js
+
+# APP 下载链路：补齐下载入队依赖的 content 元数据和批量播放凭证
+看理想下载链路修正 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(services\/articles-play-token(\?|$)|content\/batch(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_download_unlock.js
 
 # APP 节目目录页：修正原生目录锁态，尽量让已解锁章节直接可点播
 看理想目录解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/content\/(content-show\/\d+|article_list(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_catalog_unlock.js

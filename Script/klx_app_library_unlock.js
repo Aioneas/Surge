@@ -84,6 +84,11 @@ function mergePlayTokenFields(item, tokenData) {
   if (tokenData.duration) {
     setFlag(item, "duration", tokenData.duration);
   }
+
+  if (tokenData.play_url) {
+    setFlag(item, "play_url", tokenData.play_url);
+    setFlag(item, "optional_play_url", tokenData.play_url);
+  }
 }
 
 function handlePlayList(payload) {
