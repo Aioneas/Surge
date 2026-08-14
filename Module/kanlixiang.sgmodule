@@ -8,15 +8,15 @@
 # 实测环境：看理想 v4.14.5 / iPhone + macOS（iPad 兼容版）/ 2026-08-14
 #
 # 已确认有效：
-#   [Map Local] home/advertisement → 返回 404，跳过整个开屏广告容器
+#   [URL Rewrite] home/advertisement → REJECT，直接触发网络失败回调
 #   [Map Local] pop-up             → 返回 404，第三方弹窗广告不再出现
 #   [Script]    home/header-new    → 移除商品广告卡片、新人会员推广及商品轮播
 #   [Script]    other/config       → 清空 advertisements[] / dialog，避免残留广告配置
 #   [Rule]      字节/友盟埋点       → REJECT 生效
 #
 # 说明：
-#   品牌启动页“看见另一种可能”若仍短暂出现，属于 App 内置原生 UI；
-#   开屏广告接口直接返回 404，避免空 data[] 仍生成白屏和右上角“跳过”按钮。
+#   品牌启动页“看见另一种可能”是 App 内置原生 UI；实测 404 仍会让其等待。
+#   因此改用请求级 REJECT，触发不同于 HTTP 错误响应的网络失败回调。
 # ─────────────────────────────────────────────────────────────
 
 [Rule]
@@ -28,9 +28,11 @@ DOMAIN-SUFFIX,tobdatarangers.com,REJECT
 DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
+[URL Rewrite]
+# 开屏广告 → 直接拒绝请求，避免 HTTP 404 仍让原生启动层继续等待
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) - reject
+
 [Map Local]
-# 开屏广告 → 404，让 App 进入请求失败路径并直接关闭整个开屏容器
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
 # 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
