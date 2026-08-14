@@ -225,9 +225,16 @@ const FULL_AUDIO_RUNTIME = String.raw`
       const match = (anchor.getAttribute("href") || "").match(/\/article\/(\d+)/);
       const articleId = match ? match[1] : "";
       const iconWrap = anchor.querySelector(".icon_wrap");
+      anchor.querySelectorAll(".lock").forEach((lockEl) => {
+        lockEl.style.display = "none";
+      });
+      anchor.querySelectorAll(".islock").forEach((node) => {
+        node.classList.remove("islock");
+      });
       if (!iconWrap) {
         return;
       }
+      iconWrap.style.display = "";
       const playEl = iconWrap.querySelector(".play");
       const playingEl = iconWrap.querySelector(".playing");
       const active =
@@ -252,6 +259,16 @@ const FULL_AUDIO_RUNTIME = String.raw`
       audio &&
       !audio.paused &&
       !audio.ended;
+    document
+      .querySelectorAll(".player_info_wrap.islock, .infoplayer-item.islock")
+      .forEach((node) => {
+        node.classList.remove("islock");
+      });
+    document
+      .querySelectorAll(".player_info_wrap .lock, .infoplayer-item .lock")
+      .forEach((lockEl) => {
+        lockEl.style.display = "none";
+      });
     document.querySelectorAll(".tocPlay, .mobile-main-play").forEach((node) => {
       node.style.display = active ? "none" : "";
     });
@@ -299,7 +316,7 @@ const FULL_AUDIO_RUNTIME = String.raw`
       return false;
     }
     return !!target.closest(
-      ".icon_wrap, .tocPlay, .tocPlaying, .mobile-main-play, .mobile-main-pause, .player_info_wrap .infoplayer-item"
+      ".icon_wrap, .lock, .tocPlay, .tocPlaying, .mobile-main-play, .mobile-main-pause, .player_info_wrap .infoplayer-item"
     );
   }
 
@@ -456,6 +473,8 @@ function patchDetail(body) {
       "#share{display:none!important;}",
       ".part-charge-upgrade-tip{display:none!important;}",
       ".part-charge-upgrade-confirm-dialog{display:none!important;}",
+      '.page-detail .li_item a[href*="/article/"] .lock{display:none!important;}',
+      '.page-detail .li_item a[href*="/article/"] .icon_wrap{display:block!important;}',
     ].join("")
   );
 
@@ -487,6 +506,8 @@ function patchArticlePage(body) {
       ".part-charge-upgrade-tip{display:none!important;}",
       ".part-charge-upgrade-confirm-dialog{display:none!important;}",
       "#share{display:none!important;}",
+      ".page-article .player_info_wrap.islock,.page-article .infoplayer-item.islock{background-image:none!important;}",
+      ".page-article .player_info_wrap .lock,.page-article .infoplayer-item .lock{display:none!important;}",
     ].join("")
   );
   body = body.replace(/D\.is_lock=c;/g, "D.is_lock=a;");
