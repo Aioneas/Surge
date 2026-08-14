@@ -52,6 +52,9 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # 节目目录页：修正原生目录锁态，尽量让已解锁章节直接可点播
 看理想目录解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/content\/(content-show\/\d+|article_list(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_catalog_unlock.js
 
+# APP 订阅列表：修正订阅/最近更新页卡片锁态，尽量让已打开节目能回流到列表态
+看理想订阅列表解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/(sub-update-list|subscriptions-list)(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_subscription_unlock.js?v=20260814a
+
 # 资料页去推广昵称
 看理想去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
