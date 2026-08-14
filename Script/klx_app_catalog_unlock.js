@@ -30,12 +30,11 @@ function unlockEpisode(item) {
 
   const fullUrl =
     normalizeUrl(item.optional_media_key_full_url) ||
-    normalizeUrl(item.media_key_full_url) ||
-    normalizeUrl(item.sample_media_full_url);
+    normalizeUrl(item.media_key_full_url);
 
   setFlag(item, "is_lock", "0");
   setFlag(item, "is_listen", "1");
-  setFlag(item, "is_trial", "1");
+  setFlag(item, "is_trial", "0");
   setFlag(item, "is_purchased", "1");
   setFlag(item, "is_subscribed", "1");
   setFlag(item, "is_vip_free", "1");
@@ -43,14 +42,13 @@ function unlockEpisode(item) {
   setFlag(item, "is_part_buy", "1");
   setFlag(item, "is_part_charge", "0");
   setFlag(item, "is_receive", "1");
+  setFlag(item, "share_free_count", "999");
   setFlag(item, "part_charge_text", "");
 
   if (fullUrl) {
     setFlag(item, "optional_media_key_full_url", fullUrl);
     setFlag(item, "media_key_full_url", fullUrl);
-    if (!normalizeUrl(item.sample_media_full_url)) {
-      setFlag(item, "sample_media_full_url", fullUrl);
-    }
+    setFlag(item, "sample_media_full_url", fullUrl);
   }
 }
 

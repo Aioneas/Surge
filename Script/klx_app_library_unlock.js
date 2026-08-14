@@ -38,15 +38,26 @@ function unlockLibraryItem(item) {
 
   setFlag(item, "is_lock", "0");
   setFlag(item, "is_listen", "1");
-  setFlag(item, "is_trial", "1");
+  setFlag(item, "is_trial", "0");
   setFlag(item, "is_purchased", "1");
   setFlag(item, "is_subscribed", "1");
   setFlag(item, "is_vip_free", "1");
   setFlag(item, "is_vip_only", "0");
   setFlag(item, "is_receive", "1");
+  setFlag(item, "share_free_count", "999");
 
   if (item.duration_str) {
     setFlag(item, "sample_duration_str", item.duration_str);
+  }
+
+  if ("play_url" in item && item.play_url) {
+    setFlag(item, "optional_play_url", item.play_url);
+  } else if ("optional_play_url" in item && item.optional_play_url) {
+    setFlag(item, "play_url", item.optional_play_url);
+  }
+
+  if ("voice_enhance_url" in item && !item.voice_enhance_url && item.play_url) {
+    setFlag(item, "voice_enhance_url", item.play_url);
   }
 }
 
