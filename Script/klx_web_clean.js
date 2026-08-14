@@ -403,9 +403,7 @@ const FULL_AUDIO_RUNTIME = String.raw`
   };
 
   const observer = new MutationObserver(() => {
-    if (audio && audio.src) {
-      syncUi();
-    }
+    syncUi();
   });
 
   function startObserver() {
