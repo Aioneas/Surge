@@ -2,8 +2,8 @@
  * Vistopia / Kanlixiang VIP H5 cleanup for Surge.
  *
  * The native VIP tab opens a WebView at shop.vistopia.com.cn/vip_rights.
- * This script hides the purchase card area and the comparison block, while
- * preserving the program-benefit module list below it.
+ * This script hides the purchase card area, comparison block, and bottom
+ * purchase CTA, while preserving the program-benefit module list below it.
  */
 
 const STYLE_ID = "klx-vip-purchase-hide-style";
@@ -25,6 +25,7 @@ if (typeof body !== "string" || !body || !/\/vip_rights(?:\?|#|$)/.test($request
 html.klx-vip-purchase-hidden .vip_top_card,
 html.klx-vip-purchase-hidden .vip_equity,
 html.klx-vip-purchase-hidden .vip_rights_box,
+html.klx-vip-purchase-hidden .vip_bottoms,
 html.klx-vip-purchase-hidden main.vip-page > section.plans {
   display: none !important;
   height: 0 !important;
@@ -38,11 +39,13 @@ html.klx-vip-purchase-hidden main.vip-page > section.plans {
 html.klx-vip-purchase-hidden .home_h5 .module_list_wrap {
   margin-top: var(--klx-vip-fixed-top, 31.55216vw) !important;
   padding-top: 0 !important;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 18vw) !important;
 }
 
 @media screen and (min-width: 500px) {
   html.klx-vip-purchase-hidden .home_h5 .module_list_wrap {
     margin-top: var(--klx-vip-fixed-top, 216px) !important;
+    padding-bottom: 72px !important;
   }
 }
 
@@ -58,6 +61,7 @@ html.klx-vip-purchase-hidden main.vip-page > section.rights {
     ".vip_top_card",
     ".vip_equity",
     ".vip_rights_box",
+    ".vip_bottoms",
     "main.vip-page > section.plans"
   ].join(",");
   var scheduled = false;
@@ -80,7 +84,7 @@ html.klx-vip-purchase-hidden main.vip-page > section.rights {
   }
 
   function hideElement(el) {
-    if (!el || el.getAttribute("data-klx-vip-hidden") === "1") {
+    if (!el) {
       return;
     }
     setImportant(el, "display", "none");
@@ -90,8 +94,17 @@ html.klx-vip-purchase-hidden main.vip-page > section.rights {
     setImportant(el, "padding", "0");
     setImportant(el, "overflow", "hidden");
     setImportant(el, "visibility", "hidden");
-    el.setAttribute("aria-hidden", "true");
-    el.setAttribute("data-klx-vip-hidden", "1");
+    if (el.getAttribute("data-klx-vip-hidden") !== "1") {
+      el.setAttribute("aria-hidden", "true");
+      el.setAttribute("data-klx-vip-hidden", "1");
+    }
+  }
+
+  function programBottomPadding() {
+    if (window.innerWidth >= 500) {
+      return "72px";
+    }
+    return "calc(env(safe-area-inset-bottom, 0px) + 18vw)";
   }
 
   function fixedHeaderBottom() {
@@ -122,6 +135,7 @@ html.klx-vip-purchase-hidden main.vip-page > section.rights {
       setImportant(moduleList, "margin-top", value);
     }
     setImportant(moduleList, "padding-top", "0");
+    setImportant(moduleList, "padding-bottom", programBottomPadding());
   }
 
   function apply() {
