@@ -23,16 +23,19 @@
 DOMAIN-SUFFIX,mon.zijieapi.com,REJECT
 DOMAIN-SUFFIX,configure-platform.bytedance.com,REJECT
 DOMAIN-SUFFIX,tobdatarangers.com,REJECT
+DOMAIN,mon.toutiaocloud.com,REJECT
+DOMAIN-SUFFIX,volceapplog.com,REJECT
 # 友盟埋点
 DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
+DOMAIN,ulogs.umengcloud.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [Map Local]
-# 开屏广告 → 返回空广告列表；比 reject 更像正常“无广告”响应，避免手机端残留原生“跳过”按钮
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"success\",\"data\":[]}" status-code=200 header="Content-Type: application/json"
+# 开屏广告 → 返回空广告列表；base64 避免 iOS Map Local text 对 JSON 引号转义差异
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=base64 data="eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6W119" status-code=200 header="Content-Type: application/json"
 
 # 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
-^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
+^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=base64 data="eyJzdGF0dXMiOiJlcnJvciIsImRhdGEiOm51bGx9" status-code=404 header="Content-Type: application/json"
 
 [Script]
 # 首页信息流：移除商品广告卡片、新人会员推广及商品轮播，保留内容推荐
