@@ -27,11 +27,10 @@ DOMAIN-SUFFIX,tobdatarangers.com,REJECT
 DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
 DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
-[URL Rewrite]
-# 开屏广告 → 直接拒绝请求，避免 HTTP 404 仍让原生启动层继续等待
-^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) - reject
-
 [Map Local]
+# 开屏广告 → 返回空广告列表；比 reject 更像正常“无广告”响应，避免手机端残留原生“跳过”按钮
+^https?://api\.vistopia\.com\.cn/api/v2/home/advertisement(\?|$) data-type=text data="{\"status\":\"success\",\"data\":[]}" status-code=200 header="Content-Type: application/json"
+
 # 开屏弹窗 → 404，App 收到错误后跳过弹窗容器（实测 modified:true）
 ^https?://api\.vistopia\.com\.cn/api/v2/other/pop-up(\?|$) data-type=text data="{\"status\":\"error\",\"data\":null}" status-code=404 header="Content-Type: application/json"
 
