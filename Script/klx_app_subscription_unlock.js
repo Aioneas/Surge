@@ -1,9 +1,5 @@
 const url = $request.url || "";
 const body = $response.body || "";
-const STORE_KEY = "klx_subscription_injection_cache_v1";
-const FORCED_CONTENT_IDS = {
-  "446": true,
-};
 
 function parseJson(text) {
   try {
@@ -15,26 +11,6 @@ function parseJson(text) {
 
 function doneWithRawBody(rawBody) {
   $done({ body: rawBody });
-}
-
-function readStore() {
-  if (typeof $persistentStore === "undefined") {
-    return { latestContentId: "", contents: {} };
-  }
-
-  const raw = $persistentStore.read(STORE_KEY);
-  const parsed = parseJson(raw || "");
-  if (!parsed || typeof parsed !== "object") {
-    return { latestContentId: "", contents: {} };
-  }
-
-  if (!parsed.contents || typeof parsed.contents !== "object") {
-    parsed.contents = {};
-  }
-  if (typeof parsed.latestContentId !== "string") {
-    parsed.latestContentId = "";
-  }
-  return parsed;
 }
 
 function hasOwn(target, key) {
@@ -51,13 +27,6 @@ function setFlag(target, key, value) {
   }
 }
 
-function asString(value) {
-  if (value === null || value === undefined) {
-    return "";
-  }
-  return String(value);
-}
-
 function setIfPresent(target, key, value) {
   if (target && typeof target === "object" && hasOwn(target, key)) {
     target[key] = value;
@@ -66,32 +35,6 @@ function setIfPresent(target, key, value) {
 
 function normalizeUrl(value) {
   return typeof value === "string" && value.trim() ? value : "";
-}
-
-function firstNonEmptyString(values) {
-  for (const value of values) {
-    if (typeof value === "string" && value.trim()) {
-      return value.trim();
-    }
-    if (typeof value === "number") {
-      return String(value);
-    }
-  }
-  return "";
-}
-
-function cloneObject(value) {
-  return parseJson(JSON.stringify(value || null));
-}
-
-function incrementCount(value) {
-  if (typeof value === "number") {
-    return value + 1;
-  }
-  if (typeof value === "string" && /^\d+$/.test(value)) {
-    return String(Number(value) + 1);
-  }
-  return value;
 }
 
 function unlockEpisode(item) {
@@ -124,28 +67,6 @@ function unlockEpisode(item) {
     setFlag(item, "media_key_full_url", fullUrl);
     setFlag(item, "sample_media_full_url", fullUrl);
   }
-}
-
-function buildFallbackEpisode(content) {
-  return {
-    article_id: "virtual-" + asString(content.content_id),
-    title: firstNonEmptyString([content.part, content.update_text, content.title]),
-    is_lock: "0",
-    is_listen: "1",
-    is_trial: "0",
-    is_purchased: "1",
-    is_subscribed: "1",
-    is_vip_free: "1",
-    is_vip_only: "0",
-    is_part_buy: "1",
-    is_part_charge: "0",
-    is_receive: "1",
-    share_free_count: "999",
-    part_charge_text: "",
-    media_key_full_url: "",
-    optional_media_key_full_url: "",
-    sample_media_full_url: "",
-  };
 }
 
 function unlockContent(item) {
@@ -223,131 +144,6 @@ function looksLikeEpisode(item) {
   ]);
 }
 
-function getCachedEntry() {
-  const store = readStore();
-  const entries = Object.entries(store.contents || {})
-    .filter(([contentId, entry]) => {
-      return FORCED_CONTENT_IDS[asString(contentId)] && entry && typeof entry === "object";
-    })
-    .sort((left, right) => Number(right[1].updatedAt || 0) - Number(left[1].updatedAt || 0));
-  const matchedEntry = entries[0];
-  if (!matchedEntry) {
-    return null;
-  }
-
-  const entry = matchedEntry[1];
-  if (!entry.content) {
-    return null;
-  }
-
-  return {
-    content: cloneObject(entry.content),
-    article_list: Array.isArray(entry.article_list)
-      ? entry.article_list.map((item) => cloneObject(item)).filter(Boolean)
-      : [],
-  };
-}
-
-function buildSubscriptionsListItem(cached) {
-  const content = cached.content || {};
-  const articles = cached.article_list.length
-    ? cached.article_list
-    : [buildFallbackEpisode(content)];
-  const latestEpisode = articles[0] || buildFallbackEpisode(content);
-
-  return {
-    author: asString(content.author),
-    content_id: asString(content.content_id),
-    is_listen: "1",
-    is_presell: asString(content.is_presell || "0"),
-    is_purchased: "1",
-    is_subscribed: "1",
-    is_top: asString(content.is_top || "0"),
-    is_vip_free: "1",
-    is_vip_only: "0",
-    last_listened_time: "",
-    list_type: "injected",
-    media_type: firstNonEmptyString([content.media_type, "audio"]),
-    media_type_en: firstNonEmptyString([content.media_type_en, content.media_type, "audio"]),
-    part: firstNonEmptyString([content.part, latestEpisode.title]),
-    presell_time: "",
-    small_background_img: asString(content.small_background_img),
-    status: asString(content.status),
-    subtitle: asString(content.subtitle),
-    title: asString(content.title),
-    type: firstNonEmptyString([content.type, "0"]),
-    update_text: asString(content.update_text),
-    vip_type: "svip",
-  };
-}
-
-function buildSubUpdateListItem(cached) {
-  const content = cached.content || {};
-  const articles = cached.article_list.length
-    ? cached.article_list
-    : [buildFallbackEpisode(content)];
-
-  return {
-    article_list: articles,
-    article_update_time: asString(content.article_update_time),
-    author: asString(content.author),
-    author_id: asString(content.author_id),
-    author_ids: Array.isArray(content.author_ids) ? content.author_ids : [],
-    content_id: asString(content.content_id),
-    is_listen: "1",
-    link_url: asString(content.link_url),
-    media_type: firstNonEmptyString([content.media_type, "audio"]),
-    media_type_en: firstNonEmptyString([content.media_type_en, content.media_type, "audio"]),
-    promotion_price: asString(content.promotion_price),
-    small_background_img: asString(content.small_background_img),
-    subtitle: asString(content.subtitle),
-    title: asString(content.title),
-    type: firstNonEmptyString([content.type, "0"]),
-    update_text: firstNonEmptyString([content.update_text, "更新"]),
-    update_type: "injected",
-  };
-}
-
-function injectCachedContent(payload) {
-  const data = payload && payload.data;
-  const list = data && Array.isArray(data.data) ? data.data : null;
-  if (!list) {
-    return payload;
-  }
-
-  const cached = getCachedEntry();
-  if (!cached || !cached.content || !cached.content.content_id || !cached.content.title) {
-    return payload;
-  }
-
-  const targetContentId = asString(cached.content.content_id);
-  const alreadyExists = list.some(
-    (item) => asString(item && (item.content_id || item.id)) === targetContentId
-  );
-  if (alreadyExists) {
-    return payload;
-  }
-
-  const injectedItem = /\/api\/v2\/user\/sub-update-list(?:\?|$)/.test(url)
-    ? buildSubUpdateListItem(cached)
-    : buildSubscriptionsListItem(cached);
-
-  unlockContent(injectedItem);
-  if (Array.isArray(injectedItem.article_list)) {
-    injectedItem.article_list.forEach(unlockEpisode);
-  }
-
-  list.unshift(injectedItem);
-
-  if (data && hasOwn(data, "total")) {
-    data.total = incrementCount(data.total);
-  }
-  if (data && hasOwn(data, "to")) {
-    data.to = incrementCount(data.to);
-  }
-  return payload;
-}
-
 function walkAndUnlock(node, seen) {
   if (!node || typeof node !== "object") {
     return;
@@ -382,7 +178,6 @@ function handleSubscriptionList(payload) {
   }
 
   walkAndUnlock(payload.data, new WeakSet());
-  injectCachedContent(payload);
   return payload;
 }
 
