@@ -1,5 +1,5 @@
 #!name=看理想 APP端 VIP解锁 + 去广告
-#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，会员页去购买区，资料页去推广昵称
+#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，会员页去购买区/底部购买栏，资料页去推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -14,7 +14,7 @@
 #   4. 清除 config 广告字段/dialog
 #   5. 屏蔽字节/友盟埋点
 #   6. VIP 解锁
-#   7. 会员页去顶部购买区，保留节目畅享等权益内容
+#   7. 会员页去顶部购买区/底部购买栏，保留节目畅享等权益内容
 #   8. 资料页去推广昵称
 # ─────────────────────────────────────────────────────────────
 
@@ -45,8 +45,8 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # VIP 解锁
 看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
 
-# 会员购买 H5：隐藏顶部套餐购买区和权益对比，保留节目畅享等权益内容
-看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_vip_page_hide_purchase.js?v=20260815a
+# 会员购买 H5：隐藏顶部套餐购买区、权益对比和底部购买栏，保留节目畅享等权益内容
+看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_vip_page_hide_purchase.js?v=20260815b
 
 # APP 下载链路：补齐下载入队依赖的 content 元数据和批量播放凭证
 看理想下载链路修正 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(services\/articles-play-token(\?|$)|content\/batch(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_download_unlock.js?v=20260814g
