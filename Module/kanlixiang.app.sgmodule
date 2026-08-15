@@ -12,23 +12,10 @@
 #   2. 去首页商品/会员推广
 #   3. 去第三方弹窗广告
 #   4. 清除 config 广告字段/dialog
-#   5. 屏蔽字节/友盟埋点
-#   6. VIP 解锁
-#   7. 会员页去顶部购买区/底部购买栏，保留节目畅享等权益内容
-#   8. 资料页去推广昵称
+#   5. VIP 解锁
+#   6. 会员页去顶部购买区/底部购买栏，保留节目畅享等权益内容
+#   7. 资料页去推广昵称
 # ─────────────────────────────────────────────────────────────
-
-[Rule]
-# 字节系埋点 & 远控（实测每 ~10s 高频轮询）
-DOMAIN-SUFFIX,mon.zijieapi.com,REJECT
-DOMAIN-SUFFIX,configure-platform.bytedance.com,REJECT
-DOMAIN-SUFFIX,tobdatarangers.com,REJECT
-DOMAIN,mon.toutiaocloud.com,REJECT
-DOMAIN-SUFFIX,volceapplog.com,REJECT
-# 友盟埋点
-DOMAIN-SUFFIX,ulogs.umeng.com,REJECT
-DOMAIN,ulogs.umengcloud.com,REJECT
-DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 
 [Map Local]
 # 开屏广告 → 返回空广告列表；base64 避免 iOS Map Local text 对 JSON 引号转义差异
