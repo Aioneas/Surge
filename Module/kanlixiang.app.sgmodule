@@ -46,7 +46,7 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
 
 # 会员购买 H5：隐藏顶部套餐购买区、权益对比和底部购买栏，保留节目畅享等权益内容
-看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_vip_page_hide_purchase.js?v=20260815b
+看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/b29d585e7953968337272a9e0f74a83676602e56/Script/klx_vip_page_hide_purchase.js
 
 # APP 下载链路：补齐下载入队依赖的 content 元数据和批量播放凭证
 看理想下载链路修正 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(services\/articles-play-token(\?|$)|content\/batch(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_download_unlock.js?v=20260814g
