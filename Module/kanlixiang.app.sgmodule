@@ -1,5 +1,5 @@
 #!name=看理想 APP端 VIP解锁 + 去广告
-#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，资料页去推广昵称；不处理网页端
+#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，隐藏会员页购买导流，资料页去推广昵称；不处理网页端
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -14,7 +14,8 @@
 #   4. 清除 config 广告字段/dialog
 #   5. 屏蔽字节/友盟埋点
 #   6. VIP 解锁
-#   7. 资料页去推广昵称
+#   7. 隐藏 App WebView 会员页购买导流
+#   8. 资料页去推广昵称
 #
 # 不包含网页端脚本，适合手机/iPad 单独使用。
 # ─────────────────────────────────────────────────────────────
@@ -52,8 +53,14 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # 节目目录页：修正原生目录锁态，尽量让已解锁章节直接可点播
 看理想目录解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/content\/(content-show\/\d+|article_list(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_catalog_unlock.js
 
+# APP 订阅列表：修正订阅/最近更新页卡片锁态，尽量让已打开节目能回流到列表态
+看理想订阅列表解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/(sub-update-list|subscriptions-list)(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_subscription_unlock.js?v=20260814a
+
+# 会员页 WebView：隐藏套餐卡、权益对比表、协议和底部购买栏
+看理想隐藏会员页购买导流 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_vip_rights_hide.js?v=20260815a
+
 # 资料页去推广昵称
 看理想去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
 [MITM]
-hostname = %APPEND% api.vistopia.com.cn
+hostname = %APPEND% api.vistopia.com.cn, shop.vistopia.com.cn
