@@ -1,5 +1,5 @@
 #!name=看理想 APP端 VIP解锁 + 去广告
-#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，资料页去推广昵称；不处理网页端
+#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，会员页去购买区，资料页去推广昵称
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
@@ -7,16 +7,15 @@
 # ─────────────────────────────────────────────────────────────
 # 实测环境：看理想 v4.14.5 / iPhone + iPad（iPad 兼容版）/ 2026-08-14
 #
-# 本模块只处理 App 端：
+# 本模块处理 App 端：
 #   1. 去开屏推荐广告
 #   2. 去首页商品/会员推广
 #   3. 去第三方弹窗广告
 #   4. 清除 config 广告字段/dialog
 #   5. 屏蔽字节/友盟埋点
 #   6. VIP 解锁
-#   7. 资料页去推广昵称
-#
-# 不包含网页端脚本，适合手机/iPad 单独使用。
+#   7. 会员页去顶部购买区，保留节目畅享等权益内容
+#   8. 资料页去推广昵称
 # ─────────────────────────────────────────────────────────────
 
 [Rule]
@@ -46,6 +45,9 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 # VIP 解锁
 看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
 
+# 会员购买 H5：隐藏顶部套餐购买区和权益对比，保留节目畅享等权益内容
+看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_vip_page_hide_purchase.js?v=20260815a
+
 # APP 下载链路：补齐下载入队依赖的 content 元数据和批量播放凭证
 看理想下载链路修正 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(services\/articles-play-token(\?|$)|content\/batch(\?|$)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_app_download_unlock.js?v=20260814g
 
@@ -56,4 +58,4 @@ DOMAIN-SUFFIX,utoken.umeng.com,REJECT
 看理想去推广昵称 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/user\/profile(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_profile_clean.js
 
 [MITM]
-hostname = %APPEND% api.vistopia.com.cn
+hostname = %APPEND% api.vistopia.com.cn, shop.vistopia.com.cn
