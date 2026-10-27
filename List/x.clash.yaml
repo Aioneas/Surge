@@ -1,0 +1,13 @@
+# X rules for OpenClash; shared source: List/x.list
+payload:
+  - DOMAIN-SUFFIX,x.com
+  - DOMAIN-SUFFIX,twitter.com
+  - DOMAIN-SUFFIX,twimg.com
+  - DOMAIN-SUFFIX,twimg.co
+  - DOMAIN-SUFFIX,twimg.org
+  - DOMAIN-SUFFIX,t.co
+  - DOMAIN-SUFFIX,tweetdeck.com
+  - DOMAIN-SUFFIX,twitteroauth.com
+  - DOMAIN-SUFFIX,twitterstat.us
+  - DOMAIN-SUFFIX,twttr.com
+  - DOMAIN-SUFFIX,twttr.net
