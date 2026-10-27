@@ -1,6 +1,6 @@
 # 看理想 App 视频兼容
 
-在原 App 模块基础上补充视频播放支持。Mac 上已安装并启用“看理想 APP端 视频兼容”，原 App 模块及中间测试版保持停用，网页模块继续启用。
+在原 App 模块基础上补充视频播放支持。已合并到原“看理想 APP端 VIP解锁 + 去广告”模块，Mac 已更新并启用原模块；独立兼容模块和两个中间测试模块已删除。网页模块保持当前设置。
 
 ## 实现范围
 
@@ -28,17 +28,18 @@
 ## 安装与回退
 
 安装地址：
-https://raw.githubusercontent.com/Aioneas/Surge/e23cfe12cd5c78f1c795e945f8f390402350435d/Module/kanlixiang.app.video.sgmodule
+https://raw.githubusercontent.com/Aioneas/Surge/main/Module/kanlixiang.app.sgmodule
 
-同一台设备只启用一个 App 模块，避免旧模块优先处理响应。网页模块可继续启用。Mac 已完成安装，手机尚未直接操作。
+原模块名称和订阅 URL 保持不变。已有设备更新原模块即可，不再需要额外安装 App 视频兼容模块。Mac 已完成更新，手机尚未直接操作。
 
-回退时关闭“看理想 APP端 视频兼容”，重新启用原“看理想 APP端 VIP解锁 + 去广告”。
+如需回退，可通过 GitHub 历史恢复原模块版本。
 
-仓库修改位于 test/klx-video-736119 分支，main 的原模块未改动。
+视频适配已发布到 main 的 Script/klx_app_video_compat.js；Module/kanlixiang.app.sgmodule 已覆盖更新并补充描述。test/klx-video-736119 分支中旧 App 测试模块及 v1 至 v4 临时脚本已删除，网页相关文件保留。
 
 ## 本地验证
 
 `node surge-video-app/verify.cjs`
 `node surge-video-web/verify.cjs`
 
-`legacy-vip.js` 为原始脚本；`adapter.js` 为新增部分；`klx_app_video_v4.js` 为完整运行脚本。
+`legacy-vip.js` 为原始脚本；`adapter.js` 为新增部分；`klx_app_video_compat.js` 为完整运行脚本。
+
