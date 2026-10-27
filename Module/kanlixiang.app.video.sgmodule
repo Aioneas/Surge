@@ -32,7 +32,7 @@
 看理想去广告配置 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
 # VIP 解锁；视频使用官方凭证，其他请求沿用原脚本
-看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, timeout=15, script-path=https://raw.githubusercontent.com/Aioneas/Surge/7c745359043a0f6106fa5def8c6794a66135cabf/Script/klx_app_video_compat_v1.js
+看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, timeout=15, script-path=https://raw.githubusercontent.com/Aioneas/Surge/78bf0b0f9c1a547c126443d17440631b7c984dd5/Script/klx_app_video_compat_v2.js
 
 # 会员购买 H5：隐藏顶部套餐购买区、权益对比和底部购买栏，保留节目畅享等权益内容
 看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/b29d585e7953968337272a9e0f74a83676602e56/Script/klx_vip_page_hide_purchase.js
