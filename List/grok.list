@@ -3,3 +3,7 @@
 DOMAIN-SUFFIX,grok.com
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,grokusercontent.com
+# Grok Bot uses Cursor shared infrastructure; other Cursor traffic to these hosts also follows Grok.
+DOMAIN,api2.cursor.sh
+DOMAIN,api3.cursor.sh
+DOMAIN-SUFFIX,cursorvm.com
