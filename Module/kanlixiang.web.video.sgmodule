@@ -1,0 +1,14 @@
+#!name=看理想 网页视频直接播放（Mac 验证版）
+#!desc=Mac Safari：修正视频目录和单集锁态，目录点击后使用网页原播放器；仅使用官方接口。配合原网页音频模块使用。
+#!author=Aioneas
+#!homepage=https://github.com/Aioneas/Surge
+
+# Mac 网页验证版；手机 App 尚未验证，不替换原 App 模块。
+# 请求仅向官方接口发送节目编号，不向第三方 Worker 转发账号信息。
+
+[Script]
+看理想网页视频兼容 = type=http-response, pattern=^https?://api\.vistopia\.com\.cn/api/(?:v[12]/content/(?:content-show/\d+(?:\?|$)|article_list(?:\?|$))|v1/reader/section-detail(?:\?|$)|v2/services/play-token\?), requires-body=1, max-size=0, timeout=15, script-path=https://raw.githubusercontent.com/Aioneas/Surge/a3a397a35023e6402bd4f27bbf27ab73f9810e78/Script/klx_web_video_compat.js
+看理想网页视频点击修正 = type=http-response, pattern=^https?://shop\.vistopia\.com\.cn/(?:(?:detail|article)(?:/\d+)?)?(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/a3a397a35023e6402bd4f27bbf27ab73f9810e78/Script/klx_web_video_click.js
+
+[MITM]
+hostname = %APPEND% api.vistopia.com.cn, shop.vistopia.com.cn
