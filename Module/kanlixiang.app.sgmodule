@@ -1,11 +1,13 @@
 #!name=看理想 APP端 VIP解锁 + 去广告
-#!desc=仅适用于看理想 App：去开屏广告/推广/弹窗，VIP解锁，会员页去购买区/底部购买栏，资料页去推广昵称
+#!desc=看理想 App：去开屏广告/推广/弹窗、VIP与目录处理、音频及下载链路修正；新增原生视频直接播放、选集切换和进度拖动；会员页与资料页净化。
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png
 
 # ─────────────────────────────────────────────────────────────
-# 实测环境：看理想 v4.14.5 / iPhone + iPad（iPad 兼容版）/ 2026-08-14
+# 原有功能实测：看理想 v4.14.5 / iPhone + iPad（iPad 兼容版）/ 2026-08-14
+# 视频兼容实测：看理想 v4.17.0 / Mac 上的 iOS 兼容版 / 2026-10-27
+# 本模块已合并视频兼容，无需同时安装独立兼容模块或测试模块。
 #
 # 本模块处理 App 端：
 #   1. 去开屏推荐广告
@@ -15,6 +17,7 @@
 #   5. VIP 解锁
 #   6. 会员页去顶部购买区/底部购买栏，保留节目畅享等权益内容
 #   7. 资料页去推广昵称
+#   8. 原生视频直接播放、播放器选集切换及进度拖动
 # ─────────────────────────────────────────────────────────────
 
 [Map Local]
@@ -31,8 +34,8 @@
 # 全局配置：清除 advertisements[] / dialog（保留 app_config 等正常字段）
 看理想去广告配置 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/other\/config(\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/klx_no_ads.js
 
-# VIP 解锁
-看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/main/Script/kanlixiang_vip.js
+# VIP 与视频播放兼容；非视频请求沿用原 VIP 脚本
+看理想VIP解锁 = type=http-response, pattern=^https?:\/\/api\.vistopia\.com\.cn\/api\/v2\/(reader\/(section-detail|detail)|user\/home|vip\/buy-list|services\/play-token(?!\?library_article_id=)), requires-body=1, max-size=0, timeout=15, script-path=https://raw.githubusercontent.com/Aioneas/Surge/8918cca082e16cf42f7b72cd52f20e036724e719/Script/klx_app_video_compat.js
 
 # 会员购买 H5：隐藏顶部套餐购买区、权益对比和底部购买栏，保留节目畅享等权益内容
 看理想会员页去购买区 = type=http-response, pattern=^https?:\/\/shop\.vistopia\.com\.cn\/vip_rights(?:\?|$), requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Aioneas/Surge/b29d585e7953968337272a9e0f74a83676602e56/Script/klx_vip_page_hide_purchase.js
