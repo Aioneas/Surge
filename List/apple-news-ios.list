@@ -1,0 +1,9 @@
+# Apple News iOS dedicated domains
+DOMAIN-SUFFIX,apple.news
+DOMAIN,news-assets.apple.com
+DOMAIN,news-client-search.apple.com
+DOMAIN,news-client.apple.com
+DOMAIN,news-edge.apple.com
+DOMAIN,news-events.apple.com
+DOMAIN,news-todayconfig-edge.apple.com
+DOMAIN,news-sports-events.apple.com
