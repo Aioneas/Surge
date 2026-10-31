@@ -1,0 +1,9 @@
+# NAME: Apple News
+# Apple News and News+ content; keep ahead of Apple and network bypass rules.
+# PROCESS-NAME is macOS-only; domain rules also work on other platforms.
+PROCESS-NAME,News
+PROCESS-NAME,newsd
+DOMAIN-SUFFIX,apple.news
+DOMAIN,news-edge.apple.com
+DOMAIN,news-events.apple.com
+DOMAIN,news-assets.apple.com

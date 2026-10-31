@@ -160,7 +160,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
 <a id="policy-groups"></a>
 ## Policy Groups
 
-共 25 个策略组：`Proxy Pool` · `Proxies` · `Google` · `Apple` · `OpenAI` · `Claude` · `DeepSeek` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest` · `Final`
+共 30 个服务与入口策略组：`Proxy Pool` · `Proxies` · `Final` · `Google` · `Apple` · `Apple News` · `X` · `Grok` · `OpenAI` · `Claude` · `DeepSeek` · `YouTube` · `Netflix` · `Disney` · `HBOMax` · `Bahamut` · `BiliBili` · `Spotify` · `Steam` · `Telegram` · `Microsoft` · `GitHub` · `PayPal` · `Link` · `WeChat` · `WSJ` · `Economist` · `NewYorkTimes` · `Caixin` · `Speedtest`。另有 6 个地区组：`HK` · `US` · `JP` · `TW` · `SG` · `PH`。
 
 <details>
 <summary><strong>展开完整列表</strong></summary>
@@ -172,6 +172,9 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
 | `Final` | Proxies / DIRECT | 兜底 |
 | `Google` | Proxies / 地区组 | — |
 | `Apple` | Proxies / DIRECT / 地区组 | — |
+| `Apple News` | US / Proxies / 地区组 | 默认 US；远端 apple-news.list，Mac 包含 News/newsd 进程规则 |
+| `X` | Proxies / 地区组 | X / Twitter |
+| `Grok` | Proxies / 地区组 | 独立 Grok / xAI |
 | `OpenAI` | Proxies / 地区组 | — |
 | `Claude` | Proxies / 地区组 | 图标自托管 |
 | `DeepSeek` | Proxies / DIRECT / 地区组 | deepseek.com / API / 相关 CDN，图标自托管 |
@@ -188,6 +191,8 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
 | `GitHub` | Proxies / DIRECT / 地区组 | — |
 | `PayPal` | Proxies / DIRECT / 地区组 | — |
 | `Link` | PayPal / Proxies / DIRECT / 地区组 | Stripe Link，默认跟随 PayPal |
+| `WeChat` | DIRECT / HK / Proxies / 地区组 | 默认 DIRECT |
+| `WSJ` | HK / Proxies / 地区组 / DIRECT | 默认 HK |
 | `Economist` | SG / Proxies / HK / JP / TW / US / DIRECT | 默认 SG |
 | `NewYorkTimes` | SG / Proxies / HK / JP / TW / US / DIRECT | 默认 SG |
 | `Caixin` | SG / Proxies / HK / JP / TW / US / DIRECT | 默认 SG |
@@ -206,6 +211,7 @@ Surge/
 ├── Conf/          # 主配置（surge.conf 通用版；surge-mac.conf 为 Mac 公开版）
 ├── Module/        # Surge 模块
 ├── List/          # 自托管规则集 + 广告模块 DOMAIN-SET 列表
+│   ├── apple-news.list # Apple News / News+ 分流规则集
 │   └── deepseek.list # DeepSeek 分流规则集
 ├── Script/        # 自托管脚本
 ├── Icon/          # 策略组与模块图标
