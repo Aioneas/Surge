@@ -172,7 +172,7 @@ https://raw.githubusercontent.com/Aioneas/Surge/main/Conf/surge-mac.conf
 | `Final` | Proxies / DIRECT | 兜底 |
 | `Google` | Proxies / 地区组 | — |
 | `Apple` | Proxies / DIRECT / 地区组 | — |
-| `Apple News` | US / Proxies / 地区组 | 默认 US；远端 apple-news.list，Mac 包含 News/newsd 进程规则 |
+| `Apple News` | US / Proxies / 地区组 | 默认 US；远端 apple-news.list，Mac 包含 News/newsd 进程规则；apple-news-ads.list 优先拒绝 News 动态广告接口，无需 MITM |
 | `X` | Proxies / 地区组 | X / Twitter |
 | `Grok` | Proxies / 地区组 | 独立 Grok / xAI |
 | `OpenAI` | Proxies / 地区组 | — |
@@ -212,6 +212,7 @@ Surge/
 ├── Module/        # Surge 模块
 ├── List/          # 自托管规则集 + 广告模块 DOMAIN-SET 列表
 │   ├── apple-news.list # Apple News / News+ 分流规则集
+│   ├── apple-news-ads.list # News 动态广告接口过滤（不含印刷内嵌广告）
 │   └── deepseek.list # DeepSeek 分流规则集
 ├── Script/        # 自托管脚本
 ├── Icon/          # 策略组与模块图标

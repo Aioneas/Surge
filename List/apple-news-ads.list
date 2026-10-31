@@ -1,0 +1,4 @@
+# Apple News 动态广告接口；精确匹配，不需要 MITM。
+# 配合 REJECT 使用，并置于 apple-news.list 的进程分流之前。
+# 不拦截正文、图片或订阅服务；不移除期刊印刷内容中内嵌的广告。
+DOMAIN,news.iadsdk.apple.com
