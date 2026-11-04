@@ -1,6 +1,6 @@
 #!category=看理想
-#!name=看理想 APP端 VIP解锁 + 去广告
-#!desc=看理想 App：去开屏广告/推广/弹窗、VIP与目录处理、音频及下载链路修正；新增原生视频直接播放、选集切换和进度拖动；会员页与资料页净化。
+#!name=看理想 App：去广告 + VIP 与播放兼容
+#!desc=看理想 App：去广告与推广、VIP 与目录处理、音频及下载链路修正；原生视频直接播放、选集切换与进度拖动；会员页与资料页净化。需开启 MITM、重写与脚本；兼容记录及安装说明见仓库 README。
 #!author=baby + Aioneas
 #!homepage=https://github.com/Aioneas/Surge
 #!icon=https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/kanlixiang.png

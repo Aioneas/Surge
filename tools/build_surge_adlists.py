@@ -261,14 +261,14 @@ def update_readme_table(manifest: dict) -> None:
     table_lines = [
         start_marker,
         "",
-        "| 模块 | 来源 | 安装链接 | 当前规模 |",
-        "| --- | --- | --- | --- |",
+        "| 模块 | 功能 | 安装 |",
+        "| --- | --- | --- |",
     ]
     for item in manifest["items"]:
         table_lines.append(
-            f"| [`{Path(item['module']).name}`](./{item['module']}) | {item['source_name']} | "
-            f"[Install]({RAW_BASE}/{item['module']}) | "
-            f"{item['block_count']:,} 条拦截域名 / {item['allow_count']:,} 条放行域名 |"
+            f"| [`{Path(item['module']).name}`](./{item['module']}) | {item['source_name']} 域名规则；"
+            f"{item['block_count']:,} 条拦截 / {item['allow_count']:,} 条放行 | "
+            f"[Install]({RAW_BASE}/{item['module']}) |"
         )
     table_lines.extend(["", end_marker])
     replacement = "\n".join(table_lines)

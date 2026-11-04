@@ -1,56 +1,49 @@
-# Maintenance Guide
+# 维护说明
 
-This repository is the primary source for Aioneas network-routing rules and Surge modules.
+本仓库维护 Surge iOS / Mac 公开配置、自托管模块及分流规则，同时为 `Aioneas/OpenClash` 保留共享规则数据。
 
-## Repository role
+## 目录职责
 
-- `Conf/` keeps public Surge profiles with subscription placeholders only.
-- `Module/` keeps Surge modules and the public install targets used by README links.
-- `List/` is the canonical rule-list source used by Surge and downstream adapters such as `Aioneas/OpenClash`.
-- `Script/` keeps self-hosted JavaScript used by modules.
-- `loon/` and `quantumultx/` are compatibility outputs/adaptations, not the canonical source.
-- `tools/` contains generators and maintenance scripts.
+- `Conf/`：公开 Surge 配置，只保留订阅占位符。
+- `Module/`：Surge `.sgmodule` 与 README 使用的远程安装入口。
+- `List/`：Surge 分流列表、广告域名列表和 OpenClash 使用的 `.clash.yaml` 共享数据。
+- `Script/` 与 `Icon/`：现有模块及策略组使用的脚本、图标。
+- `tools/`：规则镜像及广告过滤生成工具。
 
-## Change workflow
+## 修改流程
 
-1. Update the canonical source first.
-   - Rule content changes usually start in `List/`.
-   - Surge module behavior changes usually start in `Module/` and `Script/`.
-   - External ad-filter refreshes should be generated through `tools/build_surge_adlists.py`.
-2. Regenerate derived outputs when applicable.
-3. Check README install links if a module path or filename changes.
-4. If a rule group is consumed by `Aioneas/OpenClash`, update that repository after the Surge-side source is stable.
-5. Commit generated files together with the source change so public raw links stay consistent.
+1. 先修改对应源文件：分流规则从 `List/` 入手，模块行为从 `Module/`、`Script/` 入手。
+2. 按需重新生成派生产物，将生成结果与源修改一起提交。
+3. 模块增删或改名时，同步更新 README、安装入口和依赖；删除专用依赖前检查所有保留模块及固定版本引用。
+4. 验证公开链接和配置语法，并按 `SECURITY.md` 检查公开内容。
+5. 共享规则稳定后，如需改变下游策略组或引用方式，再更新 `Aioneas/OpenClash`；更新本仓库不代表已部署到设备。
 
-## Adding a new policy group
+## 应用模块
 
-When adding a new service group, update all relevant places together:
+看理想仅维护 `kanlixiang.app`。原生视频兼容已合并，保留现有脚本版本固定引用。调整说明时，不顺带修改播放、下载或目录规则；变更行为需单独验证相应功能。
 
-- `Conf/surge.conf`
-- `Conf/surge-mac.conf` when applicable
-- `List/<service>.list`
-- `List/<service>.clash.yaml` if OpenClash consumes it
-- README policy-group table
-- downstream adapters such as `Aioneas/OpenClash` when the group should exist there too
+已有兼容记录应注明 App 版本、设备和日期，不能将历史记录写成当前版本或所有设备的验证结果。
 
-## External ad-filter generation
+移除旧模块时同时删除对应首页入口；不为已删除模块保留空文件或重定向安装壳。原路径在当前分支停止提供内容，旧版可通过 Git 历史查看。
 
-Run:
+## 广告过滤自动生成
 
 ```bash
 python3 tools/build_surge_adlists.py
 ```
 
-The generator extracts only network-layer domain rules that can be represented safely in Surge. It intentionally skips browser-extension-only capabilities such as element hiding, scriptlets, parameter removal, and complex regular-expression filters.
+生成器仅处理可表达为 Surge 网络层域名规则的内容，跳过元素隐藏、脚本注入、参数移除和复杂正则等浏览器扩展语法。产物包括：
 
-Generated files include:
+- 四个独立广告过滤模块及其拦截、放行域名列表。
+- `List/manifest.json`，记录来源、数量与生成时间。
+- README 两个 `external-ad-filter-table` 标记之间的三列表格（模块 / 功能 / 安装）。
 
-- `List/*.block.domainset`
-- `List/*.allow.domainset`
-- `Module/*.sgmodule`
-- `List/manifest.json`
-- the external ad-filter table in `README.md`
+保留这两个标记，表格应由生成器更新。`.github/workflows/update-external-ad-filters.yml` 每日运行，也可手动触发；生成器只写入 Surge 模块和相关列表、清单、表格。
 
-## Compatibility notes
+验证生成器时在临时副本运行，检查只有预期产物发生变化，避免把临时抓取结果或测试文件带入发布。
 
-Treat Surge as the source of truth. Loon, Quantumult X, and OpenClash adaptations should be updated from the Surge-side rule intent rather than maintained as independent divergent rule sets.
+## 策略组与共享规则
+
+新增服务策略时，按需同步 iOS / Mac 配置、Surge 规则列表、README 策略表，以及 OpenClash 下游实际使用的共享规则。
+
+`tools/build_rule_mirrors.py` 和 `tools/build_apple_rules.py` 继续维护现有 Surge / OpenClash 共享数据。共享数据不作为本仓库的其他客户端安装入口展示，删除或迁移前需先处理下游依赖。
