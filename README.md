@@ -84,10 +84,10 @@
 
 | 模块 | 功能 | 安装 |
 | --- | --- | --- |
-| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList 域名规则；45,220 条拦截 / 0 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) |
+| [`easylist.sgmodule`](./Module/easylist.sgmodule) | EasyList 域名规则；45,554 条拦截 / 0 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easylist.sgmodule) |
 | [`adguard.mobile-ads.sgmodule`](./Module/adguard.mobile-ads.sgmodule) | AdGuard/uBO – Mobile Ads 域名规则；957 条拦截 / 2 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/adguard.mobile-ads.sgmodule) |
-| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more 域名规则；494 条拦截 / 4 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) |
-| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy 域名规则；6,933 条拦截 / 4 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) |
+| [`ublock.filters.sgmodule`](./Module/ublock.filters.sgmodule) | uBlock filters – Ads, trackers, and more 域名规则；497 条拦截 / 4 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/ublock.filters.sgmodule) |
+| [`easyprivacy.sgmodule`](./Module/easyprivacy.sgmodule) | EasyPrivacy 域名规则；6,937 条拦截 / 4 条放行 | [Install](https://raw.githubusercontent.com/Aioneas/Surge/main/Module/easyprivacy.sgmodule) |
 
 <!-- external-ad-filter-table:end -->
 
